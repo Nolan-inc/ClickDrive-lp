@@ -38,7 +38,7 @@ const cards: Card[] = [
 const StackedCardsSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  // const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,7 +55,7 @@ const StackedCardsSection: React.FC = () => {
       if (scrollStart <= 0 && scrollEnd >= 0) {
         // We're within the section
         const progress = Math.abs(scrollStart) / (sectionHeight - windowHeight);
-        setScrollProgress(Math.min(1, Math.max(0, progress)));
+        // setScrollProgress(Math.min(1, Math.max(0, progress)));
         
         // Calculate which card should be active
         const cardIndex = Math.floor(progress * cards.length);
@@ -105,13 +105,11 @@ const StackedCardsSection: React.FC = () => {
           // Calculate transform and opacity based on position
           let transform = '';
           let opacity = 1;
-          let scale = 1;
           
           if (isPrevious) {
             // Previous cards slide up and fade out
             transform = `translateY(-${(activeIndex - index) * 100}%)`;
             opacity = 0;
-            scale = 0.9;
           } else if (isNext) {
             // Next cards are stacked below with slight offset
             const offset = (index - activeIndex) * 30;
@@ -121,7 +119,6 @@ const StackedCardsSection: React.FC = () => {
             // Active card
             transform = 'translateY(0)';
             opacity = 1;
-            scale = 1;
           }
 
           return (
