@@ -33,7 +33,7 @@ const Hero = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
+        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-16">
           <div className="text-center">
             <p className="text-sm text-gray-500 mb-2">継続率</p>
             <p className="text-4xl md:text-5xl font-bold text-purple-600">98%</p>

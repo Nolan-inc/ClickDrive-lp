@@ -124,7 +124,7 @@ const StackedCardsSection: React.FC = () => {
           return (
             <div
               key={index}
-              className="absolute w-[70vw] h-1/2 transition-all duration-700 ease-out rounded-2xl shadow-2xl overflow-hidden"
+              className="absolute w-[90vw] md:w-[70vw] h-[70vh] md:h-1/2 transition-all duration-700 ease-out rounded-2xl shadow-2xl overflow-hidden"
               style={{
                 top: '50%',
                 left: '50%',
@@ -133,10 +133,10 @@ const StackedCardsSection: React.FC = () => {
                 zIndex: cards.length - index,
               }}
             >
-              <div className={`w-full h-full ${card.bgColor} flex items-center text-white p-12`}>
-                <div className="flex items-center justify-between w-full max-w-6xl mx-auto gap-12">
+              <div className={`w-full h-full ${card.bgColor} flex items-center text-white p-6 md:p-12`}>
+                <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-6xl mx-auto gap-6 md:gap-12">
                   {/* Text Content - Left Side */}
-                  <div className="flex-1">
+                  <div className="flex-1 text-center lg:text-left">
                     <div className="mb-6">
                       <span className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/40 shadow-lg">
                         <span className="text-4xl font-bold text-white">
@@ -161,7 +161,7 @@ const StackedCardsSection: React.FC = () => {
                   </div>
                   
                   {/* Image - Right Side */}
-                  <div className="relative w-[500px] h-[350px] flex-shrink-0 overflow-hidden rounded-xl transition-all duration-700"
+                  <div className="relative w-full lg:w-[500px] h-[250px] lg:h-[350px] flex-shrink-0 overflow-hidden rounded-xl transition-all duration-700"
                        style={{
                          transform: isActive ? 'scale(1)' : 'scale(0.9)',
                          opacity: isActive ? 1 : 0.7,

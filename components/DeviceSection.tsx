@@ -25,7 +25,7 @@ export default function DeviceSection() {
             <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-pink-600 rounded-3xl transform rotate-3"></div>
             <div className="relative bg-gray-900 rounded-3xl p-8 md:p-12">
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
-                <div className="text-white lg:col-span-2">
+                <div className="text-white lg:col-span-2 order-2 lg:order-1">
                   <div className="mb-8">
                     <h3 className="text-xl font-bold mb-3">
                       記事の更新率95.8%
@@ -75,7 +75,7 @@ export default function DeviceSection() {
                   </div>
                 </div>
                 
-                <div className="relative lg:col-span-3">
+                <div className="relative lg:col-span-3 order-1 lg:order-2">
                   <div className="bg-gray-800 rounded-2xl p-6 shadow-2xl">
                     <div className="relative w-full h-[350px] overflow-hidden rounded-xl">
                       <Image

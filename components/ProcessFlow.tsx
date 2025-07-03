@@ -92,11 +92,20 @@ const ProcessFlow = () => {
             <div key={index} className="relative">
               {/* Connection Arrow for desktop */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute -right-6 top-1/2 transform -translate-y-1/2 z-10">
-                  <svg className="w-12 h-12 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M10 17l5-5-5-5v10z"/>
-                  </svg>
-                </div>
+                <>
+                  {/* Desktop arrow */}
+                  <div className="hidden lg:block absolute -right-6 top-1/2 transform -translate-y-1/2 z-10">
+                    <svg className="w-12 h-12 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M10 17l5-5-5-5v10z"/>
+                    </svg>
+                  </div>
+                  {/* Mobile arrow */}
+                  <div className="block lg:hidden absolute -bottom-4 left-1/2 transform -translate-x-1/2 z-10">
+                    <svg className="w-8 h-8 text-purple-400 rotate-90" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M10 17l5-5-5-5v10z"/>
+                    </svg>
+                  </div>
+                </>
               )}
               
               {/* Step Item */}
