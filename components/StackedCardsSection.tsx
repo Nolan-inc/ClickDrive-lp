@@ -76,7 +76,7 @@ const StackedCardsSection: React.FC = () => {
       style={{ height: `${(cards.length + 1) * 100}vh` }}
     >
       <div className="sticky top-0 h-screen overflow-hidden bg-gray-100 flex items-center justify-center">
-        <div className="absolute top-24 left-1/2 -translate-x-1/2 text-center z-50 w-full">
+        <div className="absolute top-16 left-1/2 -translate-x-1/2 text-center z-50 w-full">
           <div className="relative">
             <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
               <div className="flex animate-slide whitespace-nowrap">
@@ -96,7 +96,7 @@ const StackedCardsSection: React.FC = () => {
           </div>
           <p className="text-lg md:text-xl text-gray-600 mb-8 md:mb-0">選ばれる理由があります</p>
         </div>
-        <div className="relative w-full h-full flex items-center justify-center pt-32 md:pt-40">
+        <div className="relative w-full h-full flex items-center justify-center pt-80 md:pt-96">
         {cards.map((card, index) => {
           const isActive = index === activeIndex;
           const isPrevious = index < activeIndex;
@@ -126,7 +126,7 @@ const StackedCardsSection: React.FC = () => {
               key={index}
               className="absolute w-[90vw] md:w-[70vw] h-[70vh] md:h-1/2 transition-all duration-700 ease-out rounded-2xl shadow-2xl overflow-hidden"
               style={{
-                top: '50%',
+                top: '58%',
                 left: '50%',
                 transform: `translate(-50%, -50%) ${transform}`,
                 opacity,
