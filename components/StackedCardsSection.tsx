@@ -94,9 +94,9 @@ const StackedCardsSection: React.FC = () => {
             </div>
             <h2 className="relative text-3xl md:text-4xl font-bold text-gray-900 mb-2 py-4">我々の3つの強み</h2>
           </div>
-          <p className="text-lg md:text-xl text-gray-600">選ばれる理由があります</p>
+          <p className="text-lg md:text-xl text-gray-600 mb-8 md:mb-0">選ばれる理由があります</p>
         </div>
-        <div className="relative w-full h-full flex items-center justify-center pt-20">
+        <div className="relative w-full h-full flex items-center justify-center pt-32 md:pt-40">
         {cards.map((card, index) => {
           const isActive = index === activeIndex;
           const isPrevious = index < activeIndex;

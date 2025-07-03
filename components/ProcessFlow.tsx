@@ -6,12 +6,12 @@ const ProcessFlow = () => {
   const steps = [
     {
       step: 'お問い合わせ受付',
-      responsible: 'クライアント',
+      responsible: 'クライアント様',
       description: 'まずはお気軽にお問い合わせください',
     },
     {
       step: 'ヒアリングフォーム記入',
-      responsible: 'クライアント',
+      responsible: 'クライアント様',
       description: 'プロジェクトの詳細をお伺いします',
     },
     {
@@ -21,7 +21,7 @@ const ProcessFlow = () => {
     },
     {
       step: '初回ヒアリング',
-      responsible: 'クライアント/Nolan',
+      responsible: 'クライアント様/Nolan',
       description: '詳細な要望を確認させていただきます',
     },
     {
@@ -31,7 +31,7 @@ const ProcessFlow = () => {
     },
     {
       step: 'Stripe決済/プライバシーポリシー/利用規約同意',
-      responsible: 'クライアント/Nolan',
+      responsible: 'クライアント様/Nolan',
       description: '安全な決済システムで契約を締結',
     },
     {
@@ -56,7 +56,7 @@ const ProcessFlow = () => {
     },
     {
       step: '管理システム操作方法・運用サポート案内',
-      responsible: 'クライアント/Nolan',
+      responsible: 'クライアント様/Nolan',
       description: '運用開始後も安心のサポート',
     },
   ];
@@ -81,8 +81,9 @@ const ProcessFlow = () => {
         <h2 className="relative text-3xl md:text-4xl font-bold text-gray-900 py-4">
           お問い合わせからの流れ
         </h2>
-        <p className="relative text-lg text-gray-600 mt-4">
-          シンプルで分かりやすいプロセスで、プロジェクトを成功に導きます
+        <p className="relative text-base md:text-lg text-gray-600 mt-4 px-4 md:px-0">
+          シンプルで分かりやすいプロセスで、<br className="md:hidden" />
+          プロジェクトを成功に導きます
         </p>
       </div>
 
@@ -116,7 +117,7 @@ const ProcessFlow = () => {
                   <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium mb-3 ${
                     item.responsible === 'Nolan' 
                       ? 'bg-purple-100 text-purple-700' 
-                      : item.responsible === 'クライアント'
+                      : item.responsible === 'クライアント様'
                       ? 'bg-blue-100 text-blue-700'
                       : 'bg-green-100 text-green-700'
                   }`}>
@@ -131,12 +132,17 @@ const ProcessFlow = () => {
         
         {/* CTA */}
         <div className="text-center mt-12">
-          <button className="bg-purple-600 text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-purple-700 transition-colors shadow-lg inline-flex items-center gap-3">
+          <a 
+            href="https://lin.ee/llRUGcG" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-purple-600 text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-purple-700 transition-colors shadow-lg inline-flex items-center gap-3"
+          >
             無料で相談を始める
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </button>
+          </a>
         </div>
       </div>
     </section>

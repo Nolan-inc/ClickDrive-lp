@@ -14,34 +14,28 @@ export default function Footer() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
             無料で相談してみる
           </h2>
-          <button className="bg-purple-600 text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-purple-700 transition-colors shadow-lg inline-flex items-center gap-3">
+          <a 
+            href="https://lin.ee/llRUGcG" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-purple-600 text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-purple-700 transition-colors shadow-lg inline-flex items-center gap-3"
+          >
             無料相談を始める
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </button>
+          </a>
         </div>
         
         {/* Footer Links Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {/* Company Info */}
           <div>
             <h3 className="font-bold text-xl mb-4 text-gray-900">Nolan</h3>
             <p className="text-gray-600 text-sm leading-relaxed">
-              優秀なデザイナーと企業を繋ぐ<br />
-              マッチングプラットフォーム
+              HP/webサイト<br />
+              制作会社
             </p>
-          </div>
-          
-          {/* Service Links */}
-          <div>
-            <h4 className="font-semibold mb-4 text-gray-900">サービス</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-gray-600 hover:text-purple-600 text-sm">デザイナー検索</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-purple-600 text-sm">料金プラン</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-purple-600 text-sm">導入事例</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-purple-600 text-sm">よくある質問</a></li>
-            </ul>
           </div>
           
           {/* Company Links */}

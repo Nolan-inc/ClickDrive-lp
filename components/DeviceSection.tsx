@@ -76,8 +76,8 @@ export default function DeviceSection() {
                 </div>
                 
                 <div className="relative lg:col-span-3 order-1 lg:order-2">
-                  <div className="bg-gray-800 rounded-2xl p-6 shadow-2xl">
-                    <div className="relative w-full h-[350px] overflow-hidden rounded-xl">
+                  <div className="bg-gray-800 rounded-2xl p-4 md:p-6 shadow-2xl">
+                    <div className="relative w-full h-[200px] md:h-[350px] overflow-hidden rounded-xl">
                       <Image
                         src="/gif/screen.gif"
                         alt="サイト管理画面"

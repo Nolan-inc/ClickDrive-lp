@@ -1,5 +1,7 @@
 "use client"
 
+import Image from 'next/image'
+
 export default function ContactSection() {
 
   return (
@@ -76,12 +78,15 @@ export default function ContactSection() {
                 </div>
                 
                 <div className="text-center">
-                  {/* QR Code placeholder */}
+                  {/* QR Code */}
                   <div className="bg-white p-3 rounded-xl shadow-md inline-block mb-4">
-                    <div className="w-32 h-32 bg-gray-100 rounded-lg flex items-center justify-center">
-                      <svg className="w-24 h-24 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M3 3h6v6H3zm2 2v2h2V5zm6-2h2v2h2v2h-2v2h2v2h-2v2h2v2h-4V9h2V7h-2zm4 0h6v6h-6zm2 2v2h2V5zM3 11h2v2h2v-2h2v4H7v2H5v-2H3zm6 0h2v2H9zm4 0h2v2h-2zm4 0h2v2h2v4h-2v-2h-2v-2h2v-2h-2zM3 15h6v6H3zm2 2v2h2v-2zm10 0h2v2h2v2h-4z"/>
-                      </svg>
+                    <div className="relative w-32 h-32">
+                      <Image
+                        src="/L_gainfriends_2dbarcodes_GW.png"
+                        alt="LINE QRコード"
+                        fill
+                        className="object-contain"
+                      />
                     </div>
                   </div>
                   

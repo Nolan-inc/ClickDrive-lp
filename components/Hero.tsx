@@ -2,24 +2,24 @@ import React from 'react';
 
 const Hero = () => {
   return (
-    <section className="bg-gray-50 px-4 sm:px-6 lg:px-8 pt-32 pb-0">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-gray-50 pt-32 pb-0 relative overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-32 flex items-center justify-center overflow-hidden">
+        <div className="flex animate-slide whitespace-nowrap">
+          {Array(20).fill(null).map((_, i) => (
+            <span key={i} className="text-7xl md:text-9xl font-bold text-gray-100/70 uppercase tracking-wider select-none mr-8">
+              Designer Match
+            </span>
+          ))}
+          {Array(20).fill(null).map((_, i) => (
+            <span key={`dup-${i}`} className="text-7xl md:text-9xl font-bold text-gray-100/70 uppercase tracking-wider select-none mr-8">
+              Designer Match
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12">
-          <div className="relative overflow-hidden">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="flex animate-slide whitespace-nowrap">
-                {Array(20).fill(null).map((_, i) => (
-                  <span key={i} className="text-7xl md:text-9xl font-bold text-gray-100/70 uppercase tracking-wider select-none mr-8">
-                    Designer Match
-                  </span>
-                ))}
-                {Array(20).fill(null).map((_, i) => (
-                  <span key={`dup-${i}`} className="text-7xl md:text-9xl font-bold text-gray-100/70 uppercase tracking-wider select-none mr-8">
-                    Designer Match
-                  </span>
-                ))}
-              </div>
-            </div>
+          <div className="relative">
             <h1 className="relative text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-tight py-4">
               <span className="text-purple-600">安い</span>
               <span className="text-gray-900">と</span>
