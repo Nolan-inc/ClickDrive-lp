@@ -47,6 +47,17 @@ export default function Header() {
               </svg>
               LINE相談
             </Link>
+            <a
+              href="http://quick-web-lbo1.vercel.app/auth/register"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-blue-400 to-blue-500 text-white px-6 py-2 rounded-full font-medium hover:from-blue-500 hover:to-blue-600 transition-colors inline-flex items-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              会員登録
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -97,6 +108,15 @@ export default function Header() {
             >
               LINE相談
             </Link>
+            <a
+              href="http://quick-web-lbo1.vercel.app/auth/register"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block bg-gradient-to-r from-blue-400 to-blue-500 text-white px-6 py-3 rounded-full font-medium hover:from-blue-500 hover:to-blue-600 transition-colors text-center"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              会員登録
+            </a>
           </div>
         </div>
       )}

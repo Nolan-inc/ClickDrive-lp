@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function TokuteiPage() {
   return (
     <div className="min-h-screen bg-white pt-32 pb-20">
@@ -71,7 +73,7 @@ export default function TokuteiPage() {
         </div>
 
         <div className="mt-12 text-center">
-          <a 
+          <Link 
             href="/"
             className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
           >
@@ -79,7 +81,7 @@ export default function TokuteiPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             トップページに戻る
-          </a>
+          </Link>
         </div>
       </div>
     </div>
