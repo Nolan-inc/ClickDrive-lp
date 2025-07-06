@@ -43,7 +43,7 @@ export default function PricingSection() {
             <thead>
               <tr className="border-b-2 border-gray-200">
                 <th className="text-left py-4 px-4 font-bold text-gray-900">項目</th>
-                <th className="text-center py-4 px-4 font-bold text-purple-600 text-lg">QuickWeb</th>
+                <th className="text-center py-4 px-4 font-bold text-blue-500 text-lg">QuickWeb</th>
                 <th className="text-center py-4 px-4 font-bold text-gray-700">A社</th>
                 <th className="text-center py-4 px-4 font-bold text-gray-700">B社</th>
               </tr>
@@ -52,7 +52,7 @@ export default function PricingSection() {
               {comparisonData.map((row, index) => (
                 <tr key={index} className={`border-b border-gray-100 ${index % 2 === 0 ? 'bg-gray-50' : ''}`}>
                   <td className="py-4 px-4 font-medium text-gray-800">{row.item}</td>
-                  <td className="py-4 px-4 text-center font-bold text-purple-600">{row.quickweb}</td>
+                  <td className="py-4 px-4 text-center font-bold text-blue-500">{row.quickweb}</td>
                   <td className="py-4 px-4 text-center text-gray-600">{row.a}</td>
                   <td className="py-4 px-4 text-center text-gray-600">{row.b}</td>
                 </tr>
@@ -66,7 +66,7 @@ export default function PricingSection() {
             href="https://lin.ee/llRUGcG" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-purple-600 text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-purple-700 transition-colors shadow-lg inline-block"
+            className="bg-gradient-to-r from-blue-400 to-blue-500 text-white px-10 py-4 rounded-full font-semibold text-lg hover:from-blue-500 hover:to-blue-600 transition-colors shadow-lg inline-block"
           >
             今すぐ始める
           </a>

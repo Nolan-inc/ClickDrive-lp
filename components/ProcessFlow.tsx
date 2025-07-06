@@ -96,13 +96,13 @@ const ProcessFlow = () => {
                 <>
                   {/* Desktop arrow */}
                   <div className="hidden lg:block absolute -right-6 top-1/2 transform -translate-y-1/2 z-10">
-                    <svg className="w-12 h-12 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-12 h-12 text-blue-300" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M10 17l5-5-5-5v10z"/>
                     </svg>
                   </div>
                   {/* Mobile arrow */}
                   <div className="block lg:hidden absolute -bottom-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <svg className="w-8 h-8 text-purple-400 rotate-90" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-8 h-8 text-blue-300 rotate-90" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M10 17l5-5-5-5v10z"/>
                     </svg>
                   </div>
@@ -116,9 +116,9 @@ const ProcessFlow = () => {
                   <h3 className="text-base font-bold text-gray-900 mb-2">{item.step}</h3>
                   <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium mb-3 ${
                     item.responsible === 'Nolan' 
-                      ? 'bg-purple-100 text-purple-700' 
+                      ? 'bg-blue-50 text-blue-600' 
                       : item.responsible === 'クライアント様'
-                      ? 'bg-blue-100 text-blue-700'
+                      ? 'bg-blue-50 text-blue-600'
                       : 'bg-green-100 text-green-700'
                   }`}>
                     {item.responsible}
@@ -136,7 +136,7 @@ const ProcessFlow = () => {
             href="https://lin.ee/llRUGcG" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-purple-600 text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-purple-700 transition-colors shadow-lg inline-flex items-center gap-3"
+            className="bg-gradient-to-r from-blue-400 to-blue-500 text-white px-10 py-4 rounded-full font-semibold text-lg hover:from-blue-500 hover:to-blue-600 transition-colors shadow-lg inline-flex items-center gap-3"
           >
             無料で相談を始める
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

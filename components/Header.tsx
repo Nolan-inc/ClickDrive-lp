@@ -7,7 +7,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 w-full bg-gray-50 z-50">
+    <header className="fixed top-0 w-full bg-gradient-to-r from-gray-50 via-blue-50/50 to-gray-50 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
@@ -20,19 +20,19 @@ export default function Header() {
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="#" className="text-gray-700 hover:text-purple-600 font-medium flex items-center">
+            <Link href="#" className="text-gray-700 hover:text-blue-500 font-medium flex items-center">
               Nolanとは
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </Link>
-            <Link href="#" className="text-gray-700 hover:text-purple-600 font-medium flex items-center">
+            <Link href="#" className="text-gray-700 hover:text-blue-500 font-medium flex items-center">
               活用
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </Link>
-            <Link href="#" className="text-gray-700 hover:text-purple-600 font-medium flex items-center">
+            <Link href="#" className="text-gray-700 hover:text-blue-500 font-medium flex items-center">
               その他
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -71,21 +71,21 @@ export default function Header() {
           <div className="px-4 py-3 space-y-3">
             <Link 
               href="#" 
-              className="block py-2 text-gray-700 hover:text-purple-600 font-medium"
+              className="block py-2 text-gray-700 hover:text-blue-500 font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               Nolanとは
             </Link>
             <Link 
               href="#" 
-              className="block py-2 text-gray-700 hover:text-purple-600 font-medium"
+              className="block py-2 text-gray-700 hover:text-blue-500 font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               活用
             </Link>
             <Link 
               href="#" 
-              className="block py-2 text-gray-700 hover:text-purple-600 font-medium"
+              className="block py-2 text-gray-700 hover:text-blue-500 font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               その他

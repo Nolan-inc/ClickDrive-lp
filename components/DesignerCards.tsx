@@ -66,7 +66,7 @@ const DesignerCards = () => {
 
   if (loading) {
     return (
-      <section className="pt-16 pb-20 bg-gray-50">
+      <section className="pt-16 pb-20 bg-white">
         <div className="w-full flex justify-center items-center h-[500px]">
           <div className="text-gray-500">Loading...</div>
         </div>
@@ -75,7 +75,7 @@ const DesignerCards = () => {
   }
 
   return (
-    <section className="pt-12 pb-16 bg-gray-50">
+    <section className="pt-12 pb-16 bg-white">
       <div className="w-full">
         <div className="relative h-[400px] overflow-hidden">
           <div 
@@ -103,7 +103,7 @@ const DesignerCards = () => {
                 <div 
                   className="h-1/3 p-4 text-white flex flex-col justify-center"
                   style={{
-                    background: `linear-gradient(135deg, ${index % 2 === 0 ? '#9333ea' : '#7c3aed'} 0%, ${index % 2 === 0 ? '#7c3aed' : '#6d28d9'} 100%)`
+                    background: `linear-gradient(135deg, ${index % 2 === 0 ? '#60a5fa' : '#3b82f6'} 0%, ${index % 2 === 0 ? '#3b82f6' : '#2563eb'} 100%)`
                   }}
                 >
                   <h3 className="text-lg font-bold mb-1">{designer.title}</h3>
@@ -123,7 +123,7 @@ const DesignerCards = () => {
             <button
               key={index}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === (currentIndex - 3) % designers.length ? 'bg-purple-600 w-8' : 'bg-gray-300'
+                index === (currentIndex - 3) % designers.length ? 'bg-blue-500 w-8' : 'bg-gray-300'
               }`}
               onClick={() => setCurrentIndex(index + 3)}
             />

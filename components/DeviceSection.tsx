@@ -10,19 +10,19 @@ export default function DeviceSection() {
               直感的なインターフェースで、サイト運用も簡単！
             </h2>
             <div className="flex flex-wrap justify-center gap-2 text-sm">
-              <span className="bg-purple-100 text-purple-700 px-4 py-2 rounded-full">AI自動提案</span>
-              <span className="bg-purple-100 text-purple-700 px-4 py-2 rounded-full">SNS連携</span>
-              <span className="bg-purple-100 text-purple-700 px-4 py-2 rounded-full">かんたん更新</span>
-              <span className="bg-purple-100 text-purple-700 px-4 py-2 rounded-full">トレンド分析</span>
-              <span className="bg-purple-100 text-purple-700 px-4 py-2 rounded-full">記事管理</span>
-              <span className="bg-purple-100 text-purple-700 px-4 py-2 rounded-full">画像編集</span>
-              <span className="bg-purple-100 text-purple-700 px-4 py-2 rounded-full">自動最適化</span>
-              <span className="bg-purple-100 text-purple-700 px-4 py-2 rounded-full">ワンクリック更新</span>
+              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">AI自動提案</span>
+              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">SNS連携</span>
+              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">かんたん更新</span>
+              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">トレンド分析</span>
+              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">記事管理</span>
+              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">画像編集</span>
+              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">自動最適化</span>
+              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">ワンクリック更新</span>
             </div>
           </div>
           
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-pink-600 rounded-3xl transform rotate-3"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-sky-500 rounded-3xl transform rotate-3"></div>
             <div className="relative bg-gray-900 rounded-3xl p-8 md:p-12">
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
                 <div className="text-white lg:col-span-2 order-2 lg:order-1">
@@ -56,19 +56,19 @@ export default function DeviceSection() {
                     </p>
                   </div>
 
-                  <div className="bg-purple-900/50 rounded-lg p-4">
-                    <h4 className="text-lg font-semibold mb-3 text-purple-300">こんな方におすすめ</h4>
+                  <div className="bg-gradient-to-br from-blue-800/40 to-sky-800/40 rounded-lg p-4">
+                    <h4 className="text-lg font-semibold mb-3 text-sky-300">こんな方におすすめ</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-center text-gray-300">
-                        <span className="text-purple-400 mr-2">✓</span>
+                        <span className="text-sky-400 mr-2">✓</span>
                         SNSと連動して集客したい
                       </li>
                       <li className="flex items-center text-gray-300">
-                        <span className="text-purple-400 mr-2">✓</span>
+                        <span className="text-sky-400 mr-2">✓</span>
                         記事更新を自動化して時間を節約したい
                       </li>
                       <li className="flex items-center text-gray-300">
-                        <span className="text-purple-400 mr-2">✓</span>
+                        <span className="text-sky-400 mr-2">✓</span>
                         専門知識がなくてもサイトを運用したい
                       </li>
                     </ul>
