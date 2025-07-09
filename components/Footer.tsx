@@ -53,7 +53,7 @@ export default function Footer() {
               <li><a href="#" className="text-gray-600 hover:text-blue-500 text-sm">お問い合わせ</a></li>
               <li><a href="/terms" className="text-gray-600 hover:text-blue-500 text-sm">利用規約</a></li>
               <li><a href="https://invented-bangle-e15.notion.site/2255b8517dea80bf8d6fd3534b105cf0" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-500 text-sm">プライバシーポリシー</a></li>
-              <li><a href="/tokutei" className="text-gray-600 hover:text-blue-500 text-sm">特定商取引法</a></li>
+              <li><a href="https://pages.nolan.co.jp/quickweb-legal-notice" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-500 text-sm">特定商取引法</a></li>
             </ul>
           </div>
         </div>
