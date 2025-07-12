@@ -124,7 +124,7 @@ const StackedCardsSection: React.FC = () => {
           return (
             <div
               key={index}
-              className="absolute w-[90vw] md:w-[70vw] h-[70vh] md:h-1/2 transition-all duration-700 ease-out rounded-2xl shadow-2xl overflow-hidden"
+              className="absolute w-[90vw] md:w-[70vw] h-[70vh] md:h-1/2 transition-all duration-500 ease-out rounded-2xl shadow-2xl overflow-hidden"
               style={{
                 top: '58%',
                 left: '50%',
@@ -144,14 +144,14 @@ const StackedCardsSection: React.FC = () => {
                         </span>
                       </span>
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4 transition-all duration-700"
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 transition-all duration-300"
                         style={{
                           transform: isActive ? 'translateY(0)' : 'translateY(10px)',
                           opacity: isActive ? 1 : 0.7,
                         }}>
                       {card.title}
                     </h2>
-                    <p className="text-lg md:text-xl leading-relaxed transition-all duration-700 delay-200 text-white/90 whitespace-pre-line"
+                    <p className="text-lg md:text-xl leading-relaxed transition-all duration-300 text-white/90 whitespace-pre-line"
                        style={{
                          transform: isActive ? 'translateY(0)' : 'translateY(10px)',
                          opacity: isActive ? 1 : 0.8,
@@ -161,7 +161,7 @@ const StackedCardsSection: React.FC = () => {
                   </div>
                   
                   {/* Image - Right Side */}
-                  <div className="relative w-full lg:w-[500px] h-[250px] lg:h-[350px] flex-shrink-0 overflow-hidden rounded-xl transition-all duration-700"
+                  <div className="relative w-full lg:w-[500px] h-[250px] lg:h-[350px] flex-shrink-0 overflow-hidden rounded-xl transition-all duration-300"
                        style={{
                          transform: isActive ? 'scale(1)' : 'scale(0.9)',
                          opacity: isActive ? 1 : 0.7,
@@ -172,6 +172,8 @@ const StackedCardsSection: React.FC = () => {
                       fill
                       className="object-cover"
                       unoptimized={card.image.endsWith('.gif')}
+                      loading="lazy"
+                      priority={false}
                     />
                   </div>
                 </div>

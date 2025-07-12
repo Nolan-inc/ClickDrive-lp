@@ -4,6 +4,7 @@ import DesignerCards from "@/components/DesignerCards";
 // import LogosSection from "@/components/LogosSection"
 import PricingSection from "@/components/PricingSection"
 import StackedCardsSection from "@/components/StackedCardsSection"
+import PortfolioSection from "@/components/PortfolioSection"
 // import TeamSection from "@/components/TeamSection"
 import DeviceSection from "@/components/DeviceSection"
 // import TestimonialsSection from "@/components/TestimonialsSection"
@@ -20,6 +21,7 @@ export default function Home() {
       <DesignerCards />
       {/* <LogosSection /> */}
       <StackedCardsSection />
+      <PortfolioSection />
       {/* <TeamSection /> */}
       <DeviceSection />
       {/* <TestimonialsSection /> */}

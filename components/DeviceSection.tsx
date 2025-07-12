@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 export default function DeviceSection() {
   return (
-    <section className="relative py-16 bg-white overflow-visible">
-      <div className="container mx-auto px-4">
+    <section className="relative py-16 bg-white overflow-hidden">
+      <div className="container mx-auto px-4 overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -21,8 +21,8 @@ export default function DeviceSection() {
             </div>
           </div>
           
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-sky-500 rounded-3xl transform rotate-3"></div>
+          <div className="relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-sky-500 rounded-3xl transform rotate-3 scale-95"></div>
             <div className="relative bg-gray-900 rounded-3xl p-8 md:p-12">
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
                 <div className="text-white lg:col-span-2 order-2 lg:order-1">
@@ -84,6 +84,8 @@ export default function DeviceSection() {
                         fill
                         className="object-contain"
                         unoptimized
+                        loading="lazy"
+                        priority={false}
                       />
                     </div>
                   </div>
