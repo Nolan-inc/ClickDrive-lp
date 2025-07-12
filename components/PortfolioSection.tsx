@@ -85,7 +85,6 @@ const categories = ['全て', 'コーポレートサイト', 'Eコマース', '�
 const PortfolioSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('全て');
   const [showAll, setShowAll] = useState(false);
-  const [loadedIframes, setLoadedIframes] = useState<Set<number>>(new Set());
   const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
   const [failedIframes, setFailedIframes] = useState<Set<number>>(new Set());
   const [previewModal, setPreviewModal] = useState<{
@@ -214,15 +213,10 @@ const PortfolioSection: React.FC = () => {
             <div
               key={item.id}
               className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
-              onMouseEnter={() => {
-                if (item.url && !loadedIframes.has(item.id)) {
-                  setLoadedIframes(prev => new Set(prev).add(item.id));
-                }
-              }}
             >
               {/* Image Container */}
               <div className="relative h-64 overflow-hidden bg-gray-100">
-                {item.url && !failedIframes.has(item.id) && loadedIframes.has(item.id) ? (
+                {item.url && !failedIframes.has(item.id) ? (
                   <div className="w-full h-full relative overflow-hidden">
                     <iframe
                       src={item.url}
