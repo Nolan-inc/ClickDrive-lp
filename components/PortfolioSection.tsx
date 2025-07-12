@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import SitePreviewModal from './SitePreviewModal';
 
 interface PortfolioItem {
@@ -83,7 +84,6 @@ const categories = ['全て', 'コーポレートサイト', 'Eコマース', '�
 
 const PortfolioSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('全て');
-  const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
   const [loadedIframes, setLoadedIframes] = useState<Set<number>>(new Set());
   const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
@@ -210,17 +210,15 @@ const PortfolioSection: React.FC = () => {
 
         {/* Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {itemsToShow.map((item, index) => (
+          {itemsToShow.map((item) => (
             <div
               key={item.id}
               className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
               onMouseEnter={() => {
-                setHoveredItem(item.id);
                 if (item.url && !loadedIframes.has(item.id)) {
                   setLoadedIframes(prev => new Set(prev).add(item.id));
                 }
               }}
-              onMouseLeave={() => setHoveredItem(null)}
             >
               {/* Image Container */}
               <div className="relative h-64 overflow-hidden bg-gray-100">
@@ -260,10 +258,11 @@ const PortfolioSection: React.FC = () => {
                     </div>
                   </div>
                 ) : item.image && !failedImages.has(item.id) ? (
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                     onError={() => handleImageError(item.id)}
                   />
                 ) : (
