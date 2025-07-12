@@ -44,24 +44,6 @@ const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 4,
-    title: 'しのまる接骨院',
-    category: '医療・ヘルスケア',
-    description: '信頼感のあるデザインで制作した接骨院のウェブサイト。患者さんが必要な情報を見つけやすい構造にしました。',
-    url: 'https://shinomaru-sekkotu.com/',
-    image: '',
-    tags: ['アクセシビリティ', 'SEO対策', 'CMS']
-  },
-  {
-    id: 5,
-    title: 'D-Office Ikeda',
-    category: 'コーポレートサイト',
-    description: 'プロフェッショナルなコーポレートサイト。清潔感のあるデザインで企業の信頼性を向上させました。',
-    url: 'https://d-office-ikeda.com/',
-    image: '/portfolio/d-office-ikeda.png',
-    tags: ['コーポレート', 'SEO対策', 'レスポンシブ']
-  },
-  {
-    id: 6,
     title: 'Aura Talent',
     category: 'Eコマース',
     description: 'ユーザビリティを重視したタレント事務所サイト。直感的な操作性で顧客体験を向上させました。',
@@ -70,7 +52,7 @@ const portfolioItems: PortfolioItem[] = [
     tags: ['React', 'UX/UI', 'CMS']
   },
   {
-    id: 7,
+    id: 5,
     title: 'Paruoni',
     category: 'Eコマース',
     description: '魅力的なECサイト。スムーズな購入フローとユーザビリティで売上向上に貢献しました。',
