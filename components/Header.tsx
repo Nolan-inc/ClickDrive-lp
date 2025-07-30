@@ -11,7 +11,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold mr-2">Nolan</span>
+            <span className="text-2xl font-bold mr-2">ClickDrive</span>
             <span className="text-xs text-gray-600 leading-tight">
               HP/webサイト/<br />
               制作会社
@@ -21,7 +21,7 @@ export default function Header() {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <Link href="#" className="text-gray-700 hover:text-blue-500 font-medium flex items-center">
-              Nolanとは
+              ClickDriveとは
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
@@ -85,7 +85,7 @@ export default function Header() {
               className="block py-2 text-gray-700 hover:text-blue-500 font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
-              Nolanとは
+              ClickDriveとは
             </Link>
             <Link 
               href="#" 

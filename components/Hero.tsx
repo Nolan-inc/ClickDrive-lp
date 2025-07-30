@@ -29,7 +29,7 @@ const Hero = () => {
           </div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             最短1週間で公開！<br />
-            安いのに超高品質webサイトを月額5,000円で作れる！
+            安いのに超高品質webサイトを月額9,800円で作れる！
           </p>
         </div>
 

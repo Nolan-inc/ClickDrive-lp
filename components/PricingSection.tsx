@@ -2,16 +2,16 @@
 
 export default function PricingSection() {
   const comparisonData = [
-    { item: '初期費用', quickweb: '0円（期間限定）', a: '15万円〜', b: '30万円〜' },
-    { item: '月額費用', quickweb: '5,000円（税込）', a: '10,000円〜', b: '15,000円〜' },
-    { item: '制作期間', quickweb: '最短1週間／平均2週間', a: '約3週間〜', b: '1ヶ月以上' },
-    { item: 'スマホ対応', quickweb: '標準対応（追加料金なし）', a: 'オプション対応', b: '別途費用必要' },
-    { item: 'SEO内部対策', quickweb: '標準対応', a: '別料金', b: '一部対応' },
-    { item: 'デザイン提案／修正', quickweb: '5回まで', a: '2回まで', b: '有料追加' },
-    { item: 'フォーム・予約機能', quickweb: '標準搭載', a: '有料', b: '有料' },
-    { item: '独自ドメイン対応', quickweb: '対応（費用別途）', a: '対応（有料）', b: '対応（有料）' },
-    { item: '契約期間の縛り', quickweb: '最低1年契約', a: '6ヶ月〜1年契約あり', b: '年間契約必須' },
-    { item: 'サポート体制', quickweb: '柔軟対応（平日・土日対応）', a: '平日のみ／制限あり', b: '対応遅め' }
+    { item: '初期費用', quickweb: '0円（期間限定）', a: '15万円〜', b: '30万円', c: '0円' },
+    { item: '月額費用', quickweb: '9,800円（税込）', a: '10,000円〜', b: '月額0円', c: '月額9,800円' },
+    { item: 'ページ数', quickweb: '〜12枚', a: '10枚', b: '8枚', c: '1枚' },
+    { item: '制作期間', quickweb: '最短1週間／平均2週間', a: '約3週間〜', b: '1ヶ月以上', c: '2〜3週間' },
+    { item: 'スマホ対応', quickweb: '標準対応（追加料金なし）', a: 'オプション対応', b: '標準対応', c: '標準対応' },
+    { item: 'SEO内部対策', quickweb: '標準対応', a: '別料金', b: '一部対応', c: '別料金' },
+    { item: 'デザイン提案／修正', quickweb: '5回まで', a: '2回まで', b: '標準対応', c: '5回まで' },
+    { item: 'フォーム・予約機能', quickweb: '標準搭載', a: '有料', b: '有料', c: '一部有料' },
+    { item: '独自ドメイン対応', quickweb: '対応（費用別途）', a: '対応（有料）', b: '対応（有料）', c: '対応（有料）' },
+    { item: '契約期間の縛り', quickweb: '最低1年契約', a: '6ヶ月〜1年契約あり', b: '年間契約必須', c: '1年契約' }
   ];
 
   return (
@@ -46,6 +46,7 @@ export default function PricingSection() {
                 <th className="text-center py-4 px-4 font-bold text-blue-500 text-lg">QuickWeb</th>
                 <th className="text-center py-4 px-4 font-bold text-gray-700">A社</th>
                 <th className="text-center py-4 px-4 font-bold text-gray-700">B社</th>
+                <th className="text-center py-4 px-4 font-bold text-gray-700">C社</th>
               </tr>
             </thead>
             <tbody>
@@ -55,6 +56,7 @@ export default function PricingSection() {
                   <td className="py-4 px-4 text-center font-bold text-blue-500">{row.quickweb}</td>
                   <td className="py-4 px-4 text-center text-gray-600">{row.a}</td>
                   <td className="py-4 px-4 text-center text-gray-600">{row.b}</td>
+                  <td className="py-4 px-4 text-center text-gray-600">{row.c}</td>
                 </tr>
               ))}
             </tbody>

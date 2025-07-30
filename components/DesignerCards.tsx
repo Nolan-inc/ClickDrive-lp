@@ -9,43 +9,67 @@ interface Designer {
   thumbnail?: {
     url: string;
   };
-  publishedAt: string;
+  category: string;
   url: string;
 }
+
+const staticDesigners: Designer[] = [
+  {
+    id: '1',
+    title: 'Nolan 様',
+    thumbnail: {
+      url: '/portfolio/nolan.png'
+    },
+    category: 'コーポレートサイト事例',
+    url: 'https://nolan.co.jp'
+  },
+  {
+    id: '2',
+    title: 'Bar Bond 様',
+    thumbnail: {
+      url: '/portfolio/barbond.png'
+    },
+    category: '飲食店事例',
+    url: '#'
+  },
+  {
+    id: '3',
+    title: 'Football Park 様',
+    thumbnail: {
+      url: '/portfolio/footballpark.png'
+    },
+    category: 'レジャー事例',
+    url: '#'
+  },
+  {
+    id: '4',
+    title: 'パルオニ 様',
+    thumbnail: {
+      url: '/portfolio/paruoni.png'
+    },
+    category: 'レジャー事例',
+    url: '#'
+  },
+  {
+    id: '5',
+    title: 'YOGI 様',
+    thumbnail: {
+      url: '/portfolio/yogi.png'
+    },
+    category: '飲食店事例',
+    url: '#'
+  }
+];
 
 const DesignerCards = () => {
   const [currentIndex, setCurrentIndex] = useState(3); // Start at index 3 to account for prepended items
   const [isTransitioning, setIsTransitioning] = useState(true);
-  const [designers, setDesigners] = useState<Designer[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  // Fetch data from API
-  useEffect(() => {
-    const fetchDesigners = async () => {
-      try {
-        const response = await fetch('https://quick-web-admin-xktl.vercel.app/api/v1/public/contents/6740c9e0-0035-45c0-b22a-fd5a3930ea76?type=card');
-        const result = await response.json();
-        if (result.success && result.data) {
-          setDesigners(result.data);
-        }
-      } catch (error) {
-        console.error('Failed to fetch designers:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDesigners();
-  }, []);
+  const designers = staticDesigners;
 
   // Create extended array for infinite loop effect with duplicates at both ends
-  const extendedDesigners = designers.length > 0 
-    ? [...designers.slice(-3), ...designers, ...designers.slice(0, 3)] 
-    : [];
+  const extendedDesigners = [...designers.slice(-3), ...designers, ...designers.slice(0, 3)];
 
   useEffect(() => {
-    if (designers.length === 0) return;
-
     const interval = setInterval(() => {
       if (currentIndex >= designers.length + 2) {
         setCurrentIndex(currentIndex + 1);
@@ -63,16 +87,6 @@ const DesignerCards = () => {
 
     return () => clearInterval(interval);
   }, [currentIndex, designers.length]);
-
-  if (loading) {
-    return (
-      <section className="pt-16 pb-20 bg-white">
-        <div className="w-full flex justify-center items-center h-[500px]">
-          <div className="text-gray-500">Loading...</div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section className="pt-12 pb-16 bg-white">
@@ -107,9 +121,9 @@ const DesignerCards = () => {
                   }}
                 >
                   <h3 className="text-lg font-bold mb-1">{designer.title}</h3>
-                  {designer.publishedAt && (
+                  {designer.category && (
                     <p className="text-xs opacity-80">
-                      {new Date(designer.publishedAt).toLocaleDateString('ja-JP')}
+                      {designer.category}
                     </p>
                   )}
                 </div>

@@ -27,7 +27,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 2,
     title: 'Aicon Corporation',
-    category: 'IT・テクノロジー',
+    category: 'コーポレートサイト',
     description: '最新技術を活用したIT企業のコーポレートサイト。革新的なデザインで企業の技術力をアピールしています。',
     url: 'https://aicon-mu.vercel.app/',
     image: '',
@@ -36,33 +36,42 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 3,
     title: 'BarBond',
-    category: 'グルメ・飲食',
+    category: 'グルメ・飲食店',
     description: '美しいデザインを活かしたバーサイト。洗練された雰囲気とブランディングで集客効果を実現。',
-    url: 'https://barbond.vercel.app/',
+    url: 'https://barbond-z42g.vercel.app/',
     image: '',
     tags: ['WordPress', 'デザイン', 'ブランディング']
   },
   {
     id: 4,
-    title: 'Aura Talent',
-    category: 'Eコマース',
+    title: 'FOOTBALLPARK SHIBUYA',
+    category: 'レジャー',
     description: 'ユーザビリティを重視したタレント事務所サイト。直感的な操作性で顧客体験を向上させました。',
-    url: 'https://aura-talent.vercel.app/',
+    url: 'https://foot-ball-park.vercel.app/',
     image: '',
     tags: ['React', 'UX/UI', 'CMS']
   },
   {
     id: 5,
     title: 'Paruoni',
-    category: 'Eコマース',
+    category: 'レジャー',
     description: '魅力的なECサイト。スムーズな購入フローとユーザビリティで売上向上に貢献しました。',
     url: 'https://paruoni.vercel.app/',
     image: '',
     tags: ['EC', 'Stripe', 'React']
+  },
+  {
+    id: 6,
+    title: 'YOGI',
+    category: 'グルメ・飲食店',
+    description: 'モダンで洗練された飲食店サイト。魅力的なビジュアルと使いやすさで集客力を向上。',
+    url: 'https://yogi-vert.vercel.app/',
+    image: '',
+    tags: ['Next.js', 'レスポンシブ', 'ブランディング']
   }
 ];
 
-const categories = ['全て', 'コーポレートサイト', 'Eコマース', 'グルメ・飲食', '医療・ヘルスケア', 'IT・テクノロジー'];
+const categories = ['全て', 'グルメ・飲食店', 'コーポレートサイト', 'レジャー'];
 
 const PortfolioSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('全て');
@@ -133,7 +142,7 @@ const PortfolioSection: React.FC = () => {
         </span>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 overflow-x-hidden w-full max-w-full">
+      <div className="relative z-10 container mx-auto px-4 md:px-12 lg:px-[100px] overflow-x-hidden w-full max-w-full">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium mb-4">
