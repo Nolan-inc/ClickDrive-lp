@@ -7,57 +7,37 @@ const ProcessFlow = () => {
     {
       step: 'お問い合わせ受付',
       responsible: 'クライアント様',
-      description: 'まずはお気軽にお問い合わせください',
+      description: 'フォームからご連絡いただき、担当者より折り返しご案内します。',
     },
     {
-      step: 'ヒアリングフォーム記入',
+      step: '決済',
       responsible: 'クライアント様',
-      description: 'プロジェクトの詳細をお伺いします',
+      description: '（Stripe等対応）。',
     },
     {
-      step: 'サイト構成案・ワイヤーフレーム提案',
-      responsible: 'Nolan',
-      description: '最適な構成をご提案いたします',
+      step: 'ヒアリング / お打ち合わせ',
+      responsible: 'クライアント様 / ClickDrive',
+      description: '保有資料やリサーチを元に、ユーザー理解を深め、サイト構成を設計します。',
     },
     {
-      step: '初回ヒアリング',
-      responsible: 'クライアント様/Nolan',
-      description: '詳細な要望を確認させていただきます',
+      step: '制作 / コーディング実装',
+      responsible: 'ClickDrive',
+      description: 'サイト設計に基づき、デザイン・コーディングを実施します（スマホ対応）。',
     },
     {
-      step: '概算見積り提出',
-      responsible: 'Nolan',
-      description: '透明性のある料金をご提示します',
+      step: 'デザイン確認',
+      responsible: 'クライアント様 / ClickDrive',
+      description: '完成したデザインをご確認いただき、フィードバックを伺います。',
     },
     {
-      step: 'Stripe決済/プライバシーポリシー/利用規約同意',
-      responsible: 'クライアント様/Nolan',
-      description: '安全な決済システムで契約を締結',
+      step: '修正',
+      responsible: 'ClickDrive',
+      description: 'ご指摘内容をもとに修正対応します（回数制限ありの場合も）。',
     },
     {
-      step: 'デザイン制作開始',
-      responsible: 'Nolan',
-      description: 'プロのデザイナーが制作を開始',
-    },
-    {
-      step: 'デザイン確認・修正',
-      responsible: 'Nolan',
-      description: '納得いくまで修正対応いたします',
-    },
-    {
-      step: 'コーディング・システム実装',
-      responsible: 'Nolan',
-      description: '最新技術で実装いたします',
-    },
-    {
-      step: '最終確認・納品',
-      responsible: 'Nolan',
-      description: '品質チェック後、納品いたします',
-    },
-    {
-      step: '管理システム操作方法・運用サポート案内',
-      responsible: 'クライアント様/Nolan',
-      description: '運用開始後も安心のサポート',
+      step: '納品',
+      responsible: 'クライアント様 / ClickDrive',
+      description: '公開またはデータ納品を行い、必要に応じて運用サポートをご提案します。',
     },
   ];
 
@@ -79,59 +59,31 @@ const ProcessFlow = () => {
           </div>
         </div>
         <h2 className="relative text-3xl md:text-4xl font-bold text-gray-900 py-4">
-          お問い合わせからの流れ
+          制作進行イメージ
         </h2>
         <p className="relative text-base md:text-lg text-gray-600 mt-4 px-4 md:px-0">
-          シンプルで分かりやすいプロセスで、<br className="md:hidden" />
-          プロジェクトを成功に導きます
+          ヒアリングからサイト公開・運用まで、安心の一気通貫体制
         </p>
       </div>
 
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="container mx-auto px-4 max-w-4xl">
+        <div className="space-y-4">
           {steps.map((item, index) => (
-            <div key={index} className="relative">
-              {/* Connection Arrow for desktop */}
-              {index < steps.length - 1 && (
-                <>
-                  {/* Desktop arrow */}
-                  <div className="hidden lg:block absolute -right-6 top-1/2 transform -translate-y-1/2 z-10">
-                    <svg className="w-12 h-12 text-blue-300" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M10 17l5-5-5-5v10z"/>
-                    </svg>
-                  </div>
-                  {/* Mobile arrow */}
-                  <div className="block lg:hidden absolute -bottom-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <svg className="w-8 h-8 text-blue-300 rotate-90" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M10 17l5-5-5-5v10z"/>
-                    </svg>
-                  </div>
-                </>
-              )}
-              
-              {/* Step Item */}
-              <div className="bg-white rounded-xl shadow-lg p-6 h-full hover:shadow-xl transition-shadow">
-                {/* Content */}
-                <div>
-                  <h3 className="text-base font-bold text-gray-900 mb-2">{item.step}</h3>
-                  <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium mb-3 ${
-                    item.responsible === 'Nolan' 
-                      ? 'bg-blue-50 text-blue-600' 
-                      : item.responsible === 'クライアント様'
-                      ? 'bg-blue-50 text-blue-600'
-                      : 'bg-green-100 text-green-700'
-                  }`}>
-                    {item.responsible}
-                  </span>
-                  <p className="text-gray-600 text-xs leading-relaxed">{item.description}</p>
-                </div>
+            <div key={index} className="flex items-start gap-4 bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
+              <div className="flex-shrink-0 w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-lg">
+                {index + 1}
+              </div>
+              <div className="flex-grow">
+                <h3 className="text-lg font-bold text-gray-900 mb-1">{item.step}</h3>
+                <span className="text-sm text-gray-600 block mb-2">{item.responsible}</span>
+                <p className="text-gray-700">{item.description}</p>
               </div>
             </div>
           ))}
         </div>
         
         {/* CTA */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-16">
           <a 
             href="https://lin.ee/llRUGcG" 
             target="_blank" 

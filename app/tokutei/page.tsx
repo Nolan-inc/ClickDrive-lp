@@ -9,7 +9,7 @@ export default function TokuteiPage() {
         <div className="space-y-8">
           <section className="bg-gray-50 rounded-lg p-6">
             <h2 className="text-xl font-bold mb-4">事業者名</h2>
-            <p className="text-gray-700">株式会社Nolan</p>
+            <p className="text-gray-700">株式会社ClickDrive</p>
           </section>
 
           <section className="bg-gray-50 rounded-lg p-6">

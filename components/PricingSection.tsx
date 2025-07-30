@@ -36,14 +36,14 @@ export default function PricingSection() {
         </h2>
       </div>
       <div className="container mx-auto px-4">
-        <p className="text-xl text-center text-gray-700 mb-16">QuickWebの強み</p>
+        <p className="text-xl text-center text-gray-700 mb-16">ClickDriveの強み</p>
         
         <div className="max-w-6xl mx-auto bg-white rounded-3xl shadow-xl p-8 overflow-x-auto">
           <table className="w-full min-w-[640px]">
             <thead>
               <tr className="border-b-2 border-gray-200">
                 <th className="text-left py-4 px-4 font-bold text-gray-900">項目</th>
-                <th className="text-center py-4 px-4 font-bold text-blue-500 text-lg">QuickWeb</th>
+                <th className="text-center py-4 px-4 font-bold text-blue-500 text-lg">ClickDrive</th>
                 <th className="text-center py-4 px-4 font-bold text-gray-700">A社</th>
                 <th className="text-center py-4 px-4 font-bold text-gray-700">B社</th>
                 <th className="text-center py-4 px-4 font-bold text-gray-700">C社</th>

@@ -9,12 +9,12 @@ export default function TermsOfService() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
-              Nolan 利用規約
+              ClickDrive 利用規約
             </h1>
             
             <div className="prose prose-gray max-w-none">
               <p className="mb-6 text-gray-700 leading-relaxed">
-                この利用規約（以下「本規約」といいます。）は、株式会社Nolan（以下「当社」といいます。）が提供するホームページ制作、LP制作等のウェブサービス（以下「本サービス」といいます。）の利用条件を定めるものです。お客様（以下「ユーザー」といいます。）は、本規約および当社のプライバシーポリシーに同意の上、本サービスをご利用ください。
+                この利用規約（以下「本規約」といいます。）は、株式会社ClickDrive（以下「当社」といいます。）が提供するホームページ制作、LP制作等のウェブサービス（以下「本サービス」といいます。）の利用条件を定めるものです。お客様（以下「ユーザー」といいます。）は、本規約および当社のプライバシーポリシーに同意の上、本サービスをご利用ください。
               </p>
 
               <section className="mb-8">
@@ -102,7 +102,7 @@ export default function TermsOfService() {
                   制定日：2025年7月1日
                 </p>
                 <div className="mt-4 text-gray-600 text-sm">
-                  <p className="font-semibold">株式会社Nolan</p>
+                  <p className="font-semibold">株式会社ClickDrive</p>
                   <p>〒107-0052 東京都港区赤坂七丁目11番7号 三共赤坂ビル3階</p>
                   <p>電話番号：03-5797-7785</p>
                 </div>

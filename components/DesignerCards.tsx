@@ -16,7 +16,7 @@ interface Designer {
 const staticDesigners: Designer[] = [
   {
     id: '1',
-    title: 'Nolan 様',
+    title: 'ClickDrive 様',
     thumbnail: {
       url: '/portfolio/nolan.png'
     },

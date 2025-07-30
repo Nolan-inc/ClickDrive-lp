@@ -17,7 +17,7 @@ interface PortfolioItem {
 const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
-    title: 'Nolan Corporation',
+    title: 'ClickDrive Corporation',
     category: 'コーポレートサイト',
     description: 'レスポンシブデザインで制作したモダンなコーポレートサイト。シンプルで洗練されたデザインにより、ブランドイメージを向上させました。',
     url: 'https://nolan.co.jp',
