@@ -68,10 +68,19 @@ const portfolioItems: PortfolioItem[] = [
     url: 'https://yogi-vert.vercel.app/',
     image: '',
     tags: ['Next.js', 'レスポンシブ', 'ブランディング']
+  },
+  {
+    id: 7,
+    title: 'Briller',
+    category: '美容室',
+    description: 'スタイリッシュで洗練された美容室サイト。ブランドイメージを高め、予約獲得に貢献。',
+    url: 'https://www.briller-hair.com/',
+    image: '',
+    tags: ['WordPress', 'レスポンシブ', 'ブランディング']
   }
 ];
 
-const categories = ['全て', 'グルメ・飲食店', 'コーポレートサイト', 'レジャー'];
+const categories = ['全て', 'グルメ・飲食店', 'コーポレートサイト', 'レジャー', '美容室'];
 
 const PortfolioSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('全て');
@@ -92,10 +101,10 @@ const PortfolioSection: React.FC = () => {
     ? portfolioItems 
     : portfolioItems.filter(item => item.category === selectedCategory);
 
-  // 表示数制限の実装（PC: 9個、モバイル: 4個）
+  // 表示数制限の実装（PC: 12個、モバイル: 4個）
   const getDisplayLimit = () => {
-    if (typeof window === 'undefined') return 9;
-    return window.innerWidth >= 768 ? 9 : 4;
+    if (typeof window === 'undefined') return 12;
+    return window.innerWidth >= 768 ? 12 : 4;
   };
 
   const [displayLimit, setDisplayLimit] = useState(getDisplayLimit);
@@ -199,7 +208,7 @@ const PortfolioSection: React.FC = () => {
         </div>
 
         {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {itemsToShow.map((item) => (
             <div
               key={item.id}
