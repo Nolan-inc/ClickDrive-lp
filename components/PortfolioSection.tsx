@@ -77,6 +77,15 @@ const portfolioItems: PortfolioItem[] = [
     url: 'https://www.briller-hair.com/',
     image: '',
     tags: ['WordPress', 'レスポンシブ', 'ブランディング']
+  },
+  {
+    id: 8,
+    title: 'Tori Design',
+    category: 'コーポレートサイト',
+    description: 'クリエイティブなデザインエージェンシーのポートフォリオサイト。洗練されたビジュアルで制作実績を魅力的に展示。',
+    url: 'https://toridesign.vercel.app/',
+    image: '',
+    tags: ['Next.js', 'ポートフォリオ', 'デザイン']
   }
 ];
 
