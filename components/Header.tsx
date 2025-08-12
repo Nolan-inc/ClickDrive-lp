@@ -48,7 +48,7 @@ export default function Header() {
               LINE相談
             </Link>
             <a
-              href="http://quick-web-lbo1.vercel.app/auth/register"
+              href="https://www.cldv.jp/"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gradient-to-r from-blue-400 to-blue-500 text-white px-6 py-2 rounded-full font-medium hover:from-blue-500 hover:to-blue-600 transition-colors inline-flex items-center gap-2"
@@ -109,7 +109,7 @@ export default function Header() {
               LINE相談
             </Link>
             <a
-              href="http://quick-web-lbo1.vercel.app/auth/register"
+              href="https://www.cldv.jp/"
               target="_blank"
               rel="noopener noreferrer"
               className="block bg-gradient-to-r from-blue-400 to-blue-500 text-white px-6 py-3 rounded-full font-medium hover:from-blue-500 hover:to-blue-600 transition-colors text-center"
