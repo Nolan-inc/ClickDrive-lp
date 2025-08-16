@@ -65,7 +65,7 @@ const portfolioItems: PortfolioItem[] = [
     title: 'YOGI',
     category: 'グルメ・飲食店',
     description: 'モダンで洗練された飲食店サイト。魅力的なビジュアルと使いやすさで集客力を向上。',
-    url: 'https://yogi-vert.vercel.app/',
+    url: 'https://www.yogigreekyogurt.com/',
     image: '',
     tags: ['Next.js', 'レスポンシブ', 'ブランディング']
   },
