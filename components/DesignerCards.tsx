@@ -57,7 +57,7 @@ const staticDesigners: Designer[] = [
       url: '/portfolio/yogi.png'
     },
     category: '飲食店事例',
-    url: '#'
+    url: 'https://yogigreekyogurt.com/'
   }
 ];
 
