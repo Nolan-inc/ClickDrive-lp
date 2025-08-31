@@ -14,7 +14,7 @@ interface Props {
   params: { slug: string };
 }
 
-export default function ArticlePage({ params: _ }: Props) {
+export default function ArticlePage(_props: Props) {
   return (
     <>
       <Header />

@@ -6,7 +6,6 @@ interface FooterProps {
 }
 
 export default function Footer({ 
-  themeColor: _ = "#2196f3", 
   primaryColor = "#0066cc" 
 }: FooterProps) {
   return (
