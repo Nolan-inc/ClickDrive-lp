@@ -70,19 +70,25 @@ const ProcessFlow = ({
             ))}
           </div>
         </div>
-        <h2 className="relative text-3xl md:text-4xl font-bold text-gray-900 py-4">
-          制作進行イメージ
+        <h2 className="relative text-3xl md:text-4xl font-bold py-4">
+          <span style={{ color: secondaryColor || themeColor }}>制作進行</span><span style={{ color: accentColor || themeColor }}>イメージ</span>
         </h2>
-        <p className="relative text-base md:text-lg text-gray-600 mt-4 px-4 md:px-0">
+        <p className="relative text-base md:text-lg mt-4 px-4 md:px-0" style={{ color: primaryColor }}>
           ヒアリングからサイト公開・運用まで、安心の一気通貫体制
         </p>
       </div>
 
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="space-y-4">
-          {steps.map((item, index) => (
+          {steps.map((item, index) => {
+            const getStepColor = (stepIndex: number) => {
+              const colors = [themeColor, secondaryColor || primaryColor, accentColor || primaryColor, primaryColor];
+              return colors[stepIndex % colors.length];
+            };
+            
+            return (
             <div key={index} className="flex items-start gap-4 bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
-              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{ backgroundColor: themeColor }}>
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{ backgroundColor: getStepColor(index) }}>
                 {index + 1}
               </div>
               <div className="flex-grow">
@@ -91,7 +97,8 @@ const ProcessFlow = ({
                 <p className="text-gray-700">{item.description}</p>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
         
         {/* CTA */}

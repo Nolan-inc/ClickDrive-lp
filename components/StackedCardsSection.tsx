@@ -30,21 +30,21 @@ const StackedCardsSection: React.FC<StackedCardsSectionProps> = ({
       title: '高品質かつ高クオリティ',
       subtitle: '',
       description: '豊富な実績と最新トレンドを取り入れ、\n常にクオリティを追求した成果物を提供。',
-      bgColor: themeColor,
+      bgColor: secondaryColor || themeColor,
       image: '/gif/kouhinnshitu.gif',
     },
     {
       title: 'スピード対応と柔軟性',
       subtitle: '',
       description: '企画から納品・運用までワンストップで迅速対応。\n急ぎの案件も専属チームで確実に対応。',
-      bgColor: primaryColor,
+      bgColor: accentColor || primaryColor,
       image: '/gif/speed.png',
     },
     {
       title: '伝わるコミュニケーション力',
       subtitle: '',
       description: '課題を正確に把握し、成果につながる提案と\n柔軟な修正対応で安心して任せられる体制を提供。',
-      bgColor: `linear-gradient(135deg, ${themeColor}, ${primaryColor})`,
+      bgColor: `linear-gradient(135deg, ${themeColor}, ${secondaryColor || primaryColor})`,
       image: '/gif/comm.png',
     },
   ];
@@ -53,8 +53,10 @@ const StackedCardsSection: React.FC<StackedCardsSectionProps> = ({
     <section className="relative bg-gray-100 py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">我々の3つの強み</h2>
-          <p className="text-lg md:text-xl text-gray-600">選ばれる理由があります</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <span style={{ color: themeColor }}>我々</span>の<span style={{ color: accentColor || primaryColor }}>3つの強み</span>
+          </h2>
+          <p className="text-lg md:text-xl" style={{ color: secondaryColor || primaryColor }}>選ばれる理由があります</p>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
