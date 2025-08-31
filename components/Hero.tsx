@@ -35,17 +35,6 @@ const Hero = ({
 
   const monthlyFee = pricingData ? formatPrice(pricingData.monthly_fee, pricingData.currency) : '9,800円';
   
-  // Create gradient backgrounds using available colors
-  const createGradient = () => {
-    if (secondaryColor && accentColor) {
-      return `linear-gradient(135deg, ${themeColor}, ${secondaryColor}, ${accentColor})`;
-    } else if (secondaryColor) {
-      return `linear-gradient(135deg, ${themeColor}, ${secondaryColor})`;
-    } else if (accentColor) {
-      return `linear-gradient(135deg, ${themeColor}, ${accentColor})`;
-    }
-    return `linear-gradient(135deg, ${themeColor}, ${primaryColor})`;
-  };
 
   return (
     <section className="bg-white pt-32 pb-0 relative overflow-hidden">
