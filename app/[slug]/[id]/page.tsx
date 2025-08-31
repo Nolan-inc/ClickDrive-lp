@@ -18,6 +18,8 @@ interface Props {
 interface PartnerData {
   theme_color: string;
   primary_color: string;
+  secondary_color: string | null;
+  accent_color: string | null;
   favicon_url: string | null;
   line_url: string | null;
   pricing: {
@@ -34,7 +36,7 @@ interface PartnerData {
 async function getPartnerData(id: string): Promise<PartnerData> {
   const { data: partnerData } = await supabase
     .from('oem_partners')
-    .select('theme_color, primary_color, favicon_url, line_url')
+    .select('theme_color, primary_color, secondary_color, accent_color, favicon_url, line_url')
     .eq('id', id)
     .single();
 
@@ -48,6 +50,8 @@ async function getPartnerData(id: string): Promise<PartnerData> {
   return {
     theme_color: partnerData?.theme_color || '#2196f3',
     primary_color: partnerData?.primary_color || '#0066cc',
+    secondary_color: partnerData?.secondary_color || null,
+    accent_color: partnerData?.accent_color || null,
     favicon_url: partnerData?.favicon_url || null,
     line_url: partnerData?.line_url || null,
     pricing: pricingData ? {
@@ -72,54 +76,76 @@ export default async function OEMPartnerPage({ params }: Props) {
         brandName={slug} 
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
+        secondaryColor={partnerData.secondary_color}
+        accentColor={partnerData.accent_color}
         faviconUrl={partnerData.favicon_url}
         lineUrl={partnerData.line_url}
       />
       <Hero 
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
+        secondaryColor={partnerData.secondary_color}
+        accentColor={partnerData.accent_color}
         brandName={slug}
         pricingData={partnerData.pricing}
       />
       <DesignerCards 
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
+        secondaryColor={partnerData.secondary_color}
+        accentColor={partnerData.accent_color}
       />
       <StackedCardsSection 
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
+        secondaryColor={partnerData.secondary_color}
+        accentColor={partnerData.accent_color}
       />
       <PortfolioSection 
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
+        secondaryColor={partnerData.secondary_color}
+        accentColor={partnerData.accent_color}
         lineUrl={partnerData.line_url}
       />
       <DeviceSection 
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
+        secondaryColor={partnerData.secondary_color}
+        accentColor={partnerData.accent_color}
       />
       <PricingSection 
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
+        secondaryColor={partnerData.secondary_color}
+        accentColor={partnerData.accent_color}
         pricingData={partnerData.pricing}
         brandName={slug}
       />
       <FAQSection 
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
+        secondaryColor={partnerData.secondary_color}
+        accentColor={partnerData.accent_color}
       />
       <ProcessFlow 
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
+        secondaryColor={partnerData.secondary_color}
+        accentColor={partnerData.accent_color}
       />
       <ContactSection 
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
+        secondaryColor={partnerData.secondary_color}
+        accentColor={partnerData.accent_color}
         lineUrl={partnerData.line_url}
       />
       <Footer 
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
+        secondaryColor={partnerData.secondary_color}
+        accentColor={partnerData.accent_color}
         lineUrl={partnerData.line_url}
       />
     </>

@@ -3,11 +3,15 @@ import Image from 'next/image';
 interface DeviceSectionProps {
   themeColor?: string;
   primaryColor?: string;
+  secondaryColor?: string | null;
+  accentColor?: string | null;
 }
 
 export default function DeviceSection({ 
   themeColor = "#2196f3", 
-  primaryColor = "#0066cc" 
+  primaryColor = "#0066cc",
+  secondaryColor = null,
+  accentColor = null
 }: DeviceSectionProps) {
   return (
     <section className="relative py-16 bg-white overflow-hidden">

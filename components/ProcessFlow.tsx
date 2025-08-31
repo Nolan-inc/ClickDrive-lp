@@ -5,11 +5,15 @@ import React from 'react';
 interface ProcessFlowProps {
   themeColor?: string;
   primaryColor?: string;
+  secondaryColor?: string | null;
+  accentColor?: string | null;
 }
 
 const ProcessFlow = ({ 
   themeColor = "#2196f3", 
-  primaryColor = "#0066cc" 
+  primaryColor = "#0066cc",
+  secondaryColor = null,
+  accentColor = null
 }: ProcessFlowProps) => {
   const steps = [
     {

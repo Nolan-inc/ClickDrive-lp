@@ -5,9 +5,16 @@ import { useState } from 'react'
 interface FAQSectionProps {
   themeColor?: string;
   primaryColor?: string;
+  secondaryColor?: string | null;
+  accentColor?: string | null;
 }
 
-export default function FAQSection() {
+export default function FAQSection({
+  themeColor = "#2196f3",
+  primaryColor = "#0066cc",
+  secondaryColor = null,
+  accentColor = null
+}: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   
   const faqs = [

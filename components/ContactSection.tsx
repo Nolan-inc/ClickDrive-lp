@@ -5,12 +5,16 @@ import Image from 'next/image'
 interface ContactSectionProps {
   themeColor?: string;
   primaryColor?: string;
+  secondaryColor?: string | null;
+  accentColor?: string | null;
   lineUrl?: string | null;
 }
 
 export default function ContactSection({ 
   themeColor = "#2196f3", 
   primaryColor = "#0066cc",
+  secondaryColor = null,
+  accentColor = null,
   lineUrl = null
 }: ContactSectionProps) {
 

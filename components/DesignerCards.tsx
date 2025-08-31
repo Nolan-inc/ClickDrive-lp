@@ -64,11 +64,15 @@ const staticDesigners: Designer[] = [
 interface DesignerCardsProps {
   themeColor?: string;
   primaryColor?: string;
+  secondaryColor?: string | null;
+  accentColor?: string | null;
 }
 
 const DesignerCards = ({ 
   themeColor = "#2196f3", 
-  primaryColor = "#0066cc" 
+  primaryColor = "#0066cc",
+  secondaryColor = null,
+  accentColor = null
 }: DesignerCardsProps) => {
   const [currentIndex, setCurrentIndex] = useState(3); // Start at index 3 to account for prepended items
   const [isTransitioning, setIsTransitioning] = useState(true);

@@ -3,11 +3,15 @@ import Link from "next/link";
 interface FooterProps {
   themeColor?: string;
   primaryColor?: string;
+  secondaryColor?: string | null;
+  accentColor?: string | null;
   lineUrl?: string | null;
 }
 
 export default function Footer({ 
   primaryColor = "#0066cc",
+  secondaryColor = null,
+  accentColor = null,
   lineUrl = null
 }: FooterProps) {
   return (

@@ -15,11 +15,15 @@ interface Card {
 interface StackedCardsSectionProps {
   themeColor?: string;
   primaryColor?: string;
+  secondaryColor?: string | null;
+  accentColor?: string | null;
 }
 
 const StackedCardsSection: React.FC<StackedCardsSectionProps> = ({ 
   themeColor = "#2196f3", 
-  primaryColor = "#0066cc" 
+  primaryColor = "#0066cc",
+  secondaryColor = null,
+  accentColor = null
 }) => {
   const cards: Card[] = [
     {

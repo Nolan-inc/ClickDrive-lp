@@ -8,6 +8,8 @@ interface HeaderProps {
   brandName?: string;
   themeColor?: string;
   primaryColor?: string;
+  secondaryColor?: string | null;
+  accentColor?: string | null;
   faviconUrl?: string | null;
   lineUrl?: string | null;
 }
@@ -16,6 +18,8 @@ export default function Header({
   brandName = "ClickDrive",
   themeColor = "#2196f3",
   primaryColor = "#0066cc",
+  secondaryColor = null,
+  accentColor = null,
   faviconUrl = null,
   lineUrl = null
 }: HeaderProps) {

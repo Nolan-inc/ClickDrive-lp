@@ -3,6 +3,8 @@ import React from 'react';
 interface HeroProps {
   themeColor?: string;
   primaryColor?: string;
+  secondaryColor?: string | null;
+  accentColor?: string | null;
   brandName?: string;
   pricingData?: {
     monthly_fee: number;
@@ -18,6 +20,8 @@ interface HeroProps {
 const Hero = ({ 
   themeColor = "#2196f3", 
   primaryColor = "#0066cc", 
+  secondaryColor = null,
+  accentColor = null,
   brandName = "ClickDrive",
   pricingData = null
 }: HeroProps) => {

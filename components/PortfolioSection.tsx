@@ -94,12 +94,16 @@ const categories = ['全て', 'グルメ・飲食店', 'コーポレートサイ
 interface PortfolioSectionProps {
   themeColor?: string;
   primaryColor?: string;
+  secondaryColor?: string | null;
+  accentColor?: string | null;
   lineUrl?: string | null;
 }
 
 const PortfolioSection: React.FC<PortfolioSectionProps> = ({ 
   themeColor = "#2196f3", 
   primaryColor = "#0066cc",
+  secondaryColor = null,
+  accentColor = null,
   lineUrl = null
 }) => {
   const [selectedCategory, setSelectedCategory] = useState('全て');

@@ -3,6 +3,8 @@
 interface PricingSectionProps {
   themeColor?: string;
   primaryColor?: string;
+  secondaryColor?: string | null;
+  accentColor?: string | null;
   pricingData?: {
     monthly_fee: number;
     initial_setup_fee: number;
@@ -18,6 +20,8 @@ interface PricingSectionProps {
 export default function PricingSection({ 
   themeColor = "#2196f3", 
   primaryColor = "#0066cc",
+  secondaryColor = null,
+  accentColor = null,
   pricingData = null,
   brandName = "ClickDrive"
 }: PricingSectionProps) {
