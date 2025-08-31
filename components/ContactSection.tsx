@@ -2,12 +2,20 @@
 
 import Image from 'next/image'
 
-export default function ContactSection() {
+interface ContactSectionProps {
+  themeColor?: string;
+  primaryColor?: string;
+}
+
+export default function ContactSection({ 
+  themeColor = "#2196f3", 
+  primaryColor = "#0066cc" 
+}: ContactSectionProps) {
 
   return (
     <section id="contact" className="relative py-16 bg-white overflow-visible">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-200 to-cyan-200 rounded-full blur-3xl opacity-30"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-sky-200 to-blue-200 rounded-full blur-3xl opacity-30"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl opacity-30" style={{ background: `linear-gradient(135deg, ${themeColor}30, ${primaryColor}30)` }}></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl opacity-30" style={{ background: `linear-gradient(135deg, ${primaryColor}30, ${themeColor}30)` }}></div>
       
       <div className="relative z-10">
         <div className="relative text-center mb-4 overflow-hidden w-full">

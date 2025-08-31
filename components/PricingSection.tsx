@@ -1,9 +1,40 @@
 "use client"
 
-export default function PricingSection() {
+interface PricingSectionProps {
+  themeColor?: string;
+  primaryColor?: string;
+  pricingData?: {
+    monthly_fee: number;
+    initial_setup_fee: number;
+    yearly_fee: number;
+    currency: string;
+    trial_period_days: number;
+    yearly_discount_rate: number;
+    features: any[];
+  } | null;
+  brandName?: string;
+}
+
+export default function PricingSection({ 
+  themeColor = "#2196f3", 
+  primaryColor = "#0066cc",
+  pricingData = null,
+  brandName = "ClickDrive"
+}: PricingSectionProps) {
+  // Format pricing based on custom data or default values
+  const formatPrice = (amount: number, currency: string = 'JPY') => {
+    if (currency === 'JPY') {
+      return `${amount.toLocaleString()}円`;
+    }
+    return `${currency} ${amount}`;
+  };
+
+  const initialFee = pricingData ? formatPrice(pricingData.initial_setup_fee, pricingData.currency) : '0円（期間限定）';
+  const monthlyFee = pricingData ? `${formatPrice(pricingData.monthly_fee, pricingData.currency)}（税込）` : '9,800円（税込）';
+
   const comparisonData = [
-    { item: '初期費用', quickweb: '0円（期間限定）', a: '15万円〜', b: '30万円', c: '0円' },
-    { item: '月額費用', quickweb: '9,800円（税込）', a: '10,000円〜', b: '月額0円', c: '月額9,800円' },
+    { item: '初期費用', quickweb: initialFee, a: '15万円〜', b: '30万円', c: '0円' },
+    { item: '月額費用', quickweb: monthlyFee, a: '10,000円〜', b: '月額0円', c: '月額9,800円' },
     { item: 'ページ数', quickweb: '〜12枚', a: '10枚', b: '8枚', c: '1枚' },
     { item: '制作期間', quickweb: '最短1週間／平均2週間', a: '約3週間〜', b: '1ヶ月以上', c: '2〜3週間' },
     { item: 'スマホ対応', quickweb: '標準対応（追加料金なし）', a: 'オプション対応', b: '標準対応', c: '標準対応' },
@@ -36,14 +67,14 @@ export default function PricingSection() {
         </h2>
       </div>
       <div className="container mx-auto px-4">
-        <p className="text-xl text-center text-gray-700 mb-16">ClickDriveの強み</p>
+        <p className="text-xl text-center text-gray-700 mb-16">{brandName}の強み</p>
         
         <div className="max-w-6xl mx-auto bg-white rounded-3xl shadow-xl p-8 overflow-x-auto">
           <table className="w-full min-w-[640px]">
             <thead>
               <tr className="border-b-2 border-gray-200">
                 <th className="text-left py-4 px-4 font-bold text-gray-900">項目</th>
-                <th className="text-center py-4 px-4 font-bold text-blue-500 text-lg">ClickDrive</th>
+                <th className="text-center py-4 px-4 font-bold text-lg" style={{ color: themeColor }}>{brandName}</th>
                 <th className="text-center py-4 px-4 font-bold text-gray-700">A社</th>
                 <th className="text-center py-4 px-4 font-bold text-gray-700">B社</th>
                 <th className="text-center py-4 px-4 font-bold text-gray-700">C社</th>
@@ -53,7 +84,7 @@ export default function PricingSection() {
               {comparisonData.map((row, index) => (
                 <tr key={index} className={`border-b border-gray-100 ${index % 2 === 0 ? 'bg-gray-50' : ''}`}>
                   <td className="py-4 px-4 font-medium text-gray-800">{row.item}</td>
-                  <td className="py-4 px-4 text-center font-bold text-blue-500">{row.quickweb}</td>
+                  <td className="py-4 px-4 text-center font-bold" style={{ color: themeColor }}>{row.quickweb}</td>
                   <td className="py-4 px-4 text-center text-gray-600">{row.a}</td>
                   <td className="py-4 px-4 text-center text-gray-600">{row.b}</td>
                   <td className="py-4 px-4 text-center text-gray-600">{row.c}</td>
@@ -62,13 +93,70 @@ export default function PricingSection() {
             </tbody>
           </table>
         </div>
+
+        {/* Custom Pricing Display */}
+        {pricingData && (
+          <div className="max-w-4xl mx-auto mt-16">
+            <div className="bg-white rounded-3xl shadow-xl p-8">
+              <h3 className="text-2xl font-bold text-center mb-8" style={{ color: themeColor }}>
+                {brandName}の料金プラン
+              </h3>
+              
+              <div className={`grid gap-8 ${pricingData.yearly_fee > 0 && pricingData.yearly_fee < pricingData.monthly_fee * 12 ? 'md:grid-cols-2' : 'max-w-md mx-auto'}`}>
+                {/* Monthly Plan */}
+                <div className="text-center p-6 rounded-2xl border-2 border-gray-200">
+                  <h4 className="text-xl font-bold mb-4">月額プラン</h4>
+                  <div className="mb-4">
+                    <span className="text-3xl font-bold" style={{ color: themeColor }}>
+                      {formatPrice(pricingData.monthly_fee, pricingData.currency)}
+                    </span>
+                    <span className="text-gray-600">/月</span>
+                  </div>
+                  {pricingData.initial_setup_fee > 0 && (
+                    <p className="text-sm text-gray-600 mb-4">
+                      初期費用: {formatPrice(pricingData.initial_setup_fee, pricingData.currency)}
+                    </p>
+                  )}
+                  {pricingData.trial_period_days > 0 && (
+                    <p className="text-sm text-green-600 mb-4">
+                      {pricingData.trial_period_days}日間無料トライアル
+                    </p>
+                  )}
+                </div>
+
+                {/* Yearly Plan - Only show if there's a discount or different pricing */}
+                {pricingData.yearly_fee > 0 && 
+                 pricingData.yearly_fee < pricingData.monthly_fee * 12 && (
+                  <div className="text-center p-6 rounded-2xl border-2" style={{ borderColor: themeColor }}>
+                    <h4 className="text-xl font-bold mb-4">年額プラン</h4>
+                    {pricingData.yearly_discount_rate > 0 && (
+                      <div className="bg-red-100 text-red-600 text-sm px-3 py-1 rounded-full inline-block mb-2">
+                        {pricingData.yearly_discount_rate}%OFF
+                      </div>
+                    )}
+                    <div className="mb-4">
+                      <span className="text-3xl font-bold" style={{ color: themeColor }}>
+                        {formatPrice(pricingData.yearly_fee, pricingData.currency)}
+                      </span>
+                      <span className="text-gray-600">/年</span>
+                    </div>
+                    <p className="text-sm text-gray-600">
+                      月額換算: {formatPrice(Math.round(pricingData.yearly_fee / 12), pricingData.currency)}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
         
         <div className="text-center mt-12">
           <a 
             href="https://lin.ee/llRUGcG" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-blue-400 to-blue-500 text-white px-10 py-4 rounded-full font-semibold text-lg hover:from-blue-500 hover:to-blue-600 transition-colors shadow-lg inline-block"
+            className="text-white px-10 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg inline-block"
+            style={{ backgroundColor: primaryColor }}
           >
             今すぐ始める
           </a>

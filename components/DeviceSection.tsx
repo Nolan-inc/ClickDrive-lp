@@ -1,6 +1,14 @@
 import Image from 'next/image';
 
-export default function DeviceSection() {
+interface DeviceSectionProps {
+  themeColor?: string;
+  primaryColor?: string;
+}
+
+export default function DeviceSection({ 
+  themeColor = "#2196f3", 
+  primaryColor = "#0066cc" 
+}: DeviceSectionProps) {
   return (
     <section className="relative py-16 bg-white overflow-hidden">
       <div className="container mx-auto px-4 overflow-hidden">
@@ -10,19 +18,19 @@ export default function DeviceSection() {
               直感的なインターフェースで、サイト運用も簡単！
             </h2>
             <div className="flex flex-wrap justify-center gap-2 text-sm">
-              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">AI自動提案</span>
-              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">SNS連携</span>
-              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">かんたん更新</span>
-              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">トレンド分析</span>
-              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">記事管理</span>
-              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">画像編集</span>
-              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">自動最適化</span>
-              <span className="bg-gradient-to-r from-blue-50 to-sky-50 text-blue-600 px-4 py-2 rounded-full">ワンクリック更新</span>
+              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>AI自動提案</span>
+              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>SNS連携</span>
+              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>かんたん更新</span>
+              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>トレンド分析</span>
+              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>記事管理</span>
+              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>画像編集</span>
+              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>自動最適化</span>
+              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>ワンクリック更新</span>
             </div>
           </div>
           
           <div className="relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-sky-500 rounded-3xl transform rotate-3 scale-95"></div>
+            <div className="absolute inset-0 rounded-3xl transform rotate-3 scale-95" style={{ background: `linear-gradient(135deg, ${themeColor}, ${primaryColor})` }}></div>
             <div className="relative bg-gray-900 rounded-3xl p-8 md:p-12">
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
                 <div className="text-white lg:col-span-2 order-2 lg:order-1">
@@ -56,19 +64,19 @@ export default function DeviceSection() {
                     </p>
                   </div>
 
-                  <div className="bg-gradient-to-br from-blue-800/40 to-sky-800/40 rounded-lg p-4">
-                    <h4 className="text-lg font-semibold mb-3 text-sky-300">こんな方におすすめ</h4>
+                  <div className="rounded-lg p-4" style={{ backgroundColor: `${themeColor}40` }}>
+                    <h4 className="text-lg font-semibold mb-3" style={{ color: themeColor }}>こんな方におすすめ</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-center text-gray-300">
-                        <span className="text-sky-400 mr-2">✓</span>
+                        <span className="mr-2" style={{ color: themeColor }}>✓</span>
                         SNSと連動して集客したい
                       </li>
                       <li className="flex items-center text-gray-300">
-                        <span className="text-sky-400 mr-2">✓</span>
+                        <span className="mr-2" style={{ color: themeColor }}>✓</span>
                         記事更新を自動化して時間を節約したい
                       </li>
                       <li className="flex items-center text-gray-300">
-                        <span className="text-sky-400 mr-2">✓</span>
+                        <span className="mr-2" style={{ color: themeColor }}>✓</span>
                         専門知識がなくてもサイトを運用したい
                       </li>
                     </ul>

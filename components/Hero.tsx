@@ -1,18 +1,47 @@
 import React from 'react';
 
-const Hero = () => {
+interface HeroProps {
+  themeColor?: string;
+  primaryColor?: string;
+  brandName?: string;
+  pricingData?: {
+    monthly_fee: number;
+    initial_setup_fee: number;
+    yearly_fee: number;
+    currency: string;
+    trial_period_days: number;
+    yearly_discount_rate: number;
+    features: any[];
+  } | null;
+}
+
+const Hero = ({ 
+  themeColor = "#2196f3", 
+  primaryColor = "#0066cc", 
+  brandName = "ClickDrive",
+  pricingData = null
+}: HeroProps) => {
+  // Format pricing for display
+  const formatPrice = (amount: number, currency: string = 'JPY') => {
+    if (currency === 'JPY') {
+      return `${amount.toLocaleString()}円`;
+    }
+    return `${currency} ${amount}`;
+  };
+
+  const monthlyFee = pricingData ? formatPrice(pricingData.monthly_fee, pricingData.currency) : '9,800円';
   return (
     <section className="bg-white pt-32 pb-0 relative overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-32 flex items-center justify-center overflow-hidden">
         <div className="flex animate-slide whitespace-nowrap">
           {Array(20).fill(null).map((_, i) => (
-            <span key={i} className="text-7xl md:text-9xl font-bold text-blue-100/50 uppercase tracking-wider select-none mr-8">
-              Designer Match
+            <span key={i} className="text-7xl md:text-9xl font-bold uppercase tracking-wider select-none mr-8" style={{ color: `${themeColor}30` }}>
+              {brandName}
             </span>
           ))}
           {Array(20).fill(null).map((_, i) => (
-            <span key={`dup-${i}`} className="text-7xl md:text-9xl font-bold text-blue-100/50 uppercase tracking-wider select-none mr-8">
-              Designer Match
+            <span key={`dup-${i}`} className="text-7xl md:text-9xl font-bold uppercase tracking-wider select-none mr-8" style={{ color: `${themeColor}30` }}>
+              {brandName}
             </span>
           ))}
         </div>
@@ -21,39 +50,41 @@ const Hero = () => {
         <div className="text-center mb-12">
           <div className="relative">
             <h1 className="relative text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-tight py-4">
-              <span className="text-sky-400">安い</span>
+              <span style={{ color: themeColor }}>安い</span>
               <span className="text-gray-900">と</span>
-              <span className="text-sky-400">高品質</span>
+              <span style={{ color: themeColor }}>高品質</span>
               <span className="text-gray-900">って両立できるんだ。</span>
             </h1>
           </div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             最短1週間で公開！<br />
-            安いのに超高品質webサイトを月額9,800円で作れる！
+            安いのに超高品質webサイトを月額{monthlyFee}で作れる！
           </p>
         </div>
 
         <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-16">
           <div className="text-center">
             <p className="text-sm text-gray-500 mb-2">継続率</p>
-            <p className="text-4xl md:text-5xl font-bold text-sky-400">98%</p>
+            <p className="text-4xl md:text-5xl font-bold" style={{ color: themeColor }}>98%</p>
           </div>
           <div className="text-center">
             <p className="text-sm text-gray-500 mb-2">累計制作件数</p>
-            <p className="text-4xl md:text-5xl font-bold text-sky-400">100<span className="text-2xl">件〜</span></p>
+            <p className="text-4xl md:text-5xl font-bold" style={{ color: themeColor }}>100<span className="text-2xl">件〜</span></p>
           </div>
           <div className="text-center">
             <p className="text-sm text-gray-500 mb-2">ご相談後最短</p>
-            <p className="text-3xl md:text-4xl font-bold text-sky-400">即日対応</p>
+            <p className="text-3xl md:text-4xl font-bold" style={{ color: themeColor }}>即日対応</p>
           </div>
           <div className="relative">
-            <div className="bg-pink-50 rounded-2xl px-5 py-4 relative border border-pink-200">
+            <div className="rounded-2xl px-5 py-4 relative border" style={{ backgroundColor: `${primaryColor}10`, borderColor: `${primaryColor}30` }}>
               <div className="flex items-center gap-2">
-                <div className="bg-pink-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                <div className="text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold" style={{ backgroundColor: primaryColor }}>
                   ✓
                 </div>
                 <div>
-                  <p className="text-lg text-pink-600 font-bold leading-tight">初期費用0円！</p>
+                  <p className="text-lg font-bold leading-tight" style={{ color: primaryColor }}>
+                    {pricingData && pricingData.initial_setup_fee === 0 ? '初期費用0円！' : pricingData ? `初期費用${formatPrice(pricingData.initial_setup_fee, pricingData.currency)}` : '初期費用0円！'}
+                  </p>
                 </div>
               </div>
             </div>

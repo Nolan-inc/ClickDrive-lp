@@ -1,22 +1,13 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { useState } from "react"
 
-interface HeaderProps {
-  brandName?: string;
-  themeColor?: string;
-  primaryColor?: string;
-  faviconUrl?: string | null;
+interface HeaderDynamicProps {
+  title: string;
 }
 
-export default function Header({ 
-  brandName = "ClickDrive",
-  themeColor = "#2196f3",
-  primaryColor = "#0066cc",
-  faviconUrl = null
-}: HeaderProps) {
+export default function HeaderDynamic({ title }: HeaderDynamicProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
@@ -24,18 +15,7 @@ export default function Header({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
-            {faviconUrl && (
-              <div className="w-8 h-8 mr-3 relative">
-                <Image
-                  src={faviconUrl}
-                  alt={`${brandName} favicon`}
-                  fill
-                  className="object-contain"
-                  sizes="32px"
-                />
-              </div>
-            )}
-            <span className="text-2xl font-bold mr-2">{brandName}</span>
+            <span className="text-2xl font-bold mr-2">{title}</span>
             <span className="text-xs text-gray-600 leading-tight">
               HP/webサイト/<br />
               制作会社
@@ -44,19 +24,19 @@ export default function Header({
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="#" className="font-medium flex items-center hover:opacity-80" style={{ color: themeColor }}>
-              {brandName}とは
+            <Link href="#" className="text-gray-700 hover:text-blue-500 font-medium flex items-center">
+              {title}とは
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </Link>
-            <Link href="#" className="font-medium flex items-center hover:opacity-80" style={{ color: themeColor }}>
+            <Link href="#" className="text-gray-700 hover:text-blue-500 font-medium flex items-center">
               活用
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </Link>
-            <Link href="#" className="font-medium flex items-center hover:opacity-80" style={{ color: themeColor }}>
+            <Link href="#" className="text-gray-700 hover:text-blue-500 font-medium flex items-center">
               その他
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -75,8 +55,7 @@ export default function Header({
               href="https://www.cldv.jp/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white px-6 py-2 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2"
-              style={{ backgroundColor: primaryColor }}
+              className="bg-gradient-to-r from-blue-400 to-blue-500 text-white px-6 py-2 rounded-full font-medium hover:from-blue-500 hover:to-blue-600 transition-colors inline-flex items-center gap-2"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -107,24 +86,21 @@ export default function Header({
           <div className="px-4 py-3 space-y-3">
             <Link 
               href="#" 
-              className="block py-2 font-medium hover:opacity-80"
-              style={{ color: themeColor }}
+              className="block py-2 text-gray-700 hover:text-blue-500 font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
-              {brandName}とは
+              {title}とは
             </Link>
             <Link 
               href="#" 
-              className="block py-2 font-medium hover:opacity-80"
-              style={{ color: themeColor }}
+              className="block py-2 text-gray-700 hover:text-blue-500 font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               活用
             </Link>
             <Link 
               href="#" 
-              className="block py-2 font-medium hover:opacity-80"
-              style={{ color: themeColor }}
+              className="block py-2 text-gray-700 hover:text-blue-500 font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               その他
@@ -140,8 +116,7 @@ export default function Header({
               href="https://www.cldv.jp/"
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-white px-6 py-3 rounded-full font-medium hover:opacity-90 transition-opacity text-center"
-              style={{ backgroundColor: primaryColor }}
+              className="block bg-gradient-to-r from-blue-400 to-blue-500 text-white px-6 py-3 rounded-full font-medium hover:from-blue-500 hover:to-blue-600 transition-colors text-center"
               onClick={() => setIsMenuOpen(false)}
             >
               会員登録

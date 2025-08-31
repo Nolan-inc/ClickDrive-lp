@@ -1,4 +1,12 @@
-export default function Footer() {
+interface FooterProps {
+  themeColor?: string;
+  primaryColor?: string;
+}
+
+export default function Footer({ 
+  themeColor = "#2196f3", 
+  primaryColor = "#0066cc" 
+}: FooterProps) {
   return (
     <footer className="relative bg-gray-50 pt-24 pb-12 overflow-hidden">
       {/* Background ClickDrive text */}
@@ -18,7 +26,8 @@ export default function Footer() {
             href="https://lin.ee/llRUGcG" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-blue-400 to-blue-500 text-white px-10 py-4 rounded-full font-semibold text-lg hover:from-blue-500 hover:to-blue-600 transition-colors shadow-lg inline-flex items-center gap-3"
+            className="text-white px-10 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg inline-flex items-center gap-3"
+            style={{ backgroundColor: primaryColor }}
           >
             無料相談を始める
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

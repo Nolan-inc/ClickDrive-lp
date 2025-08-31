@@ -61,7 +61,15 @@ const staticDesigners: Designer[] = [
   }
 ];
 
-const DesignerCards = () => {
+interface DesignerCardsProps {
+  themeColor?: string;
+  primaryColor?: string;
+}
+
+const DesignerCards = ({ 
+  themeColor = "#2196f3", 
+  primaryColor = "#0066cc" 
+}: DesignerCardsProps) => {
   const [currentIndex, setCurrentIndex] = useState(3); // Start at index 3 to account for prepended items
   const [isTransitioning, setIsTransitioning] = useState(true);
   const designers = staticDesigners;
@@ -117,7 +125,7 @@ const DesignerCards = () => {
                 <div 
                   className="h-1/3 p-4 text-white flex flex-col justify-center"
                   style={{
-                    background: `linear-gradient(135deg, ${index % 2 === 0 ? '#60a5fa' : '#3b82f6'} 0%, ${index % 2 === 0 ? '#3b82f6' : '#2563eb'} 100%)`
+                    background: `linear-gradient(135deg, ${themeColor} 0%, ${primaryColor} 100%)`
                   }}
                 >
                   <h3 className="text-lg font-bold mb-1">{designer.title}</h3>
@@ -137,8 +145,11 @@ const DesignerCards = () => {
             <button
               key={index}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === (currentIndex - 3) % designers.length ? 'bg-blue-500 w-8' : 'bg-gray-300'
+                index === (currentIndex - 3) % designers.length ? 'w-8' : 'bg-gray-300'
               }`}
+              style={{
+                backgroundColor: index === (currentIndex - 3) % designers.length ? themeColor : '#d1d5db'
+              }}
               onClick={() => setCurrentIndex(index + 3)}
             />
           ))}

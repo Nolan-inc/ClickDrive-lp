@@ -11,31 +11,40 @@ interface Card {
   image: string;
 }
 
-const cards: Card[] = [
-  {
-    title: '高品質かつ高クオリティ',
-    subtitle: '',
-    description: '豊富な実績と最新トレンドを取り入れ、\n常にクオリティを追求した成果物を提供。',
-    bgColor: 'bg-gradient-to-br from-blue-400 to-blue-500',
-    image: '/gif/kouhinnshitu.gif',
-  },
-  {
-    title: 'スピード対応と柔軟性',
-    subtitle: '',
-    description: '企画から納品・運用までワンストップで迅速対応。\n急ぎの案件も専属チームで確実に対応。',
-    bgColor: 'bg-gradient-to-br from-sky-400 to-indigo-500',
-    image: '/gif/speed.png',
-  },
-  {
-    title: '伝わるコミュニケーション力',
-    subtitle: '',
-    description: '課題を正確に把握し、成果につながる提案と\n柔軟な修正対応で安心して任せられる体制を提供。',
-    bgColor: 'bg-gradient-to-br from-cyan-400 to-blue-500',
-    image: '/gif/comm.png',
-  },
-];
 
-const StackedCardsSection: React.FC = () => {
+interface StackedCardsSectionProps {
+  themeColor?: string;
+  primaryColor?: string;
+}
+
+const StackedCardsSection: React.FC<StackedCardsSectionProps> = ({ 
+  themeColor = "#2196f3", 
+  primaryColor = "#0066cc" 
+}) => {
+  const cards: Card[] = [
+    {
+      title: '高品質かつ高クオリティ',
+      subtitle: '',
+      description: '豊富な実績と最新トレンドを取り入れ、\n常にクオリティを追求した成果物を提供。',
+      bgColor: themeColor,
+      image: '/gif/kouhinnshitu.gif',
+    },
+    {
+      title: 'スピード対応と柔軟性',
+      subtitle: '',
+      description: '企画から納品・運用までワンストップで迅速対応。\n急ぎの案件も専属チームで確実に対応。',
+      bgColor: primaryColor,
+      image: '/gif/speed.png',
+    },
+    {
+      title: '伝わるコミュニケーション力',
+      subtitle: '',
+      description: '課題を正確に把握し、成果につながる提案と\n柔軟な修正対応で安心して任せられる体制を提供。',
+      bgColor: `linear-gradient(135deg, ${themeColor}, ${primaryColor})`,
+      image: '/gif/comm.png',
+    },
+  ];
+
   return (
     <section className="relative bg-gray-100 py-20">
       <div className="container mx-auto px-4">
@@ -48,7 +57,10 @@ const StackedCardsSection: React.FC = () => {
           {cards.map((card, index) => (
             <div
               key={index}
-              className={`${card.bgColor} rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300`}
+              className="rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300"
+              style={{ 
+                background: card.bgColor.includes('gradient') ? card.bgColor : card.bgColor
+              }}
             >
               <div className="p-8 text-white">
                 <div className="mb-6">
