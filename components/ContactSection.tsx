@@ -5,11 +5,13 @@ import Image from 'next/image'
 interface ContactSectionProps {
   themeColor?: string;
   primaryColor?: string;
+  lineUrl?: string | null;
 }
 
 export default function ContactSection({ 
   themeColor = "#2196f3", 
-  primaryColor = "#0066cc" 
+  primaryColor = "#0066cc",
+  lineUrl = null
 }: ContactSectionProps) {
 
   return (
@@ -99,7 +101,7 @@ export default function ContactSection({
                   </div>
                   
                   <a 
-                    href="https://lin.ee/llRUGcG" 
+                    href={lineUrl || "https://lin.ee/llRUGcG"} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-semibold text-base transition-all transform hover:scale-105 shadow-lg inline-flex items-center gap-2 group w-full justify-center"

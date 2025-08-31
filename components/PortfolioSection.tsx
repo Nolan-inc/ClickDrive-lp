@@ -94,11 +94,13 @@ const categories = ['全て', 'グルメ・飲食店', 'コーポレートサイ
 interface PortfolioSectionProps {
   themeColor?: string;
   primaryColor?: string;
+  lineUrl?: string | null;
 }
 
 const PortfolioSection: React.FC<PortfolioSectionProps> = ({ 
   themeColor = "#2196f3", 
-  primaryColor = "#0066cc" 
+  primaryColor = "#0066cc",
+  lineUrl = null
 }) => {
   const [selectedCategory, setSelectedCategory] = useState('全て');
   const [showAll, setShowAll] = useState(false);
@@ -357,7 +359,7 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
             あなたのプロジェクトも私たちと一緒に成功させませんか？
           </p>
           <a
-            href="https://lin.ee/llRUGcG"
+            href={lineUrl || "https://lin.ee/llRUGcG"}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 text-white px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"

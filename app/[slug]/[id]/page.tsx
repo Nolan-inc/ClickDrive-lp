@@ -19,6 +19,7 @@ interface PartnerData {
   theme_color: string;
   primary_color: string;
   favicon_url: string | null;
+  line_url: string | null;
   pricing: {
     monthly_fee: number;
     initial_setup_fee: number;
@@ -33,7 +34,7 @@ interface PartnerData {
 async function getPartnerData(id: string): Promise<PartnerData> {
   const { data: partnerData } = await supabase
     .from('oem_partners')
-    .select('theme_color, primary_color, favicon_url')
+    .select('theme_color, primary_color, favicon_url, line_url')
     .eq('id', id)
     .single();
 
@@ -48,6 +49,7 @@ async function getPartnerData(id: string): Promise<PartnerData> {
     theme_color: partnerData?.theme_color || '#2196f3',
     primary_color: partnerData?.primary_color || '#0066cc',
     favicon_url: partnerData?.favicon_url || null,
+    line_url: partnerData?.line_url || null,
     pricing: pricingData ? {
       monthly_fee: parseFloat(pricingData.monthly_fee),
       initial_setup_fee: parseFloat(pricingData.initial_setup_fee),
@@ -71,6 +73,7 @@ export default async function OEMPartnerPage({ params }: Props) {
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
         faviconUrl={partnerData.favicon_url}
+        lineUrl={partnerData.line_url}
       />
       <Hero 
         themeColor={partnerData.theme_color}
@@ -89,6 +92,7 @@ export default async function OEMPartnerPage({ params }: Props) {
       <PortfolioSection 
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
+        lineUrl={partnerData.line_url}
       />
       <DeviceSection 
         themeColor={partnerData.theme_color}
@@ -111,10 +115,12 @@ export default async function OEMPartnerPage({ params }: Props) {
       <ContactSection 
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
+        lineUrl={partnerData.line_url}
       />
       <Footer 
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
+        lineUrl={partnerData.line_url}
       />
     </>
   )

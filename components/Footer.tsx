@@ -3,10 +3,12 @@ import Link from "next/link";
 interface FooterProps {
   themeColor?: string;
   primaryColor?: string;
+  lineUrl?: string | null;
 }
 
 export default function Footer({ 
-  primaryColor = "#0066cc" 
+  primaryColor = "#0066cc",
+  lineUrl = null
 }: FooterProps) {
   return (
     <footer className="relative bg-gray-50 pt-24 pb-12 overflow-hidden">
@@ -24,7 +26,7 @@ export default function Footer({
             無料で相談してみる
           </h2>
           <a 
-            href="https://lin.ee/llRUGcG" 
+            href={lineUrl || "https://lin.ee/llRUGcG"} 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-white px-10 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg inline-flex items-center gap-3"
