@@ -2,7 +2,15 @@
 
 import { useState } from 'react'
 
-export default function FAQSection() {
+interface FAQSectionProps {
+  themeColor?: string;
+  primaryColor?: string;
+}
+
+export default function FAQSection({ 
+  themeColor = "#2196f3", 
+  primaryColor = "#0066cc" 
+}: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   
   const faqs = [

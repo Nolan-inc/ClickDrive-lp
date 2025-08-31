@@ -2,7 +2,15 @@
 
 import React from 'react';
 
-const ProcessFlow = () => {
+interface ProcessFlowProps {
+  themeColor?: string;
+  primaryColor?: string;
+}
+
+const ProcessFlow = ({ 
+  themeColor = "#2196f3", 
+  primaryColor = "#0066cc" 
+}: ProcessFlowProps) => {
   const steps = [
     {
       step: 'お問い合わせ受付',
@@ -70,7 +78,7 @@ const ProcessFlow = () => {
         <div className="space-y-4">
           {steps.map((item, index) => (
             <div key={index} className="flex items-start gap-4 bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
-              <div className="flex-shrink-0 w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-lg">
+              <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{ backgroundColor: themeColor }}>
                 {index + 1}
               </div>
               <div className="flex-grow">
@@ -88,7 +96,8 @@ const ProcessFlow = () => {
             href="https://lin.ee/llRUGcG" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-blue-400 to-blue-500 text-white px-10 py-4 rounded-full font-semibold text-lg hover:from-blue-500 hover:to-blue-600 transition-colors shadow-lg inline-flex items-center gap-3"
+            className="text-white px-10 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg inline-flex items-center gap-3"
+            style={{ backgroundColor: primaryColor }}
           >
             無料で相談を始める
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
