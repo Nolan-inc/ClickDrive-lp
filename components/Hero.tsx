@@ -110,18 +110,18 @@ const Hero = ({
           </div>
           <div className="relative">
             <div 
-              className="rounded-2xl px-5 py-4 relative border shadow-lg"
+              className="rounded-2xl px-5 py-4 relative border"
               style={{ 
-                background: createGradient(),
+                backgroundColor: `${primaryColor}10`,
                 borderColor: `${primaryColor}30` 
               }}
             >
               <div className="flex items-center gap-2">
-                <div className="text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold bg-white/20 backdrop-blur-sm">
+                <div className="text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold" style={{ backgroundColor: primaryColor }}>
                   ✓
                 </div>
                 <div>
-                  <p className="text-lg font-bold leading-tight text-white">
+                  <p className="text-lg font-bold leading-tight" style={{ color: primaryColor }}>
                     {pricingData && pricingData.initial_setup_fee === 0 ? '初期費用0円！' : pricingData ? `初期費用${formatPrice(pricingData.initial_setup_fee, pricingData.currency)}` : '初期費用0円！'}
                   </p>
                 </div>
