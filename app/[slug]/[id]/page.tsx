@@ -26,18 +26,18 @@ interface PartnerData {
     currency: string;
     trial_period_days: number;
     yearly_discount_rate: number;
-    features: any[];
+    features: string[];
   } | null;
 }
 
 async function getPartnerData(id: string): Promise<PartnerData> {
-  const { data: partnerData, error: partnerError } = await supabase
+  const { data: partnerData } = await supabase
     .from('oem_partners')
     .select('theme_color, primary_color, favicon_url')
     .eq('id', id)
     .single();
 
-  const { data: pricingData, error: pricingError } = await supabase
+  const { data: pricingData } = await supabase
     .from('oem_pricing')
     .select('monthly_fee, initial_setup_fee, yearly_fee, currency, trial_period_days, yearly_discount_rate, features')
     .eq('oem_partner_id', id)

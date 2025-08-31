@@ -8,8 +8,8 @@ interface FAQSectionProps {
 }
 
 export default function FAQSection({ 
-  themeColor = "#2196f3", 
-  primaryColor = "#0066cc" 
+  themeColor: _ = "#2196f3", 
+  primaryColor: __ = "#0066cc" 
 }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   

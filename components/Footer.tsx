@@ -1,10 +1,12 @@
+import Link from "next/link";
+
 interface FooterProps {
   themeColor?: string;
   primaryColor?: string;
 }
 
 export default function Footer({ 
-  themeColor = "#2196f3", 
+  themeColor: _ = "#2196f3", 
   primaryColor = "#0066cc" 
 }: FooterProps) {
   return (
@@ -60,7 +62,7 @@ export default function Footer({
             <h4 className="font-semibold mb-4 text-gray-900">サポート</h4>
             <ul className="space-y-2">
               <li><a href="#" className="text-gray-600 hover:text-blue-500 text-sm">お問い合わせ</a></li>
-              <li><a href="/terms" className="text-gray-600 hover:text-blue-500 text-sm">利用規約</a></li>
+              <li><Link href="/terms" className="text-gray-600 hover:text-blue-500 text-sm">利用規約</Link></li>
               <li><a href="https://invented-bangle-e15.notion.site/2255b8517dea80bf8d6fd3534b105cf0" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-500 text-sm">プライバシーポリシー</a></li>
               <li><a href="https://pages.nolan.co.jp/clickdrive-legal-notice" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-500 text-sm">特定商取引法</a></li>
             </ul>
