@@ -56,13 +56,13 @@ export default function Header({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </Link>
-            <Link href="#" className="font-medium flex items-center hover:opacity-80" style={{ color: themeColor }}>
+            <Link href="#" className="font-medium flex items-center hover:opacity-80" style={{ color: secondaryColor || primaryColor }}>
               活用
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </Link>
-            <Link href="#" className="font-medium flex items-center hover:opacity-80" style={{ color: themeColor }}>
+            <Link href="#" className="font-medium flex items-center hover:opacity-80" style={{ color: accentColor || primaryColor }}>
               その他
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -72,7 +72,8 @@ export default function Header({
               href={lineUrl || "https://lin.ee/llRUGcG"}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-green-500 text-white px-6 py-2 rounded-full font-medium hover:bg-green-600 transition-colors inline-flex items-center gap-2"
+              className="text-white px-6 py-2 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2"
+              style={{ backgroundColor: secondaryColor || "#22c55e" }}
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12c0 4.95 3.66 9.03 8.42 9.68.29.07.42-.13.42-.29v-1.02c-3.44.75-4.17-1.66-4.17-1.66-.56-1.43-1.37-1.81-1.37-1.81-1.12-.76.08-.75.08-.75 1.24.09 1.89 1.27 1.89 1.27 1.1 1.89 2.89 1.34 3.59 1.03.11-.8.43-1.34.78-1.65-2.74-.31-5.62-1.37-5.62-6.1 0-1.35.48-2.45 1.27-3.31-.13-.31-.55-1.56.12-3.26 0 0 1.04-.33 3.4 1.27.99-.27 2.04-.41 3.09-.41 1.05 0 2.11.14 3.09.41 2.36-1.6 3.4-1.27 3.4-1.27.67 1.7.25 2.95.12 3.26.79.86 1.27 1.96 1.27 3.31 0 4.74-2.89 5.79-5.64 6.09.44.38.84 1.13.84 2.28v3.38c0 .16.13.36.43.29C20.34 21.03 24 16.95 24 12c0-5.52-4.48-10-10-10z"/>
@@ -124,7 +125,7 @@ export default function Header({
             <Link 
               href="#" 
               className="block py-2 font-medium hover:opacity-80"
-              style={{ color: themeColor }}
+              style={{ color: secondaryColor || primaryColor }}
               onClick={() => setIsMenuOpen(false)}
             >
               活用
@@ -132,7 +133,7 @@ export default function Header({
             <Link 
               href="#" 
               className="block py-2 font-medium hover:opacity-80"
-              style={{ color: themeColor }}
+              style={{ color: accentColor || primaryColor }}
               onClick={() => setIsMenuOpen(false)}
             >
               その他
@@ -141,7 +142,8 @@ export default function Header({
               href={lineUrl || "https://lin.ee/llRUGcG"}
               target="_blank"
               rel="noopener noreferrer"
-              className="block bg-green-500 text-white px-6 py-3 rounded-full font-medium hover:bg-green-600 transition-colors text-center"
+              className="block text-white px-6 py-3 rounded-full font-medium hover:opacity-90 transition-opacity text-center"
+              style={{ backgroundColor: secondaryColor || "#22c55e" }}
               onClick={() => setIsMenuOpen(false)}
             >
               LINE相談

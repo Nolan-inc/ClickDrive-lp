@@ -58,7 +58,7 @@ export default function FAQSection({
           </div>
         </div>
         <h2 className="relative text-3xl md:text-4xl font-bold py-4">
-          よくあるご質問
+          <span style={{ color: secondaryColor || themeColor }}>よくある</span><span style={{ color: accentColor || themeColor }}>ご質問</span>
         </h2>
       </div>
       <div className="container mx-auto px-4">

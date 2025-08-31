@@ -165,13 +165,35 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
     setFailedIframes(prev => new Set(prev).add(itemId));
   };
 
+  // Get category button color based on index
+  const getCategoryColor = (index: number) => {
+    const colors = [themeColor, secondaryColor || primaryColor, accentColor || primaryColor, primaryColor];
+    return colors[index % colors.length];
+  };
+
   return (
     <section className="relative py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden" style={{ maxWidth: '100vw' }}>
-      {/* Background decoration */}
+      {/* Background decoration with multiple colors */}
       <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-        <span className="text-[8rem] sm:text-[12rem] md:text-[15rem] lg:text-[20rem] font-bold text-gray-100/30 uppercase select-none whitespace-nowrap">
+        <span className="text-[8rem] sm:text-[12rem] md:text-[15rem] lg:text-[20rem] font-bold uppercase select-none whitespace-nowrap bg-gradient-to-r from-gray-100/30 via-gray-100/20 to-gray-100/30 bg-clip-text text-transparent">
           Works
         </span>
+      </div>
+      
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {secondaryColor && (
+          <div 
+            className="absolute top-20 left-10 w-32 h-32 rounded-full blur-2xl opacity-10"
+            style={{ backgroundColor: secondaryColor }}
+          />
+        )}
+        {accentColor && (
+          <div 
+            className="absolute bottom-20 right-20 w-40 h-40 rounded-full blur-2xl opacity-10"
+            style={{ backgroundColor: accentColor }}
+          />
+        )}
       </div>
 
       <div className="relative z-10 container mx-auto px-4 md:px-12 lg:px-[100px] overflow-x-hidden w-full max-w-full">
@@ -184,7 +206,7 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
             制作実績
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            私たちの<span style={{ color: themeColor }}>作品</span>
+            <span style={{ color: secondaryColor || themeColor }}>私たち</span>の<span style={{ color: accentColor || themeColor }}>作品</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
             様々な業界のクライアント様と共に作り上げた、成果にこだわったウェブサイトをご紹介します
@@ -196,7 +218,7 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
           {/* Mobile: Horizontal scroll */}
           <div className="md:hidden overflow-x-auto pb-4">
             <div className="flex gap-3 px-4" style={{ minWidth: 'max-content' }}>
-              {categories.map((category) => (
+              {categories.map((category, index) => (
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
@@ -205,6 +227,9 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                       ? 'text-white shadow-lg'
                       : 'bg-white text-gray-600 shadow-md hover:opacity-80'
                   }`}
+                  style={{ 
+                    backgroundColor: selectedCategory === category ? getCategoryColor(index) : undefined 
+                  }}
                 >
                   {category}
                 </button>
@@ -214,7 +239,7 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
           
           {/* Desktop: Flex wrap */}
           <div className="hidden md:flex flex-wrap justify-center gap-3">
-            {categories.map((category) => (
+            {categories.map((category, index) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
@@ -224,7 +249,7 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                     : 'bg-white text-gray-600 shadow-md hover:opacity-80'
                 }`}
                 style={{ 
-                  backgroundColor: selectedCategory === category ? themeColor : undefined 
+                  backgroundColor: selectedCategory === category ? getCategoryColor(index) : undefined 
                 }}
               >
                 {category}

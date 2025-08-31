@@ -26,8 +26,8 @@ export default function Footer({
       <div className="relative z-10 container mx-auto px-4">
         {/* Main CTA Section */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
-            無料で相談してみる
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">
+            <span style={{ color: secondaryColor || themeColor || "#2196f3" }}>無料</span>で<span style={{ color: accentColor || primaryColor }}>相談</span>してみる
           </h2>
           <a 
             href={lineUrl || "https://lin.ee/llRUGcG"} 
@@ -56,15 +56,15 @@ export default function Footer({
           
           {/* Company Links */}
           <div>
-            <h4 className="font-semibold mb-4 text-gray-900">会社情報</h4>
+            <h4 className="font-semibold mb-4" style={{ color: secondaryColor || themeColor || "#2196f3" }}>会社情報</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-600 hover:text-blue-500 text-sm">会社概要</a></li>
+              <li><a href="#" className="text-gray-600 hover:opacity-80 text-sm transition-opacity" style={{ '--hover-color': themeColor }}>会社概要</a></li>
             </ul>
           </div>
           
           {/* Support Links */}
           <div>
-            <h4 className="font-semibold mb-4 text-gray-900">サポート</h4>
+            <h4 className="font-semibold mb-4" style={{ color: accentColor || primaryColor }}>サポート</h4>
             <ul className="space-y-2">
               <li><a href="#" className="text-gray-600 hover:text-blue-500 text-sm">お問い合わせ</a></li>
               <li><Link href="/terms" className="text-gray-600 hover:text-blue-500 text-sm">利用規約</Link></li>

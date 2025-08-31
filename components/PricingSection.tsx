@@ -66,21 +66,21 @@ export default function PricingSection({
             ))}
           </div>
         </div>
-        <h2 className="relative text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 py-4">
-          他社との比較
+        <h2 className="relative text-2xl sm:text-3xl md:text-4xl font-bold py-4">
+          <span style={{ color: secondaryColor || themeColor }}>他社</span>との<span style={{ color: accentColor || themeColor }}>比較</span>
         </h2>
       </div>
       <div className="container mx-auto px-4">
-        <p className="text-xl text-center text-gray-700 mb-16">{brandName}の強み</p>
+        <p className="text-xl text-center mb-16" style={{ color: primaryColor }}>{brandName}の強み</p>
         
         <div className="max-w-6xl mx-auto bg-white rounded-3xl shadow-xl p-8 overflow-x-auto">
           <table className="w-full min-w-[640px]">
             <thead>
               <tr className="border-b-2 border-gray-200">
-                <th className="text-left py-4 px-4 font-bold text-gray-900">項目</th>
-                <th className="text-center py-4 px-4 font-bold text-lg" style={{ color: themeColor }}>{brandName}</th>
-                <th className="text-center py-4 px-4 font-bold text-gray-700">A社</th>
-                <th className="text-center py-4 px-4 font-bold text-gray-700">B社</th>
+                <th className="text-left py-4 px-4 font-bold" style={{ color: themeColor }}>項目</th>
+                <th className="text-center py-4 px-4 font-bold text-lg" style={{ color: primaryColor }}>{brandName}</th>
+                <th className="text-center py-4 px-4 font-bold" style={{ color: secondaryColor || '#6b7280' }}>A社</th>
+                <th className="text-center py-4 px-4 font-bold" style={{ color: accentColor || '#6b7280' }}>B社</th>
                 <th className="text-center py-4 px-4 font-bold text-gray-700">C社</th>
               </tr>
             </thead>
