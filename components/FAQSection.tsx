@@ -7,7 +7,7 @@ interface FAQSectionProps {
   primaryColor?: string;
 }
 
-export default function FAQSection(_props: FAQSectionProps) {
+export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   
   const faqs = [

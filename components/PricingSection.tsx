@@ -10,7 +10,7 @@ interface PricingSectionProps {
     currency: string;
     trial_period_days: number;
     yearly_discount_rate: number;
-    features: any[];
+    features: string[];
   } | null;
   brandName?: string;
 }

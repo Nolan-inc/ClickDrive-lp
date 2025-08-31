@@ -12,7 +12,7 @@ import Footer from "@/components/Footer"
 import { supabase } from "@/lib/supabase"
 
 interface Props {
-  params: { slug: string; id: string };
+  params: Promise<{ slug: string; id: string }>;
 }
 
 interface PartnerData {
@@ -61,7 +61,7 @@ async function getPartnerData(id: string): Promise<PartnerData> {
 }
 
 export default async function OEMPartnerPage({ params }: Props) {
-  const { slug, id } = params;
+  const { slug, id } = await params;
   const partnerData = await getPartnerData(id);
   
   return (

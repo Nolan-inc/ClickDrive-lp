@@ -11,10 +11,10 @@ import ContactSection from "@/components/ContactSection"
 import Footer from "@/components/Footer"
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
-export default function ArticlePage(_props: Props) {
+export default function ArticlePage() {
   return (
     <>
       <Header />
