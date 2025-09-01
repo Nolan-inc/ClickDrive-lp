@@ -11,7 +11,7 @@ interface FAQSectionProps {
 
 export default function FAQSection({
   themeColor = "#2196f3",
-  primaryColor = "#0066cc",
+  primaryColor: _primaryColor = "#0066cc",
   secondaryColor = null,
   accentColor = null
 }: FAQSectionProps) {
@@ -69,6 +69,7 @@ export default function FAQSection({
               <button
                 className="w-full text-left bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-6"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                style={{ borderLeft: openIndex === index ? `4px solid ${_primaryColor}` : '4px solid transparent' }}
               >
                 <div className="flex justify-between items-center">
                   <h3 className="font-semibold text-lg">{faq.question}</h3>

@@ -10,8 +10,8 @@ interface DeviceSectionProps {
 export default function DeviceSection({ 
   themeColor = "#2196f3", 
   primaryColor = "#0066cc",
-  secondaryColor = null,
-  accentColor = null
+  secondaryColor: _secondaryColor = null,
+  accentColor: _accentColor = null
 }: DeviceSectionProps) {
   return (
     <section className="relative py-16 bg-white overflow-hidden">
@@ -19,22 +19,22 @@ export default function DeviceSection({
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              直感的なインターフェースで、サイト運用も簡単！
+              <span style={{ color: _secondaryColor || themeColor }}>直感的な</span>インターフェースで、<span style={{ color: _accentColor || primaryColor }}>サイト運用</span>も簡単！
             </h2>
             <div className="flex flex-wrap justify-center gap-2 text-sm">
               <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>AI自動提案</span>
-              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>SNS連携</span>
-              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>かんたん更新</span>
-              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>トレンド分析</span>
+              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${_secondaryColor || themeColor}15`, color: _secondaryColor || themeColor }}>SNS連携</span>
+              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${_accentColor || primaryColor}15`, color: _accentColor || primaryColor }}>かんたん更新</span>
+              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${primaryColor}15`, color: primaryColor }}>トレンド分析</span>
               <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>記事管理</span>
-              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>画像編集</span>
-              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>自動最適化</span>
-              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${themeColor}15`, color: themeColor }}>ワンクリック更新</span>
+              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${_secondaryColor || themeColor}15`, color: _secondaryColor || themeColor }}>画像編集</span>
+              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${_accentColor || primaryColor}15`, color: _accentColor || primaryColor }}>自動最適化</span>
+              <span className="px-4 py-2 rounded-full" style={{ backgroundColor: `${primaryColor}15`, color: primaryColor }}>ワンクリック更新</span>
             </div>
           </div>
           
           <div className="relative overflow-hidden">
-            <div className="absolute inset-0 rounded-3xl transform rotate-3 scale-95" style={{ background: `linear-gradient(135deg, ${themeColor}, ${primaryColor})` }}></div>
+            <div className="absolute inset-0 rounded-3xl transform rotate-3 scale-95" style={{ background: `linear-gradient(135deg, ${_secondaryColor || themeColor}, ${_accentColor || primaryColor})` }}></div>
             <div className="relative bg-gray-900 rounded-3xl p-8 md:p-12">
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
                 <div className="text-white lg:col-span-2 order-2 lg:order-1">

@@ -59,7 +59,7 @@ export default function Footer({
           <div>
             <h4 className="font-semibold mb-4" style={{ color: secondaryColor || themeColor || "#2196f3" }}>会社情報</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-600 hover:opacity-80 text-sm transition-opacity" style={{ '--hover-color': themeColor }}>会社概要</a></li>
+              <li><a href="#" className="text-gray-600 hover:opacity-80 text-sm transition-opacity">会社概要</a></li>
             </ul>
           </div>
           
