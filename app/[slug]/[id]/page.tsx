@@ -34,18 +34,37 @@ interface PartnerData {
 }
 
 async function getPartnerData(id: string): Promise<PartnerData> {
-  const { data: partnerData } = await supabase
+  const { data: partnerData, error: partnerError } = await supabase
     .from('oem_partners')
     .select('theme_color, primary_color, secondary_color, accent_color, favicon_url, line_url')
     .eq('id', id)
     .single();
 
-  const { data: pricingData } = await supabase
+  if (partnerError) {
+    console.error('Error fetching partner data:', partnerError);
+  }
+
+  const { data: pricingData, error: pricingError } = await supabase
     .from('oem_pricing')
     .select('monthly_fee, initial_setup_fee, yearly_fee, currency, trial_period_days, yearly_discount_rate, features')
     .eq('oem_partner_id', id)
     .eq('is_active', true)
     .single();
+
+  if (pricingError) {
+    console.error('Error fetching pricing data for partner ID:', id, pricingError);
+  }
+
+  // Debug log for nextpass
+  if (id === '68bbd16c-bb29-4bc3-90a0-4926ab4b89d2') {
+    console.log('=== NEXTPASS DEBUG ===');
+    console.log('Partner ID:', id);
+    console.log('Partner data:', partnerData);
+    console.log('Partner error:', partnerError);
+    console.log('Pricing data:', pricingData);
+    console.log('Pricing error:', pricingError);
+    console.log('===================');
+  }
 
   return {
     theme_color: partnerData?.theme_color || '#2196f3',
@@ -70,8 +89,18 @@ export default async function OEMPartnerPage({ params }: Props) {
   const { slug, id } = await params;
   const partnerData = await getPartnerData(id);
   
+  // Debug for nextpass in development
+  const isNextpass = id === '68bbd16c-bb29-4bc3-90a0-4926ab4b89d2';
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  
   return (
     <>
+      {isNextpass && isDevelopment && (
+        <div className="fixed top-20 right-4 z-50 bg-black text-white p-4 rounded max-w-md text-xs">
+          <h3 className="font-bold mb-2">Nextpass Debug Info:</h3>
+          <pre>{JSON.stringify(partnerData.pricing, null, 2)}</pre>
+        </div>
+      )}
       <Header 
         brandName={slug} 
         themeColor={partnerData.theme_color}
@@ -169,3 +198,6 @@ export async function generateStaticParams() {
     id: partner.id
   }));
 }
+
+// Force dynamic rendering to always fetch fresh data
+export const revalidate = 0;
