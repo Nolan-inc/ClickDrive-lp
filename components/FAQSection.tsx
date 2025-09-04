@@ -10,10 +10,7 @@ interface FAQSectionProps {
 }
 
 export default function FAQSection({
-  themeColor = "#2196f3",
-  primaryColor: _primaryColor = "#0066cc",
-  secondaryColor = null,
-  accentColor = null
+  primaryColor: _primaryColor = "#0066cc"
 }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   
