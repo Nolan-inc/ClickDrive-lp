@@ -10,6 +10,7 @@ import ProcessFlow from "@/components/ProcessFlow"
 import ContactSection from "@/components/ContactSection"
 import Footer from "@/components/Footer"
 import { supabase } from "@/lib/supabase"
+import { Metadata } from "next"
 
 interface Props {
   params: Promise<{ slug: string; id: string }>;
@@ -82,6 +83,30 @@ async function getPartnerData(id: string): Promise<PartnerData> {
       yearly_discount_rate: parseFloat(pricingData.yearly_discount_rate),
       features: pricingData.features || []
     } : null
+  };
+}
+
+// Generate metadata with favicon
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug, id } = await params;
+  const { data: partnerData } = await supabase
+    .from('oem_partners')
+    .select('name, favicon_url')
+    .eq('id', id)
+    .single();
+
+  const icons = partnerData?.favicon_url 
+    ? {
+        icon: partnerData.favicon_url,
+        shortcut: partnerData.favicon_url,
+        apple: partnerData.favicon_url,
+      }
+    : undefined;
+
+  return {
+    title: `${partnerData?.name || slug} | ホームページ制作サービス`,
+    description: `${partnerData?.name || slug}が提供する高品質なホームページ制作サービス。月額料金で始められるプロフェッショナルなウェブサイト。`,
+    icons,
   };
 }
 
