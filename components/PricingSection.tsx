@@ -66,8 +66,8 @@ export default function PricingSection({
             ))}
           </div>
         </div>
-        <h2 className="relative text-2xl sm:text-3xl md:text-4xl font-bold py-4">
-          <span style={{ color: secondaryColor || themeColor }}>他社</span>との<span style={{ color: accentColor || themeColor }}>比較</span>
+        <h2 className="relative text-2xl sm:text-3xl md:text-4xl font-bold py-4 text-gray-900">
+          他社との比較
         </h2>
       </div>
       <div className="container mx-auto px-4">

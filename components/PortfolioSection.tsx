@@ -206,7 +206,7 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
             制作実績
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            <span style={{ color: secondaryColor || themeColor }}>私たち</span>の<span style={{ color: accentColor || themeColor }}>作品</span>
+            私たちの作品
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
             様々な業界のクライアント様と共に作り上げた、成果にこだわったウェブサイトをご紹介します

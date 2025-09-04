@@ -53,10 +53,10 @@ const StackedCardsSection: React.FC<StackedCardsSectionProps> = ({
     <section className="relative bg-gray-100 py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span style={{ color: themeColor }}>我々</span>の<span style={{ color: accentColor || primaryColor }}>3つの強み</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+            我々の3つの強み
           </h2>
-          <p className="text-lg md:text-xl" style={{ color: secondaryColor || primaryColor }}>選ばれる理由があります</p>
+          <p className="text-lg md:text-xl text-gray-600">選ばれる理由があります</p>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">

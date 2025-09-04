@@ -70,10 +70,10 @@ const ProcessFlow = ({
             ))}
           </div>
         </div>
-        <h2 className="relative text-3xl md:text-4xl font-bold py-4">
-          <span style={{ color: secondaryColor || themeColor }}>制作進行</span><span style={{ color: accentColor || themeColor }}>イメージ</span>
+        <h2 className="relative text-3xl md:text-4xl font-bold py-4 text-gray-900">
+          制作進行イメージ
         </h2>
-        <p className="relative text-base md:text-lg mt-4 px-4 md:px-0" style={{ color: primaryColor }}>
+        <p className="relative text-base md:text-lg mt-4 px-4 md:px-0 text-gray-600">
           ヒアリングからサイト公開・運用まで、安心の一気通貫体制
         </p>
       </div>

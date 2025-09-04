@@ -27,8 +27,8 @@ export default function Footer({
       <div className="relative z-10 container mx-auto px-4">
         {/* Main CTA Section */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">
-            <span style={{ color: secondaryColor || themeColor || "#2196f3" }}>無料</span>で<span style={{ color: accentColor || primaryColor }}>相談</span>してみる
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gray-900">
+            無料で相談してみる
           </h2>
           <a 
             href={lineUrl || "https://lin.ee/llRUGcG"} 
