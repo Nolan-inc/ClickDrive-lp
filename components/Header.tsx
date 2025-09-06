@@ -81,7 +81,7 @@ export default function Header({
               LINE相談
             </a>
             <a
-              href="https://www.cldv.jp/"
+              href={`https://${brandName}.cldv.jp/`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-white px-6 py-2 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2"
@@ -149,7 +149,7 @@ export default function Header({
               LINE相談
             </a>
             <a
-              href="https://www.cldv.jp/"
+              href={`https://${brandName}.cldv.jp/`}
               target="_blank"
               rel="noopener noreferrer"
               className="block text-white px-6 py-3 rounded-full font-medium hover:opacity-90 transition-opacity text-center"
