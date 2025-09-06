@@ -9,7 +9,7 @@ import FAQSection from "@/components/FAQSection"
 import ProcessFlow from "@/components/ProcessFlow"
 import ContactSection from "@/components/ContactSection"
 import Footer from "@/components/Footer"
-import { supabase, supabaseAdmin } from "@/lib/supabase"
+import { supabaseAdmin } from "@/lib/supabase"
 import { Metadata } from "next"
 
 interface Props {
