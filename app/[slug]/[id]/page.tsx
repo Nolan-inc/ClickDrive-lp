@@ -114,21 +114,8 @@ export default async function OEMPartnerPage({ params }: Props) {
   const { slug, id } = await params;
   const partnerData = await getPartnerData(id);
   
-  // Debug for nextpass (temporarily show in production too)
-  const isNextpass = id === '68bbd16c-bb29-4bc3-90a0-4926ab4b89d2';
-  
   return (
     <>
-      {isNextpass && (
-        <div className="fixed top-20 right-4 z-50 bg-black text-white p-4 rounded max-w-md text-xs">
-          <h3 className="font-bold mb-2">Nextpass Debug Info:</h3>
-          <pre>{JSON.stringify(partnerData.pricing, null, 2)}</pre>
-          <div className="mt-2 text-xs">
-            <p>Environment: {process.env.NODE_ENV}</p>
-            <p>Data exists: {partnerData.pricing ? 'YES' : 'NO'}</p>
-          </div>
-        </div>
-      )}
       <Header 
         brandName={slug} 
         themeColor={partnerData.theme_color}
