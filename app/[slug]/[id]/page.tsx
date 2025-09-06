@@ -9,7 +9,7 @@ import FAQSection from "@/components/FAQSection"
 import ProcessFlow from "@/components/ProcessFlow"
 import ContactSection from "@/components/ContactSection"
 import Footer from "@/components/Footer"
-import { supabase } from "@/lib/supabase"
+import { supabase, supabaseAdmin } from "@/lib/supabase"
 import { Metadata } from "next"
 
 interface Props {
@@ -35,7 +35,7 @@ interface PartnerData {
 }
 
 async function getPartnerData(id: string): Promise<PartnerData> {
-  const { data: partnerData, error: partnerError } = await supabase
+  const { data: partnerData, error: partnerError } = await supabaseAdmin
     .from('oem_partners')
     .select('theme_color, primary_color, secondary_color, accent_color, favicon_url, line_url')
     .eq('id', id)
@@ -45,7 +45,7 @@ async function getPartnerData(id: string): Promise<PartnerData> {
     console.error('Error fetching partner data:', partnerError);
   }
 
-  const { data: pricingData, error: pricingError } = await supabase
+  const { data: pricingData, error: pricingError } = await supabaseAdmin
     .from('oem_pricing')
     .select('monthly_fee, initial_setup_fee, yearly_fee, currency, trial_period_days, yearly_discount_rate, features')
     .eq('oem_partner_id', id)
@@ -89,7 +89,7 @@ async function getPartnerData(id: string): Promise<PartnerData> {
 // Generate metadata with favicon
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug, id } = await params;
-  const { data: partnerData } = await supabase
+  const { data: partnerData } = await supabaseAdmin
     .from('oem_partners')
     .select('name, favicon_url')
     .eq('id', id)
@@ -114,16 +114,19 @@ export default async function OEMPartnerPage({ params }: Props) {
   const { slug, id } = await params;
   const partnerData = await getPartnerData(id);
   
-  // Debug for nextpass in development
+  // Debug for nextpass (temporarily show in production too)
   const isNextpass = id === '68bbd16c-bb29-4bc3-90a0-4926ab4b89d2';
-  const isDevelopment = process.env.NODE_ENV === 'development';
   
   return (
     <>
-      {isNextpass && isDevelopment && (
+      {isNextpass && (
         <div className="fixed top-20 right-4 z-50 bg-black text-white p-4 rounded max-w-md text-xs">
           <h3 className="font-bold mb-2">Nextpass Debug Info:</h3>
           <pre>{JSON.stringify(partnerData.pricing, null, 2)}</pre>
+          <div className="mt-2 text-xs">
+            <p>Environment: {process.env.NODE_ENV}</p>
+            <p>Data exists: {partnerData.pricing ? 'YES' : 'NO'}</p>
+          </div>
         </div>
       )}
       <Header 
