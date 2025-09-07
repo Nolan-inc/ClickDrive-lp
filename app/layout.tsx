@@ -42,13 +42,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <Script
-          src="https://chaty-pied.vercel.app/widget.js"
-          data-company-id="8634653d-3a41-48ef-8908-ee7f65de6acc"
-          data-position="bottom-right"
-          data-theme="#3b82f6"
+        <script 
+          src="https://chaty-pied.vercel.app/widget.js" 
+          data-company-id="8634653d-3a41-48ef-8908-ee7f65de6acc" 
+          data-position="bottom-right" 
+          data-theme="#3b82f6" 
           data-api-url="https://chaty-pied.vercel.app"
-          strategy="afterInteractive"
+          async
         />
       </body>
     </html>
