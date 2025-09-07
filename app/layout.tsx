@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -41,6 +42,14 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Script
+          src="https://chaty-pied.vercel.app/widget.js"
+          data-company-id="8634653d-3a41-48ef-8908-ee7f65de6acc"
+          data-position="bottom-right"
+          data-theme="#3b82f6"
+          data-api-url="https://chaty-pied.vercel.app"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
