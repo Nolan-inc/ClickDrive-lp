@@ -48,7 +48,7 @@ const staticDesigners: Designer[] = [
       url: '/portfolio/paruoni.png'
     },
     category: 'レジャー事例',
-    url: '#'
+    url: 'https://pk-oni.or.jp/'
   },
   {
     id: '5',

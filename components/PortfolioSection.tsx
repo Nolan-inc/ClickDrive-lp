@@ -56,7 +56,7 @@ const portfolioItems: PortfolioItem[] = [
     title: 'Paruoni',
     category: 'レジャー',
     description: '魅力的なECサイト。スムーズな購入フローとユーザビリティで売上向上に貢献しました。',
-    url: 'https://paruoni.vercel.app/',
+    url: 'https://pk-oni.or.jp/',
     image: '',
     tags: ['EC', 'Stripe', 'React']
   },
@@ -86,6 +86,33 @@ const portfolioItems: PortfolioItem[] = [
     url: 'https://toridesign.vercel.app/',
     image: '',
     tags: ['Next.js', 'ポートフォリオ', 'デザイン']
+  },
+  {
+    id: 9,
+    title: 'Aura Pro',
+    category: 'コーポレートサイト',
+    description: 'プロフェッショナルなコーポレートサイト。モダンなデザインで企業の信頼性と専門性をアピール。',
+    url: 'https://www.aura-pro.tokyo/',
+    image: '',
+    tags: ['React', 'コーポレート', 'レスポンシブ']
+  },
+  {
+    id: 10,
+    title: 'Wahrheit',
+    category: 'コーポレートサイト',
+    description: 'エレガントで洗練されたコーポレートサイト。ブランドの価値を効果的に伝えるデザイン。',
+    url: 'https://wahrheit.cldv.jp/',
+    image: '',
+    tags: ['ブランディング', 'エレガント', 'デザイン']
+  },
+  {
+    id: 11,
+    title: 'Riksol',
+    category: 'コーポレートサイト',
+    description: '革新的なソリューションを提供する企業のサイト。技術力とイノベーションを表現したデザイン。',
+    url: 'https://riksol.vercel.app/',
+    image: '',
+    tags: ['Next.js', 'イノベーション', 'テクノロジー']
   }
 ];
 
