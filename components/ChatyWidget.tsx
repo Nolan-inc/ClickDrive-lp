@@ -2,6 +2,18 @@
 
 import { useEffect } from 'react';
 
+interface ChatyWidgetConfig {
+  apiKey: string;
+  baseUrl: string;
+  position: string;
+  primaryColor: string;
+  size: string;
+}
+
+interface WindowWithChaty extends Window {
+  ChatyWidget?: new (config: ChatyWidgetConfig) => void;
+}
+
 const ChatyWidget = () => {
   useEffect(() => {
     // Check if script already exists to prevent duplicate loading
@@ -28,9 +40,10 @@ const ChatyWidget = () => {
 
     script.onload = () => {
       console.log('Chaty script loaded successfully');
-      if (typeof (window as any).ChatyWidget !== 'undefined') {
+      const windowWithChaty = window as WindowWithChaty;
+      if (typeof windowWithChaty.ChatyWidget !== 'undefined' && windowWithChaty.ChatyWidget) {
         try {
-          new (window as any).ChatyWidget(chatConfig);
+          new windowWithChaty.ChatyWidget(chatConfig);
           console.log('ChatyWidget initialized successfully');
         } catch (error) {
           console.error('Error initializing ChatyWidget:', error);
