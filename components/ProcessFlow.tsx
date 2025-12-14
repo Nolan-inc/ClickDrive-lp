@@ -9,9 +9,9 @@ interface ProcessFlowProps {
   accentColor?: string | null;
 }
 
-const ProcessFlow = ({ 
-  themeColor = "#2196f3", 
-  primaryColor = "#0066cc",
+const ProcessFlow = ({
+  themeColor = "#8b5cf6",
+  primaryColor = "#7c3aed",
   secondaryColor = null,
   accentColor = null
 }: ProcessFlowProps) => {
@@ -54,47 +54,53 @@ const ProcessFlow = ({
   ];
 
   return (
-    <section className="py-20 bg-white overflow-hidden">
-      <div className="relative text-center mb-12">
+    <section className="relative py-20 bg-black overflow-hidden">
+      {/* Purple Glow Decorations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="relative text-center mb-12 z-10">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="flex animate-slide whitespace-nowrap">
             {Array(20).fill(null).map((_, i) => (
-              <span key={i} className="text-6xl md:text-8xl font-bold text-gray-100/70 uppercase tracking-wider select-none mr-8">
+              <span key={i} className="text-6xl md:text-8xl font-bold text-gray-800/70 uppercase tracking-wider select-none mr-8">
                 Process Flow
               </span>
             ))}
             {Array(20).fill(null).map((_, i) => (
-              <span key={`dup-${i}`} className="text-6xl md:text-8xl font-bold text-gray-100/70 uppercase tracking-wider select-none mr-8">
+              <span key={`dup-${i}`} className="text-6xl md:text-8xl font-bold text-gray-800/70 uppercase tracking-wider select-none mr-8">
                 Process Flow
               </span>
             ))}
           </div>
         </div>
-        <h2 className="relative text-3xl md:text-4xl font-bold py-4 text-gray-900">
+        <h2 className="relative text-3xl md:text-4xl font-bold py-4 text-white">
           制作進行イメージ
         </h2>
-        <p className="relative text-base md:text-lg mt-4 px-4 md:px-0 text-gray-600">
+        <p className="relative text-base md:text-lg mt-4 px-4 md:px-0 text-gray-300">
           ヒアリングからサイト公開・運用まで、安心の一気通貫体制
         </p>
       </div>
 
-      <div className="container mx-auto px-4 max-w-4xl">
+      <div className="container mx-auto px-4 max-w-4xl relative z-10">
         <div className="space-y-4">
           {steps.map((item, index) => {
             const getStepColor = (stepIndex: number) => {
               const colors = [themeColor, secondaryColor || primaryColor, accentColor || primaryColor, primaryColor];
               return colors[stepIndex % colors.length];
             };
-            
+
             return (
-            <div key={index} className="flex items-start gap-4 bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
+            <div key={index} className="flex items-start gap-4 bg-gray-900 border border-gray-700 rounded-xl p-6 hover:bg-gray-800 transition-colors">
               <div className="flex-shrink-0 w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-lg" style={{ backgroundColor: getStepColor(index) }}>
                 {index + 1}
               </div>
               <div className="flex-grow">
-                <h3 className="text-lg font-bold text-gray-900 mb-1">{item.step}</h3>
-                <span className="text-sm text-gray-600 block mb-2">{item.responsible}</span>
-                <p className="text-gray-700">{item.description}</p>
+                <h3 className="text-lg font-bold text-white mb-1">{item.step}</h3>
+                <span className="text-sm text-gray-400 block mb-2">{item.responsible}</span>
+                <p className="text-gray-300">{item.description}</p>
               </div>
             </div>
             );

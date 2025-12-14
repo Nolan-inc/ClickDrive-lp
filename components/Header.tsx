@@ -14,10 +14,10 @@ interface HeaderProps {
   lineUrl?: string | null;
 }
 
-export default function Header({ 
+export default function Header({
   brandName = "ClickDrive",
-  themeColor = "#2196f3",
-  primaryColor = "#0066cc",
+  themeColor = "#8b5cf6",
+  primaryColor = "#7c3aed",
   secondaryColor = null,
   accentColor = null,
   faviconUrl = null,
@@ -25,8 +25,13 @@ export default function Header({
 }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  // デフォルトまたは会社が見つからない場合はnolan.cldv.jpを使用
+  const registrationUrl = !brandName || brandName === "ClickDrive"
+    ? "https://nolan.cldv.jp/"
+    : `https://${brandName}.cldv.jp/`
+
   return (
-    <header className="fixed top-0 w-full bg-gradient-to-r from-gray-50 via-blue-50/50 to-gray-50 z-50">
+    <header className="fixed top-0 w-full bg-transparent backdrop-blur-sm z-50 border-b border-purple-200/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
@@ -81,7 +86,7 @@ export default function Header({
               LINE相談
             </a>
             <a
-              href={`https://${brandName}.cldv.jp/`}
+              href={registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-white px-6 py-2 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2"
@@ -149,7 +154,7 @@ export default function Header({
               LINE相談
             </a>
             <a
-              href={`https://${brandName}.cldv.jp/`}
+              href={registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="block text-white px-6 py-3 rounded-full font-medium hover:opacity-90 transition-opacity text-center"

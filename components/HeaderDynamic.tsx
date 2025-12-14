@@ -10,8 +10,13 @@ interface HeaderDynamicProps {
 export default function HeaderDynamic({ title }: HeaderDynamicProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  // デフォルトまたは会社が見つからない場合はnolan.cldv.jpを使用
+  const registrationUrl = !title || title === "ClickDrive"
+    ? "https://nolan.cldv.jp/"
+    : `https://${title.toLowerCase()}.cldv.jp/`
+
   return (
-    <header className="fixed top-0 w-full bg-gradient-to-r from-gray-50 via-blue-50/50 to-gray-50 z-50">
+    <header className="fixed top-0 w-full bg-gradient-to-r from-gray-50 via-purple-50/50 to-gray-50 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
@@ -24,19 +29,19 @@ export default function HeaderDynamic({ title }: HeaderDynamicProps) {
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="#" className="text-gray-700 hover:text-blue-500 font-medium flex items-center">
+            <Link href="#" className="text-gray-700 hover:text-purple-500 font-medium flex items-center">
               {title}とは
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </Link>
-            <Link href="#" className="text-gray-700 hover:text-blue-500 font-medium flex items-center">
+            <Link href="#" className="text-gray-700 hover:text-purple-500 font-medium flex items-center">
               活用
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </Link>
-            <Link href="#" className="text-gray-700 hover:text-blue-500 font-medium flex items-center">
+            <Link href="#" className="text-gray-700 hover:text-purple-500 font-medium flex items-center">
               その他
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -52,10 +57,10 @@ export default function HeaderDynamic({ title }: HeaderDynamicProps) {
               LINE相談
             </Link>
             <a
-              href="https://www.cldv.jp/"
+              href={registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gradient-to-r from-blue-400 to-blue-500 text-white px-6 py-2 rounded-full font-medium hover:from-blue-500 hover:to-blue-600 transition-colors inline-flex items-center gap-2"
+              className="bg-gradient-to-r from-purple-400 to-purple-500 text-white px-6 py-2 rounded-full font-medium hover:from-purple-500 hover:to-purple-600 transition-colors inline-flex items-center gap-2"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -84,23 +89,23 @@ export default function HeaderDynamic({ title }: HeaderDynamicProps) {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200">
           <div className="px-4 py-3 space-y-3">
-            <Link 
-              href="#" 
-              className="block py-2 text-gray-700 hover:text-blue-500 font-medium"
+            <Link
+              href="#"
+              className="block py-2 text-gray-700 hover:text-purple-500 font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               {title}とは
             </Link>
-            <Link 
-              href="#" 
-              className="block py-2 text-gray-700 hover:text-blue-500 font-medium"
+            <Link
+              href="#"
+              className="block py-2 text-gray-700 hover:text-purple-500 font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               活用
             </Link>
-            <Link 
-              href="#" 
-              className="block py-2 text-gray-700 hover:text-blue-500 font-medium"
+            <Link
+              href="#"
+              className="block py-2 text-gray-700 hover:text-purple-500 font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               その他
@@ -113,10 +118,10 @@ export default function HeaderDynamic({ title }: HeaderDynamicProps) {
               LINE相談
             </Link>
             <a
-              href="https://www.cldv.jp/"
+              href={registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="block bg-gradient-to-r from-blue-400 to-blue-500 text-white px-6 py-3 rounded-full font-medium hover:from-blue-500 hover:to-blue-600 transition-colors text-center"
+              className="block bg-gradient-to-r from-purple-400 to-purple-500 text-white px-6 py-3 rounded-full font-medium hover:from-purple-500 hover:to-purple-600 transition-colors text-center"
               onClick={() => setIsMenuOpen(false)}
             >
               会員登録

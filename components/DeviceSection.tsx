@@ -7,9 +7,9 @@ interface DeviceSectionProps {
   accentColor?: string | null;
 }
 
-export default function DeviceSection({ 
-  themeColor = "#2196f3", 
-  primaryColor = "#0066cc",
+export default function DeviceSection({
+  themeColor = "#8b5cf6",
+  primaryColor = "#7c3aed",
   secondaryColor: _secondaryColor = null,
   accentColor: _accentColor = null
 }: DeviceSectionProps) {

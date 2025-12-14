@@ -2,8 +2,9 @@ import Header from "@/components/Header"
 import Hero from "@/components/Hero";
 import DesignerCards from "@/components/DesignerCards";
 import PricingSection from "@/components/PricingSection"
+import ComparisonSection from "@/components/ComparisonSection"
 import StackedCardsSection from "@/components/StackedCardsSection"
-import PortfolioSection from "@/components/PortfolioSection"
+import PortfolioWrapper from "@/components/PortfolioWrapper"
 import DeviceSection from "@/components/DeviceSection"
 import FAQSection from "@/components/FAQSection"
 import ProcessFlow from "@/components/ProcessFlow"
@@ -133,9 +134,8 @@ export default async function OEMPartnerPage({ params }: Props) {
         brandName={slug}
         pricingData={partnerData.pricing}
       />
-      <DesignerCards 
+      <DesignerCards
         themeColor={partnerData.theme_color}
-        primaryColor={partnerData.primary_color}
         secondaryColor={partnerData.secondary_color}
         accentColor={partnerData.accent_color}
       />
@@ -145,7 +145,7 @@ export default async function OEMPartnerPage({ params }: Props) {
         secondaryColor={partnerData.secondary_color}
         accentColor={partnerData.accent_color}
       />
-      <PortfolioSection 
+      <PortfolioWrapper
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
         secondaryColor={partnerData.secondary_color}
@@ -158,19 +158,20 @@ export default async function OEMPartnerPage({ params }: Props) {
         secondaryColor={partnerData.secondary_color}
         accentColor={partnerData.accent_color}
       />
-      <PricingSection 
+      <PricingSection
+        themeColor={partnerData.theme_color}
+      />
+      <FAQSection
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
         secondaryColor={partnerData.secondary_color}
         accentColor={partnerData.accent_color}
+      />
+      <ComparisonSection
+        themeColor={partnerData.theme_color}
+        primaryColor={partnerData.primary_color}
         pricingData={partnerData.pricing}
         brandName={slug}
-      />
-      <FAQSection 
-        themeColor={partnerData.theme_color}
-        primaryColor={partnerData.primary_color}
-        secondaryColor={partnerData.secondary_color}
-        accentColor={partnerData.accent_color}
       />
       <ProcessFlow 
         themeColor={partnerData.theme_color}

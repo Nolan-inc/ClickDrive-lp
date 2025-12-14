@@ -17,9 +17,9 @@ interface HeroProps {
   } | null;
 }
 
-const Hero = ({ 
-  themeColor = "#2196f3", 
-  primaryColor = "#0066cc", 
+const Hero = ({
+  themeColor = "#8b5cf6",
+  primaryColor = "#7c3aed",
   secondaryColor = null,
   accentColor = null,
   brandName = "ClickDrive",
@@ -33,27 +33,12 @@ const Hero = ({
     return `${currency} ${amount}`;
   };
 
-  const monthlyFee = pricingData ? formatPrice(pricingData.monthly_fee, pricingData.currency) : '9,800円';
-  
+  const monthlyFee = pricingData ? formatPrice(pricingData.monthly_fee, pricingData.currency) : '5,800円';
+
 
   return (
-    <section className="bg-white pt-32 pb-0 relative overflow-hidden">
-      {/* Background decorative elements using secondary and accent colors */}
-      <div className="absolute inset-0 pointer-events-none">
-        {secondaryColor && (
-          <div 
-            className="absolute top-10 right-10 w-64 h-64 rounded-full blur-3xl opacity-20"
-            style={{ backgroundColor: secondaryColor }}
-          />
-        )}
-        {accentColor && (
-          <div 
-            className="absolute bottom-20 left-10 w-80 h-80 rounded-full blur-3xl opacity-15"
-            style={{ backgroundColor: accentColor }}
-          />
-        )}
-      </div>
-      
+    <section className="bg-transparent pt-32 pb-0 relative overflow-hidden">
+
       <div className="absolute inset-x-0 top-0 h-32 flex items-center justify-center overflow-hidden">
         <div className="flex animate-slide whitespace-nowrap">
           {Array(20).fill(null).map((_, i) => (
@@ -72,10 +57,13 @@ const Hero = ({
         <div className="text-center mb-12">
           <div className="relative">
             <h1 className="relative text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-tight py-4">
-              <span style={{ color: secondaryColor || themeColor }}>安い</span>
-              <span className="text-gray-900">と</span>
-              <span style={{ color: accentColor || themeColor }}>高品質</span>
-              <span className="text-gray-900">って両立できるんだ。</span>
+              <span style={{ color: secondaryColor || themeColor }}>業界トップレベル</span>
+              <span className="text-gray-900">の</span>
+              <span className="text-gray-900">ホームページを</span>
+              <br />
+              <span className="text-gray-900">月額</span>
+              <span style={{ color: accentColor || themeColor }}>5,800円</span>
+              <span className="text-gray-900">で作ります</span>
             </h1>
           </div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -98,11 +86,11 @@ const Hero = ({
             <p className="text-3xl md:text-4xl font-bold" style={{ color: themeColor }}>即日対応</p>
           </div>
           <div className="relative">
-            <div 
+            <div
               className="rounded-2xl px-5 py-4 relative border"
-              style={{ 
+              style={{
                 backgroundColor: `${primaryColor}10`,
-                borderColor: `${primaryColor}30` 
+                borderColor: `${primaryColor}30`
               }}
             >
               <div className="flex items-center gap-2">

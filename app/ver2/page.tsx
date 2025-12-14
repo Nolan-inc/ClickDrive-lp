@@ -2,8 +2,9 @@ import Header from "@/components/Header"
 import Hero from "@/components/Hero";
 import DesignerCards from "@/components/DesignerCards";
 import PricingSection from "@/components/PricingSection"
+import ComparisonSection from "@/components/ComparisonSection"
 import StackedCardsSection from "@/components/StackedCardsSection"
-import PortfolioSection from "@/components/PortfolioSection"
+import PortfolioWrapper from "@/components/PortfolioWrapper"
 import DeviceSection from "@/components/DeviceSection"
 import FAQSection from "@/components/FAQSection"
 import ProcessFlow from "@/components/ProcessFlow"
@@ -27,10 +28,11 @@ export default function Ver2() {
       <Hero pricingData={ver2PricingData} />
       <DesignerCards />
       <StackedCardsSection />
-      <PortfolioSection />
+      <PortfolioWrapper />
       <DeviceSection />
-      <PricingSection pricingData={ver2PricingData} />
+      <PricingSection />
       <FAQSection />
+      <ComparisonSection pricingData={ver2PricingData} brandName="ClickDrive" />
       <ProcessFlow />
       <ContactSection />
       <Footer />

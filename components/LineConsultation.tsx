@@ -4,7 +4,7 @@ import React from 'react';
 
 const LineConsultation = () => {
   return (
-    <section className="py-16 bg-gradient-to-br from-green-50 to-green-100 overflow-hidden">
+    <section className="py-16 bg-transparent overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Background decoration */}
@@ -15,7 +15,7 @@ const LineConsultation = () => {
             
             <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 relative overflow-hidden">
               {/* LINE green accent stripe */}
-              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-400 to-green-600"></div>
+              <div className="absolute top-0 left-0 w-full h-2 bg-transparent"></div>
               
               <div className="flex flex-col md:flex-row items-center gap-8">
                 {/* Left side - Content */}

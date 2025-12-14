@@ -95,7 +95,7 @@ const SitePreviewModal: React.FC<SitePreviewModalProps> = ({ isOpen, onClose, ur
           {isLoading && (
             <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
               <div className="text-center">
-                <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                 <p className="text-gray-600">サイトを読み込み中...</p>
               </div>
             </div>

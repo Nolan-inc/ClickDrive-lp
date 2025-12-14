@@ -5,22 +5,24 @@ import Image from 'next/image';
 import SitePreviewModal from './SitePreviewModal';
 
 interface PortfolioItem {
-  id: number;
+  id: number | string; // uuid型とnumber型の両方をサポート
   title: string;
   category: string;
   description: string;
   image?: string;
-  url?: string;
+  domain?: string | null;
   tags: string[];
+  likes_count?: number;
 }
 
-const portfolioItems: PortfolioItem[] = [
+// デフォルトの作品リスト（フォールバック用）
+const defaultPortfolioItems: PortfolioItem[] = [
   {
     id: 1,
     title: 'ClickDrive Corporation',
     category: 'コーポレートサイト',
     description: 'レスポンシブデザインで制作したモダンなコーポレートサイト。シンプルで洗練されたデザインにより、ブランドイメージを向上させました。',
-    url: 'https://nolan.co.jp',
+    domain: 'https://nolan.co.jp',
     image: '',
     tags: ['Next.js', 'Tailwind CSS']
   },
@@ -29,7 +31,7 @@ const portfolioItems: PortfolioItem[] = [
     title: 'Aicon Corporation',
     category: 'コーポレートサイト',
     description: '最新技術を活用したIT企業のコーポレートサイト。革新的なデザインで企業の技術力をアピールしています。',
-    url: 'https://aicon-mu.vercel.app/',
+    domain: 'https://aicon-mu.vercel.app/',
     image: '',
     tags: ['React', 'TypeScript', 'アニメーション']
   },
@@ -38,7 +40,7 @@ const portfolioItems: PortfolioItem[] = [
     title: 'BarBond',
     category: 'グルメ・飲食店',
     description: '美しいデザインを活かしたバーサイト。洗練された雰囲気とブランディングで集客効果を実現。',
-    url: 'https://barbond-z42g.vercel.app/',
+    domain: 'https://barbond-z42g.vercel.app/',
     image: '',
     tags: ['WordPress', 'デザイン', 'ブランディング']
   },
@@ -47,7 +49,7 @@ const portfolioItems: PortfolioItem[] = [
     title: 'FOOTBALLPARK SHIBUYA',
     category: 'レジャー',
     description: 'ユーザビリティを重視したタレント事務所サイト。直感的な操作性で顧客体験を向上させました。',
-    url: 'https://foot-ball-park.vercel.app/',
+    domain: 'https://foot-ball-park.vercel.app/',
     image: '',
     tags: ['React', 'UX/UI', 'CMS']
   },
@@ -56,7 +58,7 @@ const portfolioItems: PortfolioItem[] = [
     title: 'Paruoni',
     category: 'レジャー',
     description: '魅力的なECサイト。スムーズな購入フローとユーザビリティで売上向上に貢献しました。',
-    url: 'https://pk-oni.or.jp/',
+    domain: 'https://pk-oni.or.jp/',
     image: '',
     tags: ['EC', 'Stripe', 'React']
   },
@@ -65,7 +67,7 @@ const portfolioItems: PortfolioItem[] = [
     title: 'YOGI',
     category: 'グルメ・飲食店',
     description: 'モダンで洗練された飲食店サイト。魅力的なビジュアルと使いやすさで集客力を向上。',
-    url: 'https://yogigreekyogurt.com/',
+    domain: 'https://yogigreekyogurt.com/',
     image: '',
     tags: ['Next.js', 'レスポンシブ', 'ブランディング']
   },
@@ -74,7 +76,7 @@ const portfolioItems: PortfolioItem[] = [
     title: 'Briller',
     category: '美容室',
     description: 'スタイリッシュで洗練された美容室サイト。ブランドイメージを高め、予約獲得に貢献。',
-    url: 'https://www.briller-hair.com/',
+    domain: 'https://www.briller-hair.com/',
     image: '',
     tags: ['WordPress', 'レスポンシブ', 'ブランディング']
   },
@@ -83,7 +85,7 @@ const portfolioItems: PortfolioItem[] = [
     title: 'Tori Design',
     category: 'コーポレートサイト',
     description: 'クリエイティブなデザインエージェンシーのポートフォリオサイト。洗練されたビジュアルで制作実績を魅力的に展示。',
-    url: 'https://toridesign.vercel.app/',
+    domain: 'https://toridesign.vercel.app/',
     image: '',
     tags: ['Next.js', 'ポートフォリオ', 'デザイン']
   },
@@ -92,7 +94,7 @@ const portfolioItems: PortfolioItem[] = [
     title: 'Aura Pro',
     category: 'コーポレートサイト',
     description: 'プロフェッショナルなコーポレートサイト。モダンなデザインで企業の信頼性と専門性をアピール。',
-    url: 'https://www.aura-pro.tokyo/',
+    domain: 'https://www.aura-pro.tokyo/',
     image: '',
     tags: ['React', 'コーポレート', 'レスポンシブ']
   },
@@ -101,7 +103,7 @@ const portfolioItems: PortfolioItem[] = [
     title: 'Wahrheit',
     category: 'コーポレートサイト',
     description: 'エレガントで洗練されたコーポレートサイト。ブランドの価値を効果的に伝えるデザイン。',
-    url: 'https://wahrheit.cldv.jp/',
+    domain: 'https://wahrheit.cldv.jp/',
     image: '',
     tags: ['ブランディング', 'エレガント', 'デザイン']
   },
@@ -110,15 +112,93 @@ const portfolioItems: PortfolioItem[] = [
     title: 'Riksol',
     category: 'コーポレートサイト',
     description: '革新的なソリューションを提供する企業のサイト。技術力とイノベーションを表現したデザイン。',
-    url: 'https://riksol.vercel.app/',
+    domain: 'https://riksol.vercel.app/',
     image: '',
     tags: ['Next.js', 'イノベーション', 'テクノロジー']
+  },
+  {
+    id: 12,
+    title: 'ZERO1',
+    category: 'コーポレートサイト',
+    description: '未来志向のテクノロジー企業サイト。クリーンでモダンなデザインが特徴。',
+    domain: 'https://zer01-2.vercel.app/',
+    image: '/zisseki/ZERO1_top.gif',
+    tags: ['Next.js', 'モダンデザイン', 'テクノロジー']
+  },
+  {
+    id: 13,
+    title: 'eLife Partners',
+    category: 'コーポレートサイト',
+    description: 'ライフスタイルをサポートする企業のサイト。親しみやすく信頼感のあるデザイン。',
+    domain: 'https://elife-partners.vercel.app/',
+    image: '/zisseki/株式会社AG_top.gif',
+    tags: ['React', 'UX/UI', 'コーポレート']
+  },
+  {
+    id: 14,
+    title: 'マダムシュリンプ銀座',
+    category: 'グルメ・飲食店',
+    description: '高級感漂う銀座の飲食店サイト。洗練されたビジュアルで上質な雰囲気を演出。',
+    domain: 'https://madameshrimp.vercel.app/',
+    image: '/zisseki/田代(マダムシュリンプ銀座)_top.gif',
+    tags: ['高級レストラン', 'ブランディング', 'レスポンシブ']
+  },
+  {
+    id: 15,
+    title: 'セブンナインナインワン',
+    category: 'コーポレートサイト',
+    description: '数字にこだわるユニークな企業サイト。インパクトのあるデザインが特徴。',
+    domain: 'https://7991-nine.vercel.app/',
+    image: '/zisseki/株式会社Luxe_top.gif',
+    tags: ['ユニークデザイン', 'ブランディング', 'React']
+  },
+  {
+    id: 16,
+    title: 'NEXT PASS',
+    category: 'IT・テクノロジー',
+    description: '次世代のパスポートシステムを提供する革新的なサービス。未来的なUIが特徴。',
+    domain: 'https://nextpass-delta.vercel.app/',
+    image: '/zisseki/株式会社RISE(PP)_top.gif',
+    tags: ['Next.js', 'イノベーション', 'UI/UX']
+  },
+  {
+    id: 17,
+    title: 'ぷくぷく',
+    category: 'サービス',
+    description: '楽しさと親しみやすさを重視したサービスサイト。ポップでカラフルなデザイン。',
+    domain: 'https://10062-7366-pukupuku.vercel.app/',
+    image: '/zisseki/株式会社Fun9_top.gif',
+    tags: ['ポップデザイン', 'サービスサイト', 'レスポンシブ']
+  },
+  {
+    id: 18,
+    title: '株式会社SOOL',
+    category: 'コーポレートサイト',
+    description: 'シンプルで洗練されたコーポレートサイト。ミニマルデザインで情報を効果的に伝える。',
+    domain: 'https://sool.vercel.app/',
+    image: '/zisseki/株式会社SOOL_top.gif',
+    tags: ['ミニマルデザイン', 'コーポレート', 'Next.js']
   }
 ];
 
-const categories = ['全て', 'グルメ・飲食店', 'コーポレートサイト', 'レジャー', '美容室'];
+const defaultCategories = [
+  '全て',
+  'エンタメ',
+  'コーポレートサイト',
+  'レジャー',
+  '不動産・住宅',
+  '美容・エステ',
+  '医療・クリニック',
+  '宿泊・旅行',
+  'グルメ・飲食店',
+  'ビジネスサービス',
+  '製造業',
+  'その他'
+];
 
 interface PortfolioSectionProps {
+  portfolioItems?: PortfolioItem[];
+  categories?: string[];
   themeColor?: string;
   primaryColor?: string;
   secondaryColor?: string | null;
@@ -126,17 +206,19 @@ interface PortfolioSectionProps {
   lineUrl?: string | null;
 }
 
-const PortfolioSection: React.FC<PortfolioSectionProps> = ({ 
-  themeColor = "#2196f3", 
-  primaryColor = "#0066cc",
+const PortfolioSection: React.FC<PortfolioSectionProps> = ({
+  portfolioItems = defaultPortfolioItems,
+  categories = defaultCategories,
+  themeColor = "#8b5cf6",
+  primaryColor = "#7c3aed",
   secondaryColor = null,
   accentColor = null,
   lineUrl = null
 }) => {
   const [selectedCategory, setSelectedCategory] = useState('全て');
   const [showAll, setShowAll] = useState(false);
-  const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
-  const [failedIframes, setFailedIframes] = useState<Set<number>>(new Set());
+  const [failedImages, setFailedImages] = useState<Set<number | string>>(new Set());
+  const [failedIframes, setFailedIframes] = useState<Set<number | string>>(new Set());
   const [previewModal, setPreviewModal] = useState<{
     isOpen: boolean;
     url: string;
@@ -184,11 +266,11 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
     setPreviewModal({ isOpen: false, url: '', title: '' });
   };
 
-  const handleImageError = (itemId: number) => {
+  const handleImageError = (itemId: number | string) => {
     setFailedImages(prev => new Set(prev).add(itemId));
   };
 
-  const handleIframeError = (itemId: number) => {
+  const handleIframeError = (itemId: number | string) => {
     setFailedIframes(prev => new Set(prev).add(itemId));
   };
 
@@ -198,8 +280,49 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
     return colors[index % colors.length];
   };
 
+  // Get design style based on category
+  const getCategoryStyle = (category: string) => {
+    const styles: Record<string, {
+      primary: string;
+      secondary: string;
+      gradient: string;
+      accent: string;
+    }> = {
+      'コーポレートサイト': {
+        primary: '#3b82f6', // Blue
+        secondary: '#1e40af',
+        gradient: 'from-blue-500 to-blue-700',
+        accent: '#60a5fa'
+      },
+      'グルメ・飲食店': {
+        primary: '#f97316', // Orange
+        secondary: '#c2410c',
+        gradient: 'from-orange-500 to-red-600',
+        accent: '#fb923c'
+      },
+      'レジャー': {
+        primary: '#10b981', // Green
+        secondary: '#047857',
+        gradient: 'from-green-500 to-emerald-600',
+        accent: '#34d399'
+      },
+      '美容室': {
+        primary: '#ec4899', // Pink
+        secondary: '#be185d',
+        gradient: 'from-pink-500 to-rose-600',
+        accent: '#f472b6'
+      }
+    };
+    return styles[category] || {
+      primary: themeColor,
+      secondary: primaryColor,
+      gradient: 'from-purple-500 to-purple-700',
+      accent: themeColor
+    };
+  };
+
   return (
-    <section className="relative py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden" style={{ maxWidth: '100vw' }}>
+    <section className="relative py-20 bg-transparent overflow-hidden" style={{ maxWidth: '100vw' }}>
       {/* Background decoration with multiple colors */}
       <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
         <span className="text-[8rem] sm:text-[12rem] md:text-[15rem] lg:text-[20rem] font-bold uppercase select-none whitespace-nowrap bg-gradient-to-r from-gray-100/30 via-gray-100/20 to-gray-100/30 bg-clip-text text-transparent">
@@ -287,17 +410,22 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
 
         {/* Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {itemsToShow.map((item) => (
+          {itemsToShow.map((item) => {
+            const categoryStyle = getCategoryStyle(item.category);
+            return (
             <div
               key={item.id}
               className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+              style={{
+                borderTop: `4px solid ${categoryStyle.primary}`
+              }}
             >
               {/* Image Container */}
               <div className="relative h-64 overflow-hidden bg-gray-100">
-                {item.url && !failedIframes.has(item.id) ? (
+                {item.domain && !failedIframes.has(item.id) ? (
                   <div className="w-full h-full relative overflow-hidden">
                     <iframe
-                      src={item.url}
+                      src={item.domain}
                       className="w-full h-full border-0 transform scale-50 origin-top-left"
                       style={{
                         width: '200%',
@@ -309,20 +437,20 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                       loading="lazy"
                       onError={() => handleIframeError(item.id)}
                       onLoad={() => {
-                        if (item.url?.includes('d-office-ikeda.com')) {
+                        if (item.domain?.includes('d-office-ikeda.com')) {
                           handleIframeError(item.id);
                           return;
                         }
                       }}
                     />
                     {/* Overlay for interaction */}
-                    <div 
+                    <div
                       className="absolute inset-0 bg-transparent cursor-pointer group"
-                      onClick={() => handlePreview(item.url!, item.title)}
+                      onClick={() => handlePreview(item.domain!, item.title)}
                     >
-                      <div className="absolute inset-0 transition-all duration-200 flex items-center justify-center" style={{ backgroundColor: 'transparent' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = `${themeColor}20`} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>
+                      <div className="absolute inset-0 transition-all duration-200 flex items-center justify-center" style={{ backgroundColor: 'transparent' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = `${categoryStyle.primary}20`} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>
                         <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/90 rounded-full p-3">
-                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: themeColor }}>
+                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: categoryStyle.primary }}>
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                           </svg>
                         </div>
@@ -338,7 +466,7 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                     onError={() => handleImageError(item.id)}
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${themeColor}, ${primaryColor})` }}>
+                  <div className="w-full h-full flex items-center justify-center bg-transparent">
                     <div className="text-white text-center">
                       <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -354,12 +482,14 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
               {/* Content */}
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="inline-block text-xs font-medium px-3 py-1 rounded-full" style={{ backgroundColor: `${themeColor}20`, color: themeColor }}>
+                  <span className="inline-block text-xs font-medium px-3 py-1 rounded-full" style={{ backgroundColor: `${categoryStyle.primary}20`, color: categoryStyle.primary }}>
                     {item.category}
                   </span>
                 </div>
-                
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+
+                <h3 className="text-xl font-bold text-gray-900 mb-2 transition-colors" style={{
+                  color: 'inherit'
+                }} onMouseEnter={(e) => e.currentTarget.style.color = categoryStyle.primary} onMouseLeave={(e) => e.currentTarget.style.color = 'inherit'}>
                   {item.title}
                 </h3>
                 
@@ -380,7 +510,8 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Show More Button */}

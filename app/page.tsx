@@ -1,16 +1,21 @@
 import Header from "@/components/Header"
 import Hero from "@/components/Hero";
+import AIFeaturesTabSection from "@/components/AIFeaturesTabSection";
+import MEODetailSection from "@/components/MEODetailSection";
 import DesignerCards from "@/components/DesignerCards";
 // import LogosSection from "@/components/LogosSection"
 import PricingSection from "@/components/PricingSection"
+import ComparisonSection from "@/components/ComparisonSection"
+import AIMarketingSupportSection from "@/components/AIMarketingSupportSection"
 import StackedCardsSection from "@/components/StackedCardsSection"
-import PortfolioSection from "@/components/PortfolioSection"
+import PortfolioWrapper from "@/components/PortfolioWrapper"
 // import TeamSection from "@/components/TeamSection"
-import DeviceSection from "@/components/DeviceSection"
+// import DeviceSection from "@/components/DeviceSection"
 // import TestimonialsSection from "@/components/TestimonialsSection"
 import FAQSection from "@/components/FAQSection"
 import ProcessFlow from "@/components/ProcessFlow"
 import ContactSection from "@/components/ContactSection"
+import OEMPartnerSection from "@/components/OEMPartnerSection"
 import Footer from "@/components/Footer"
 
 export default function Home() {
@@ -19,17 +24,25 @@ export default function Home() {
       <Header />
       <Hero />
       <DesignerCards />
-      {/* <LogosSection /> */}
       <StackedCardsSection />
-      <PortfolioSection />
-      {/* <TeamSection /> */}
-      <DeviceSection />
-      {/* <TestimonialsSection /> */}
-      <PricingSection />
-      <FAQSection />
-      <ProcessFlow />
-      <ContactSection />
-      <Footer />
+      <PortfolioWrapper />
+      <ComparisonSection />
+
+      {/* Black background sections */}
+      <div className="bg-black">
+        <AIMarketingSupportSection />
+        <AIFeaturesTabSection />
+        <MEODetailSection />
+        {/* <LogosSection /> */}
+        {/* <TeamSection /> */}
+        {/* <TestimonialsSection /> */}
+        <PricingSection />
+        <FAQSection />
+        <ProcessFlow />
+        <ContactSection />
+        <OEMPartnerSection />
+        <Footer />
+      </div>
     </>
   )
 }

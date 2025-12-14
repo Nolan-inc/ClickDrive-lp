@@ -17,7 +17,7 @@ export default function HeroSection() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-500 to-purple-700 p-8 text-white h-80">
+          <div className="relative overflow-hidden rounded-2xl bg-transparent p-8 text-gray-900 h-80">
             <div className="absolute right-0 bottom-0 w-64 h-64 opacity-20">
               <img src="/api/placeholder/256/256" alt="Designer" className="object-cover" />
             </div>
@@ -33,7 +33,7 @@ export default function HeroSection() {
             </div>
           </div>
           
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-600 to-pink-600 p-8 text-white h-80">
+          <div className="relative overflow-hidden rounded-2xl bg-transparent p-8 text-gray-900 h-80">
             <div className="absolute right-0 bottom-0 w-64 h-64 opacity-20">
               <img src="/api/placeholder/256/256" alt="Designer" className="object-cover" />
             </div>
@@ -49,7 +49,7 @@ export default function HeroSection() {
             </div>
           </div>
           
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-pink-500 to-purple-700 p-8 text-white h-80">
+          <div className="relative overflow-hidden rounded-2xl bg-transparent p-8 text-gray-900 h-80">
             <div className="absolute right-0 bottom-0 w-64 h-64 opacity-20">
               <img src="/api/placeholder/256/256" alt="Designer" className="object-cover" />
             </div>

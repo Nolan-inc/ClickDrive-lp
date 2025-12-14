@@ -16,9 +16,9 @@ interface Designer {
 const staticDesigners: Designer[] = [
   {
     id: '1',
-    title: 'ClickDrive 様',
+    title: '株式会社Nolan 様',
     thumbnail: {
-      url: '/portfolio/nolan.png'
+      url: '/zisseki/株式会社Nolan_top.gif'
     },
     category: 'コーポレートサイト事例',
     url: 'https://nolan.co.jp'
@@ -27,50 +27,48 @@ const staticDesigners: Designer[] = [
     id: '2',
     title: 'Bar Bond 様',
     thumbnail: {
-      url: '/portfolio/barbond.png'
+      url: '/zisseki/BAR BOND_top.gif'
     },
     category: '飲食店事例',
     url: '#'
   },
   {
     id: '3',
-    title: 'Football Park 様',
+    title: '一般社団法人パルクール鬼ごっこ協会 様',
     thumbnail: {
-      url: '/portfolio/footballpark.png'
+      url: '/zisseki/一般社団法人パルクール鬼ごっこ協会_top.gif'
     },
     category: 'レジャー事例',
     url: '#'
   },
   {
     id: '4',
-    title: 'パルオニ 様',
+    title: '株式会社YOGI 様',
     thumbnail: {
-      url: '/portfolio/paruoni.png'
-    },
-    category: 'レジャー事例',
-    url: 'https://pk-oni.or.jp/'
-  },
-  {
-    id: '5',
-    title: 'YOGI 様',
-    thumbnail: {
-      url: '/portfolio/yogi.png'
+      url: '/zisseki/株式会社YOGI_top.gif'
     },
     category: '飲食店事例',
     url: 'https://yogigreekyogurt.com/'
+  },
+  {
+    id: '5',
+    title: '株式会社WAHRHEIT 様',
+    thumbnail: {
+      url: '/zisseki/株式会社WAHRHEIT_top.gif'
+    },
+    category: 'コーポレートサイト事例',
+    url: '#'
   }
 ];
 
 interface DesignerCardsProps {
   themeColor?: string;
-  primaryColor?: string;
   secondaryColor?: string | null;
   accentColor?: string | null;
 }
 
-const DesignerCards = ({ 
-  themeColor = "#2196f3", 
-  primaryColor = "#0066cc",
+const DesignerCards = ({
+  themeColor = "#8b5cf6",
   secondaryColor: _secondaryColor = null,
   accentColor: _accentColor = null
 }: DesignerCardsProps) => {
@@ -101,7 +99,7 @@ const DesignerCards = ({
   }, [currentIndex, designers.length]);
 
   return (
-    <section className="pt-12 pb-16 bg-white">
+    <section className="pt-12 pb-16 bg-transparent">
       <div className="w-full">
         <div className="relative h-[400px] overflow-hidden">
           <div 
@@ -121,16 +119,14 @@ const DesignerCards = ({
                       alt={designer.title}
                       fill
                       className="object-cover"
+                      unoptimized={true}
                     />
                   )}
                 </div>
-                
+
                 {/* 下部：テキストエリア */}
-                <div 
-                  className="h-1/3 p-4 text-white flex flex-col justify-center"
-                  style={{
-                    background: `linear-gradient(135deg, ${_secondaryColor || themeColor} 0%, ${_accentColor || primaryColor} 100%)`
-                  }}
+                <div
+                  className="h-1/3 p-4 text-gray-900 flex flex-col justify-center bg-white/90 backdrop-blur-sm"
                 >
                   <h3 className="text-lg font-bold mb-1">{designer.title}</h3>
                   {designer.category && (

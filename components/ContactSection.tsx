@@ -10,33 +10,33 @@ interface ContactSectionProps {
   lineUrl?: string | null;
 }
 
-export default function ContactSection({ 
-  themeColor = "#2196f3", 
-  primaryColor = "#0066cc",
+export default function ContactSection({
+  themeColor = "#8b5cf6",
+  primaryColor = "#7c3aed",
   secondaryColor = null,
   accentColor = null,
   lineUrl = null
 }: ContactSectionProps) {
 
   return (
-    <section id="contact" className="relative py-16 bg-white overflow-visible">
-      <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl opacity-20" style={{ backgroundColor: secondaryColor || themeColor }}></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl opacity-20" style={{ backgroundColor: accentColor || primaryColor }}></div>
-      {primaryColor && (
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full blur-3xl opacity-15" style={{ backgroundColor: primaryColor }}></div>
-      )}
-      
+    <section id="contact" className="relative py-16 bg-black overflow-hidden">
+      {/* Purple Glow Decorations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
+      </div>
+
       <div className="relative z-10">
         <div className="relative text-center mb-4 overflow-hidden w-full">
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="flex animate-slide whitespace-nowrap">
               {Array(20).fill(null).map((_, i) => (
-                <span key={i} className="text-6xl md:text-8xl font-bold text-gray-100/70 uppercase tracking-wider select-none mr-8">
+                <span key={i} className="text-6xl md:text-8xl font-bold text-gray-800/70 uppercase tracking-wider select-none mr-8">
                   Contact
                 </span>
               ))}
               {Array(20).fill(null).map((_, i) => (
-                <span key={`dup-${i}`} className="text-6xl md:text-8xl font-bold text-gray-100/70 uppercase tracking-wider select-none mr-8">
+                <span key={`dup-${i}`} className="text-6xl md:text-8xl font-bold text-gray-800/70 uppercase tracking-wider select-none mr-8">
                   Contact
                 </span>
               ))}
@@ -48,13 +48,13 @@ export default function ContactSection({
         </div>
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
-          <p className="text-center text-gray-600 mb-12">
+          <p className="text-center text-gray-300 mb-12">
             プロジェクトのご相談やサービスに関するご質問はLINEで承っております
           </p>
           
           {/* LINE Consultation Only */}
           <div>
-              <div className="rounded-2xl shadow-lg p-8 h-full flex flex-col justify-between" style={{ background: `linear-gradient(135deg, ${(secondaryColor || themeColor)}15, ${(accentColor || primaryColor)}15)` }}>
+              <div className="rounded-2xl shadow-lg p-8 h-full flex flex-col justify-between bg-gray-900 border border-gray-700">
                 <div>
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4" style={{ backgroundColor: `${themeColor}20`, color: themeColor }}>
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -62,34 +62,34 @@ export default function ContactSection({
                     </svg>
                     気軽に相談できる
                   </div>
-                  
+
                   <h3 className="text-2xl md:text-3xl font-bold mb-4">
                     <span style={{ color: secondaryColor || themeColor }}>LINE</span>で<span style={{ color: accentColor || primaryColor }}>無料相談</span>
                   </h3>
-                  
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+
+                  <p className="text-gray-300 mb-6 leading-relaxed">
                     お問い合わせフォームよりも気軽に、<br />
                     LINEでご相談いただけます。
                   </p>
-                  
+
                   <ul className="space-y-3 mb-6">
                     <li className="flex items-start gap-3">
                       <svg className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-gray-700 text-sm">営業時間内は即レス対応</span>
+                      <span className="text-gray-300 text-sm">営業時間内は即レス対応</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: secondaryColor || primaryColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-gray-700 text-sm">画像や資料の送信も簡単</span>
+                      <span className="text-gray-300 text-sm">画像や資料の送信も簡単</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: accentColor || primaryColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-gray-700 text-sm">過去の相談履歴も確認可能</span>
+                      <span className="text-gray-300 text-sm">過去の相談履歴も確認可能</span>
                     </li>
                   </ul>
                 </div>
