@@ -157,9 +157,6 @@ export default function ComparisonSection({
           </div>
         </div>
       </div>
-
-      {/* Gradient transition to black */}
-      <div className="h-64 bg-gradient-to-b from-transparent via-gray-500/20 to-black"></div>
     </section>
   );
 }
