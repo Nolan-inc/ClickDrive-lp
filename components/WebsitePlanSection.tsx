@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface WebsitePlanSectionProps {
   themeColor?: string;
@@ -12,6 +12,18 @@ export default function WebsitePlanSection({
   primaryColor = "#7c3aed"
 }: WebsitePlanSectionProps) {
   const [showOptions, setShowOptions] = useState(false);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (showOptions) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showOptions]);
 
   const websiteFeatures = [
     {
@@ -228,65 +240,77 @@ export default function WebsitePlanSection({
           </div>
         </div>
 
-        {/* Optional Pricing Toggle Button */}
+        {/* Optional Pricing Button */}
         <div className="max-w-4xl mx-auto mb-20 text-center">
           <button
-            onClick={() => setShowOptions(!showOptions)}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl"
+            onClick={() => setShowOptions(true)}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
             style={{ backgroundColor: themeColor }}
           >
             <span>💰</span>
             細かいオプション費用はこちら
-            <svg
-              className={`w-5 h-5 transition-transform duration-300 ${showOptions ? 'rotate-180' : ''}`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
           </button>
+        </div>
 
-          {/* Expandable Options Section */}
+        {/* Modal Overlay */}
+        {showOptions && (
           <div
-            className={`mt-8 overflow-hidden transition-all duration-500 ${showOptions ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 animate-fadeIn"
+            onClick={() => setShowOptions(false)}
           >
-            <div className="bg-white rounded-3xl shadow-xl p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center justify-center gap-2">
-                <span>📋</span>
-                オプション料金表
-              </h3>
-              <p className="text-gray-600 mb-8 text-center">
-                基本プランに追加できるオプションサービスです
-              </p>
+            {/* Modal Content */}
+            <div
+              className="relative bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden animate-scaleIn"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setShowOptions(false)}
+                className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+              >
+                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                {optionPricing.map((category, categoryIndex) => (
-                  <div key={categoryIndex} className="bg-gray-50 rounded-2xl p-6">
-                    <h4 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: themeColor }}>
-                      <span className="w-2 h-2 rounded-full" style={{ backgroundColor: themeColor }}></span>
-                      {category.category}
-                    </h4>
-                    <ul className="space-y-3">
-                      {category.options.map((option, optionIndex) => (
-                        <li key={optionIndex} className="flex justify-between items-start text-sm">
-                          <span className="text-gray-700 flex-1">{option.name}</span>
-                          <span className="font-semibold text-gray-900 ml-4 whitespace-nowrap">{option.price}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 p-4 bg-blue-50 rounded-xl">
-                <p className="text-sm text-gray-700 text-center">
-                  💡 <strong>ポイント：</strong>複数のオプションを組み合わせることも可能です。お気軽にご相談ください。
+              {/* Scrollable Content */}
+              <div className="overflow-y-auto max-h-[90vh] p-8">
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
+                  <span>📋</span>
+                  オプション料金表
+                </h3>
+                <p className="text-gray-600 mb-8 text-center">
+                  基本プランに追加できるオプションサービスです
                 </p>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  {optionPricing.map((category, categoryIndex) => (
+                    <div key={categoryIndex} className="bg-gray-50 rounded-2xl p-6">
+                      <h4 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: themeColor }}>
+                        <span className="w-2 h-2 rounded-full" style={{ backgroundColor: themeColor }}></span>
+                        {category.category}
+                      </h4>
+                      <ul className="space-y-3">
+                        {category.options.map((option, optionIndex) => (
+                          <li key={optionIndex} className="flex justify-between items-start text-sm">
+                            <span className="text-gray-700 flex-1">{option.name}</span>
+                            <span className="font-semibold text-gray-900 ml-4 whitespace-nowrap">{option.price}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 p-4 bg-blue-50 rounded-xl">
+                  <p className="text-sm text-gray-700 text-center">
+                    💡 <strong>ポイント：</strong>複数のオプションを組み合わせることも可能です。お気軽にご相談ください。
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Features Grid */}
         <div className="mb-20">
