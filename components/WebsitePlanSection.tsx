@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react';
+import React, { useState } from 'react';
 
 interface WebsitePlanSectionProps {
   themeColor?: string;
@@ -11,6 +11,7 @@ export default function WebsitePlanSection({
   themeColor = "#8b5cf6",
   primaryColor = "#7c3aed"
 }: WebsitePlanSectionProps) {
+  const [showOptions, setShowOptions] = useState(false);
 
   const websiteFeatures = [
     {
@@ -75,6 +76,52 @@ export default function WebsitePlanSection({
       emoji: '🔄',
       title: 'サイトのリニューアル',
       description: '古くなったサイトを現代的にアップデート'
+    }
+  ];
+
+  const optionPricing = [
+    {
+      category: 'ページ追加',
+      options: [
+        { name: '追加ページ（1ページ）', price: '5,000円' },
+        { name: '複雑なページ（フォーム・予約システムなど）', price: '10,000円〜' }
+      ]
+    },
+    {
+      category: '機能追加',
+      options: [
+        { name: 'お問い合わせフォームカスタマイズ', price: '8,000円' },
+        { name: 'ブログ機能', price: '15,000円' },
+        { name: '会員登録システム', price: '50,000円〜' },
+        { name: 'オンライン決済機能', price: '30,000円〜' },
+        { name: '予約システム', price: '40,000円〜' }
+      ]
+    },
+    {
+      category: 'デザイン',
+      options: [
+        { name: 'ロゴデザイン制作', price: '20,000円〜' },
+        { name: 'バナー制作（1枚）', price: '5,000円' },
+        { name: 'オリジナルイラスト制作', price: '10,000円〜' },
+        { name: '写真撮影（半日）', price: '50,000円〜' }
+      ]
+    },
+    {
+      category: 'コンテンツ',
+      options: [
+        { name: '取材・ライティング（1記事）', price: '15,000円' },
+        { name: '商品撮影（10点まで）', price: '20,000円' },
+        { name: '動画制作（30秒）', price: '50,000円〜' }
+      ]
+    },
+    {
+      category: 'その他',
+      options: [
+        { name: 'SSL証明書設定', price: '無料' },
+        { name: 'ドメイン取得代行', price: '3,000円' },
+        { name: 'Google Analytics設定', price: '5,000円' },
+        { name: 'サーバー移行作業', price: '20,000円〜' }
+      ]
     }
   ];
 
@@ -176,6 +223,66 @@ export default function WebsitePlanSection({
                     </ul>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Optional Pricing Toggle Button */}
+        <div className="max-w-4xl mx-auto mb-20 text-center">
+          <button
+            onClick={() => setShowOptions(!showOptions)}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl"
+            style={{ backgroundColor: themeColor }}
+          >
+            <span>💰</span>
+            細かいオプション費用はこちら
+            <svg
+              className={`w-5 h-5 transition-transform duration-300 ${showOptions ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          {/* Expandable Options Section */}
+          <div
+            className={`mt-8 overflow-hidden transition-all duration-500 ${showOptions ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}
+          >
+            <div className="bg-white rounded-3xl shadow-xl p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center justify-center gap-2">
+                <span>📋</span>
+                オプション料金表
+              </h3>
+              <p className="text-gray-600 mb-8 text-center">
+                基本プランに追加できるオプションサービスです
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                {optionPricing.map((category, categoryIndex) => (
+                  <div key={categoryIndex} className="bg-gray-50 rounded-2xl p-6">
+                    <h4 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: themeColor }}>
+                      <span className="w-2 h-2 rounded-full" style={{ backgroundColor: themeColor }}></span>
+                      {category.category}
+                    </h4>
+                    <ul className="space-y-3">
+                      {category.options.map((option, optionIndex) => (
+                        <li key={optionIndex} className="flex justify-between items-start text-sm">
+                          <span className="text-gray-700 flex-1">{option.name}</span>
+                          <span className="font-semibold text-gray-900 ml-4 whitespace-nowrap">{option.price}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 p-4 bg-blue-50 rounded-xl">
+                <p className="text-sm text-gray-700 text-center">
+                  💡 <strong>ポイント：</strong>複数のオプションを組み合わせることも可能です。お気軽にご相談ください。
+                </p>
               </div>
             </div>
           </div>
