@@ -6,6 +6,7 @@ import DesignerCards from "@/components/DesignerCards";
 // import LogosSection from "@/components/LogosSection"
 import PricingSection from "@/components/PricingSection"
 import ComparisonSection from "@/components/ComparisonSection"
+import WebsitePlanSection from "@/components/WebsitePlanSection"
 import AIMarketingSupportSection from "@/components/AIMarketingSupportSection"
 import StackedCardsSection from "@/components/StackedCardsSection"
 import PortfolioWrapper from "@/components/PortfolioWrapper"
@@ -27,6 +28,7 @@ export default function Home() {
       <StackedCardsSection />
       <PortfolioWrapper />
       <ComparisonSection />
+      <WebsitePlanSection />
 
       {/* Black background sections */}
       <div className="bg-black">
