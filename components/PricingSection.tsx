@@ -192,7 +192,7 @@ export default function PricingSection({
                     }`}
                     style={plan.isDark ? { backgroundColor: themeColor } : {}}
                   >
-                    詳細を見る →
+                    問い合わせする
                   </a>
                 </div>
               </div>

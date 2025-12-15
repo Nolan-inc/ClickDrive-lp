@@ -33,7 +33,7 @@ export default function ComparisonSection({
   };
 
   const initialFee = pricingData ? formatPrice(pricingData.initial_setup_fee, pricingData.currency) : '0円';
-  const monthlyFee = pricingData ? formatPrice(pricingData.monthly_fee, pricingData.currency) : '9,800円';
+  const monthlyFee = pricingData ? formatPrice(pricingData.monthly_fee, pricingData.currency) : '5,800円';
 
   const comparisonData = [
     { item: '初期費用', quickweb: initialFee + '（期間限定）', a: '15万円〜', b: '30万円', c: '0円' },
