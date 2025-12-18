@@ -8,6 +8,7 @@ interface AIMEOSectionProps {
 }
 
 const AIMEOSection: React.FC<AIMEOSectionProps> = ({
+  themeColor = "#8b5cf6",
   primaryColor = "#7c3aed"
 }) => {
   const [activeReview, setActiveReview] = useState(0);
@@ -94,10 +95,10 @@ const AIMEOSection: React.FC<AIMEOSectionProps> = ({
 
   return (
     <section className="relative pt-0 pb-20 bg-black overflow-hidden">
-      {/* Purple Glow Decorations */}
+      {/* Glow Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: `${themeColor}1a` }}></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: `${themeColor}1a` }}></div>
       </div>
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">

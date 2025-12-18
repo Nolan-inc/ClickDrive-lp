@@ -1,14 +1,18 @@
 import Header from "@/components/Header"
 import Hero from "@/components/Hero";
+import AIFeaturesTabSection from "@/components/AIFeaturesTabSection";
+import MEODetailSection from "@/components/MEODetailSection";
 import DesignerCards from "@/components/DesignerCards";
 import PricingSection from "@/components/PricingSection"
 import ComparisonSection from "@/components/ComparisonSection"
+import WebsitePlanSection from "@/components/WebsitePlanSection"
+import AIMarketingSupportSection from "@/components/AIMarketingSupportSection"
 import StackedCardsSection from "@/components/StackedCardsSection"
 import PortfolioWrapper from "@/components/PortfolioWrapper"
-import DeviceSection from "@/components/DeviceSection"
 import FAQSection from "@/components/FAQSection"
 import ProcessFlow from "@/components/ProcessFlow"
 import ContactSection from "@/components/ContactSection"
+import OEMPartnerSection from "@/components/OEMPartnerSection"
 import Footer from "@/components/Footer"
 import { supabaseAdmin } from "@/lib/supabase"
 import { Metadata } from "next"
@@ -117,8 +121,8 @@ export default async function OEMPartnerPage({ params }: Props) {
   
   return (
     <>
-      <Header 
-        brandName={slug} 
+      <Header
+        brandName={slug}
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
         secondaryColor={partnerData.secondary_color}
@@ -126,7 +130,7 @@ export default async function OEMPartnerPage({ params }: Props) {
         faviconUrl={partnerData.favicon_url}
         lineUrl={partnerData.line_url}
       />
-      <Hero 
+      <Hero
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
         secondaryColor={partnerData.secondary_color}
@@ -139,7 +143,7 @@ export default async function OEMPartnerPage({ params }: Props) {
         secondaryColor={partnerData.secondary_color}
         accentColor={partnerData.accent_color}
       />
-      <StackedCardsSection 
+      <StackedCardsSection
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
         secondaryColor={partnerData.secondary_color}
@@ -152,47 +156,65 @@ export default async function OEMPartnerPage({ params }: Props) {
         accentColor={partnerData.accent_color}
         lineUrl={partnerData.line_url}
       />
-      <DeviceSection 
-        themeColor={partnerData.theme_color}
-        primaryColor={partnerData.primary_color}
-        secondaryColor={partnerData.secondary_color}
-        accentColor={partnerData.accent_color}
-      />
-      <PricingSection
-        themeColor={partnerData.theme_color}
-      />
-      <FAQSection
-        themeColor={partnerData.theme_color}
-        primaryColor={partnerData.primary_color}
-        secondaryColor={partnerData.secondary_color}
-        accentColor={partnerData.accent_color}
-      />
       <ComparisonSection
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
         pricingData={partnerData.pricing}
         brandName={slug}
       />
-      <ProcessFlow 
+      <WebsitePlanSection
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
-        secondaryColor={partnerData.secondary_color}
-        accentColor={partnerData.accent_color}
       />
-      <ContactSection 
-        themeColor={partnerData.theme_color}
-        primaryColor={partnerData.primary_color}
-        secondaryColor={partnerData.secondary_color}
-        accentColor={partnerData.accent_color}
-        lineUrl={partnerData.line_url}
-      />
-      <Footer 
-        themeColor={partnerData.theme_color}
-        primaryColor={partnerData.primary_color}
-        secondaryColor={partnerData.secondary_color}
-        accentColor={partnerData.accent_color}
-        lineUrl={partnerData.line_url}
-      />
+
+      {/* Black background sections */}
+      <div className="bg-black">
+        <AIMarketingSupportSection
+          themeColor={partnerData.theme_color}
+        />
+        <AIFeaturesTabSection
+          themeColor={partnerData.theme_color}
+          primaryColor={partnerData.primary_color}
+          secondaryColor={partnerData.secondary_color}
+          accentColor={partnerData.accent_color}
+        />
+        <MEODetailSection
+          themeColor={partnerData.theme_color}
+          primaryColor={partnerData.primary_color}
+        />
+        <PricingSection
+          themeColor={partnerData.theme_color}
+        />
+        <FAQSection
+          themeColor={partnerData.theme_color}
+          primaryColor={partnerData.primary_color}
+          secondaryColor={partnerData.secondary_color}
+          accentColor={partnerData.accent_color}
+        />
+        <ProcessFlow
+          themeColor={partnerData.theme_color}
+          primaryColor={partnerData.primary_color}
+          secondaryColor={partnerData.secondary_color}
+          accentColor={partnerData.accent_color}
+        />
+        <ContactSection
+          themeColor={partnerData.theme_color}
+          primaryColor={partnerData.primary_color}
+          secondaryColor={partnerData.secondary_color}
+          accentColor={partnerData.accent_color}
+          lineUrl={partnerData.line_url}
+        />
+        <OEMPartnerSection
+          themeColor={partnerData.theme_color}
+        />
+        <Footer
+          themeColor={partnerData.theme_color}
+          primaryColor={partnerData.primary_color}
+          secondaryColor={partnerData.secondary_color}
+          accentColor={partnerData.accent_color}
+          lineUrl={partnerData.line_url}
+        />
+      </div>
     </>
   )
 }

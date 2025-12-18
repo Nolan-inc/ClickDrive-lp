@@ -10,6 +10,7 @@ interface FAQSectionProps {
 }
 
 export default function FAQSection({
+  themeColor = "#8b5cf6",
   primaryColor: _primaryColor = "#7c3aed"
 }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
@@ -177,10 +178,10 @@ export default function FAQSection({
 
   return (
     <section className="relative py-16 bg-black overflow-hidden">
-      {/* Purple Glow Decorations */}
+      {/* Glow Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: `${themeColor}1a` }}></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: `${themeColor}1a` }}></div>
       </div>
 
       <div className="relative text-center mb-12 w-full z-10">

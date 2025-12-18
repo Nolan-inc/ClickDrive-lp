@@ -3,7 +3,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const AIMarketingSupportSection = () => {
+interface AIMarketingSupportSectionProps {
+  themeColor?: string;
+}
+
+const AIMarketingSupportSection = ({ themeColor = "#8b5cf6" }: AIMarketingSupportSectionProps) => {
   const features = [
     {
       icon: (
@@ -70,7 +74,7 @@ const AIMarketingSupportSection = () => {
     <section className="relative pt-20 md:pt-32 pb-20 md:pb-32 bg-black overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse" style={{ backgroundColor: `${themeColor}0d` }}></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
