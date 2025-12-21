@@ -5,13 +5,36 @@ import React, { useState, useEffect } from 'react';
 interface WebsitePlanSectionProps {
   themeColor?: string;
   primaryColor?: string;
+  pricingData?: {
+    monthly_fee: number;
+    initial_setup_fee: number;
+    yearly_fee: number;
+    currency: string;
+    trial_period_days: number;
+    yearly_discount_rate: number;
+    features: string[];
+  } | null;
 }
 
 export default function WebsitePlanSection({
   themeColor = "#8b5cf6",
-  primaryColor = "#7c3aed"
+  primaryColor = "#7c3aed",
+  pricingData = null
 }: WebsitePlanSectionProps) {
   const [showOptions, setShowOptions] = useState(false);
+
+  // Format pricing for display
+  const formatPrice = (amount: number, currency: string = 'JPY') => {
+    if (currency === 'JPY') {
+      return amount.toLocaleString();
+    }
+    return `${currency} ${amount}`;
+  };
+
+  // Get pricing values - use pricingData if available, otherwise use defaults
+  const monthlyFee = pricingData ? formatPrice(pricingData.monthly_fee, pricingData.currency) : '5,800';
+  const initialFee = pricingData ? formatPrice(pricingData.initial_setup_fee, pricingData.currency) : '0';
+  const currency = pricingData?.currency === 'JPY' ? '円' : pricingData?.currency || '円';
 
   // Prevent body scroll when modal is open
   useEffect(() => {
@@ -191,16 +214,16 @@ export default function WebsitePlanSection({
                       <div>
                         <div className="text-sm text-gray-500 mb-1">初期費用</div>
                         <div className="flex items-baseline gap-2">
-                          <span className="text-4xl font-bold" style={{ color: themeColor }}>0円</span>
-                          <span className="text-lg text-red-500 font-semibold">期間限定！</span>
+                          <span className="text-4xl font-bold" style={{ color: themeColor }}>{initialFee}{currency}</span>
+                          {initialFee === '0' && <span className="text-lg text-red-500 font-semibold">期間限定！</span>}
                         </div>
                       </div>
 
                       <div>
                         <div className="text-sm text-gray-500 mb-1">月額費用</div>
                         <div className="flex items-baseline gap-2">
-                          <span className="text-5xl font-bold text-gray-900">5,800</span>
-                          <span className="text-2xl text-gray-600">円</span>
+                          <span className="text-5xl font-bold text-gray-900">{monthlyFee}</span>
+                          <span className="text-2xl text-gray-600">{currency}</span>
                           <span className="text-sm text-gray-500">（税込）</span>
                         </div>
                       </div>

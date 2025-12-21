@@ -172,6 +172,7 @@ export default async function OEMPartnerPage({ params }: Props) {
       <WebsitePlanSection
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
+        pricingData={partnerData.pricing}
       />
 
       {/* Black background sections */}
