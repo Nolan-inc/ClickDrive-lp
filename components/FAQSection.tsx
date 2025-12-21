@@ -7,26 +7,43 @@ interface FAQSectionProps {
   primaryColor?: string;
   secondaryColor?: string | null;
   accentColor?: string | null;
+  pricingData?: {
+    monthly_fee: number;
+    initial_setup_fee: number;
+    yearly_fee: number;
+    currency: string;
+    trial_period_days: number;
+    yearly_discount_rate: number;
+    features: string[];
+  } | null;
 }
 
 export default function FAQSection({
   themeColor = "#8b5cf6",
-  primaryColor: _primaryColor = "#7c3aed"
+  primaryColor: _primaryColor = "#7c3aed",
+  pricingData = null
 }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const [selectedCategory, setSelectedCategory] = useState<string>('全て')
   const [showAll, setShowAll] = useState<boolean>(false)
-  
+
+  const monthlyFee = pricingData
+    ? `${pricingData.monthly_fee.toLocaleString()}${pricingData.currency === 'JPY' ? '円' : pricingData.currency}`
+    : '5,800円';
+  const initialFee = pricingData
+    ? `${pricingData.initial_setup_fee.toLocaleString()}${pricingData.currency === 'JPY' ? '円' : pricingData.currency}`
+    : '0円';
+
   const faqs = [
     // 料金・契約について
     {
       category: '料金・契約',
       question: '初期費用はいくらですか？',
-      answer: '現在、初期費用0円キャンペーン中です。月額5,800円のみでスタートできます。'
+      answer: `現在、初期費用${initialFee}キャンペーン中です。月額${monthlyFee}のみでスタートできます。`
     },
     {
       category: '料金・契約',
-      question: '月額5,800円に含まれるものは何ですか？',
+      question: `月額${monthlyFee}に含まれるものは何ですか？`,
       answer: 'ホームページ制作、SEO対策、MEO対策、Instagram運用、AIカレンダー管理、定期更新、サーバー管理、ドメイン管理、SSL証明書、メールアドレス作成、お問い合わせフォーム、アクセス解析など、全て含まれています。'
     },
     {

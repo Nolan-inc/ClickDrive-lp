@@ -7,9 +7,26 @@ interface StackedCardsSectionProps {
   primaryColor?: string;
   secondaryColor?: string | null;
   accentColor?: string | null;
+  pricingData?: {
+    monthly_fee: number;
+    initial_setup_fee: number;
+    yearly_fee: number;
+    currency: string;
+    trial_period_days: number;
+    yearly_discount_rate: number;
+    features: string[];
+  } | null;
 }
 
-const StackedCardsSection: React.FC<StackedCardsSectionProps> = () => {
+const StackedCardsSection: React.FC<StackedCardsSectionProps> = ({
+  pricingData = null
+}) => {
+  const monthlyFee = pricingData
+    ? `${pricingData.monthly_fee.toLocaleString()}${pricingData.currency === 'JPY' ? '円' : pricingData.currency}`
+    : '5,800円';
+  const initialFee = pricingData
+    ? `${pricingData.initial_setup_fee.toLocaleString()}${pricingData.currency === 'JPY' ? '円' : pricingData.currency}`
+    : '0円';
   return (
     <section className="relative bg-transparent py-20">
       <div className="container mx-auto px-4">
@@ -68,7 +85,7 @@ const StackedCardsSection: React.FC<StackedCardsSectionProps> = () => {
             </h3>
 
             <p className="text-gray-600 text-sm leading-relaxed">
-              月額5,800円という中小企業様にも導入しやすい価格設定を実現しました。初期費用は0円キャンペーン実施中。
+              月額{monthlyFee}という中小企業様にも導入しやすい価格設定を実現しました。初期費用は{initialFee}キャンペーン実施中。
             </p>
           </div>
 

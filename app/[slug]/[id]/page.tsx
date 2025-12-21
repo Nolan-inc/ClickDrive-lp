@@ -155,6 +155,7 @@ export default async function OEMPartnerPage({ params }: Props) {
         primaryColor={partnerData.primary_color}
         secondaryColor={partnerData.secondary_color}
         accentColor={partnerData.accent_color}
+        pricingData={partnerData.pricing}
       />
       <PortfolioWrapper
         themeColor={partnerData.theme_color}
@@ -195,6 +196,7 @@ export default async function OEMPartnerPage({ params }: Props) {
           primaryColor={partnerData.primary_color}
           secondaryColor={partnerData.secondary_color}
           accentColor={partnerData.accent_color}
+          pricingData={partnerData.pricing}
         />
         <ProcessFlow
           themeColor={partnerData.theme_color}

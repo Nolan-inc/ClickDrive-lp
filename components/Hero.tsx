@@ -34,6 +34,9 @@ const Hero = ({
   };
 
   const monthlyFee = pricingData ? formatPrice(pricingData.monthly_fee, pricingData.currency) : '5,800円';
+  const monthlyFeeDisplay = pricingData
+    ? `${pricingData.monthly_fee.toLocaleString()}${pricingData.currency === 'JPY' ? '円' : pricingData.currency}`
+    : '5,800円';
 
 
   return (
@@ -63,7 +66,7 @@ const Hero = ({
               <span className="text-gray-900">ホームページを</span>
               <br />
               <span className="text-gray-900">月額</span>
-              <span style={{ color: accentColor || themeColor }}>5,800円</span>
+              <span style={{ color: accentColor || themeColor }}>{monthlyFeeDisplay}</span>
               <br className="sm:hidden" />
               <span className="text-gray-900">で作ります</span>
             </h1>
