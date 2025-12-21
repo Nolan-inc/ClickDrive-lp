@@ -6,13 +6,11 @@ import DesignerCards from "@/components/DesignerCards";
 import PricingSection from "@/components/PricingSection"
 import ComparisonSection from "@/components/ComparisonSection"
 import WebsitePlanSection from "@/components/WebsitePlanSection"
-import AIMarketingSupportSection from "@/components/AIMarketingSupportSection"
 import StackedCardsSection from "@/components/StackedCardsSection"
 import PortfolioWrapper from "@/components/PortfolioWrapper"
 import FAQSection from "@/components/FAQSection"
 import ProcessFlow from "@/components/ProcessFlow"
 import ContactSection from "@/components/ContactSection"
-import OEMPartnerSection from "@/components/OEMPartnerSection"
 import Footer from "@/components/Footer"
 import BackgroundGlow from "@/components/BackgroundGlow"
 import { supabaseAdmin } from "@/lib/supabase"
@@ -210,9 +208,6 @@ export default async function OEMPartnerPage({ params }: Props) {
           secondaryColor={partnerData.secondary_color}
           accentColor={partnerData.accent_color}
           lineUrl={partnerData.line_url}
-        />
-        <OEMPartnerSection
-          themeColor={partnerData.theme_color}
         />
         <Footer
           themeColor={partnerData.theme_color}
