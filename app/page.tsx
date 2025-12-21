@@ -18,10 +18,12 @@ import ProcessFlow from "@/components/ProcessFlow"
 import ContactSection from "@/components/ContactSection"
 import OEMPartnerSection from "@/components/OEMPartnerSection"
 import Footer from "@/components/Footer"
+import BackgroundGlow from "@/components/BackgroundGlow"
 
 export default function Home() {
   return (
     <>
+      <BackgroundGlow />
       <Header />
       <Hero />
       <DesignerCards />
@@ -32,7 +34,6 @@ export default function Home() {
 
       {/* Black background sections */}
       <div className="bg-black">
-        <AIMarketingSupportSection />
         <AIFeaturesTabSection />
         <MEODetailSection />
         {/* <LogosSection /> */}

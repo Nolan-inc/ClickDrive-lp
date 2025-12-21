@@ -112,10 +112,10 @@ export default function PricingSection({
           >
             PRICING
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white leading-tight px-4">
             AIで実現する 圧倒的コスパ
           </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-3xl mx-auto px-4">
             人件費の97%削減を実現。浮いた予算を成長投資へ。
           </p>
         </div>
@@ -124,7 +124,7 @@ export default function PricingSection({
       {/* Plans Grid - 5 Columns */}
       <div className="w-full px-4 mb-16">
         <div className="max-w-[1600px] mx-auto">
-          <div className="grid md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
             {aiPlans.map((plan, index) => (
               <div
                 key={index}

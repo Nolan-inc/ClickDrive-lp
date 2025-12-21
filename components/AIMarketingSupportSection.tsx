@@ -87,13 +87,13 @@ const AIMarketingSupportSection = ({ themeColor = "#8b5cf6" }: AIMarketingSuppor
           transition={{ duration: 0.8 }}
           className="text-center mb-16 md:mb-20"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 leading-tight px-4">
             ホームページだけではありません
           </h2>
-          <p className="text-xl md:text-2xl text-gray-300 mb-4 max-w-4xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-3 md:mb-4 max-w-4xl mx-auto px-4">
             AIによるあなたのマーケティングを全般的にサポートいたします
           </p>
-          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto px-4">
             SEO、MEO、Instagramなど、あなたの日々のマーケティング業務を<br className="hidden md:block" />
             <span className="text-purple-400 font-semibold">すべてAIに代行</span>することができます
           </p>

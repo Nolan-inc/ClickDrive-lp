@@ -14,6 +14,7 @@ import ProcessFlow from "@/components/ProcessFlow"
 import ContactSection from "@/components/ContactSection"
 import OEMPartnerSection from "@/components/OEMPartnerSection"
 import Footer from "@/components/Footer"
+import BackgroundGlow from "@/components/BackgroundGlow"
 import { supabaseAdmin } from "@/lib/supabase"
 import { Metadata } from "next"
 
@@ -118,9 +119,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function OEMPartnerPage({ params }: Props) {
   const { slug, id } = await params;
   const partnerData = await getPartnerData(id);
-  
+
   return (
     <>
+      <BackgroundGlow
+        themeColor={partnerData.theme_color}
+        primaryColor={partnerData.primary_color}
+        secondaryColor={partnerData.secondary_color}
+        accentColor={partnerData.accent_color}
+      />
       <Header
         brandName={slug}
         themeColor={partnerData.theme_color}
@@ -169,9 +176,6 @@ export default async function OEMPartnerPage({ params }: Props) {
 
       {/* Black background sections */}
       <div className="bg-black">
-        <AIMarketingSupportSection
-          themeColor={partnerData.theme_color}
-        />
         <AIFeaturesTabSection
           themeColor={partnerData.theme_color}
           primaryColor={partnerData.primary_color}

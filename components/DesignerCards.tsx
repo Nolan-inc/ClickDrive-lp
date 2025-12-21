@@ -74,10 +74,22 @@ const DesignerCards = ({
 }: DesignerCardsProps) => {
   const [currentIndex, setCurrentIndex] = useState(3); // Start at index 3 to account for prepended items
   const [isTransitioning, setIsTransitioning] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const designers = staticDesigners;
 
   // Create extended array for infinite loop effect with duplicates at both ends
   const extendedDesigners = [...designers.slice(-3), ...designers, ...designers.slice(0, 3)];
+
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -98,18 +110,21 @@ const DesignerCards = ({
     return () => clearInterval(interval);
   }, [currentIndex, designers.length]);
 
+  const cardWidth = isMobile ? 260 : 340;
+  const halfCardWidth = isMobile ? 130 : 170;
+
   return (
     <section className="pt-12 pb-16 bg-transparent">
       <div className="w-full">
-        <div className="relative h-[400px] overflow-hidden">
-          <div 
+        <div className="relative h-[300px] sm:h-[350px] md:h-[400px] overflow-hidden">
+          <div
             className={`flex ${isTransitioning ? 'transition-transform duration-500 ease-in-out' : ''}`}
-            style={{ transform: `translateX(calc(-${currentIndex * 340}px + 50vw - 170px))` }}
+            style={{ transform: `translateX(calc(-${currentIndex * cardWidth}px + 50vw - ${halfCardWidth}px))` }}
           >
             {extendedDesigners.map((designer, index) => (
               <div
                 key={`${designer.id}-${index}`}
-                className="relative flex-shrink-0 w-80 h-[350px] rounded-3xl overflow-hidden shadow-xl mx-3 flex flex-col"
+                className="relative flex-shrink-0 w-60 sm:w-80 h-[280px] sm:h-[330px] md:h-[350px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl mx-2 sm:mx-3 flex flex-col"
               >
                 {/* 上部：写真エリア */}
                 <div className="relative h-2/3 overflow-hidden">
@@ -126,9 +141,9 @@ const DesignerCards = ({
 
                 {/* 下部：テキストエリア */}
                 <div
-                  className="h-1/3 p-4 text-gray-900 flex flex-col justify-center bg-white/90 backdrop-blur-sm"
+                  className="h-1/3 p-3 sm:p-4 text-gray-900 flex flex-col justify-center bg-white/90 backdrop-blur-sm"
                 >
-                  <h3 className="text-lg font-bold mb-1">{designer.title}</h3>
+                  <h3 className="text-base sm:text-lg font-bold mb-1 line-clamp-1">{designer.title}</h3>
                   {designer.category && (
                     <p className="text-xs opacity-80">
                       {designer.category}

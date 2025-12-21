@@ -503,19 +503,20 @@ const MEODetailSection: React.FC<MEODetailSectionProps> = ({
       {/* Full Width Container */}
       <div className="w-full px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 md:mb-16 px-2">
           <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-4"
+            className="inline-flex items-center gap-2 px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium mb-4"
             style={{ backgroundColor: `${themeColor}20`, color: themeColor }}
           >
             <span>🎯</span>
             <span>AI統合管理システム</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-white leading-tight">
             <span style={{ color: themeColor }}>すべての集客</span>を
-            <span style={{ color: primaryColor }}> ワンストップ管理</span>
+            <br className="sm:hidden" />
+            <span style={{ color: primaryColor }}>ワンストップ管理</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-4">
             MEO・SNS・ブログ・口コミ対応をAIが24時間365日自動化
           </p>
         </div>
@@ -551,20 +552,21 @@ const MEODetailSection: React.FC<MEODetailSectionProps> = ({
         </div>
 
         {/* Dashboard Container - Full Width */}
-        <div className="bg-gray-900 border border-gray-800 rounded-2xl shadow-lg overflow-hidden max-w-[1800px] mx-auto">
+        <div className="bg-gray-900 border border-gray-800 rounded-xl md:rounded-2xl shadow-lg overflow-hidden max-w-[1800px] mx-auto">
           {/* Dashboard Header */}
-          <div className="bg-gray-900 border border-gray-800 p-5 border-b border-gray-700">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <h3 className="text-white font-bold text-xl">{industryData.storeName}</h3>
-                <span className="text-sm text-gray-400 bg-gray-700 px-3 py-1 rounded-full">{industryData.storeType}</span>
+          <div className="bg-gray-900 border border-gray-800 p-3 md:p-5 border-b border-gray-700">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-2 md:gap-4">
+                <h3 className="text-white font-bold text-base md:text-xl">{industryData.storeName}</h3>
+                <span className="text-xs md:text-sm text-gray-400 bg-gray-700 px-2 md:px-3 py-1 rounded-full">{industryData.storeType}</span>
               </div>
-              <div className="flex items-center gap-6 text-sm">
+              <div className="flex items-center gap-3 md:gap-6 text-xs md:text-sm">
                 <div className="flex items-center gap-2 text-green-600">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  <span>システム稼働中</span>
+                  <span className="hidden sm:inline">システム稼働中</span>
+                  <span className="sm:hidden">稼働中</span>
                 </div>
-                <div className="text-gray-400">
+                <div className="text-gray-400 hidden md:block">
                   最終更新: {new Date().toLocaleTimeString('ja-JP')}
                 </div>
               </div>
@@ -572,29 +574,31 @@ const MEODetailSection: React.FC<MEODetailSectionProps> = ({
           </div>
 
           {/* Main Dashboard */}
-          <div className="flex min-h-[700px]">
+          <div className="flex flex-col md:flex-row min-h-[400px] md:min-h-[700px]">
             {/* Sidebar */}
-            <div className="w-56 bg-gray-800 border-r border-gray-700">
-              <div className="py-4">
-                <nav>
-                  {tabs.map(tab => (
-                    <button
-                      key={tab.id}
-                      onClick={() => setActiveTab(tab.id)}
-                      className={`w-full flex items-center gap-3 px-6 py-3 transition-all duration-200 relative ${
-                        activeTab === tab.id
-                          ? 'bg-purple-50 text-purple-700 font-medium before:absolute before:left-0 before:top-0 before:h-full before:w-1 before:bg-purple-600'
-                          : 'text-gray-400 hover:bg-gray-700 hover:text-white'
-                      }`}
-                    >
-                      <span className="flex-shrink-0">{tab.icon}</span>
-                      <span className="text-sm">{tab.label}</span>
-                    </button>
-                  ))}
+            <div className="w-full md:w-56 bg-gray-800 border-b md:border-b-0 md:border-r border-gray-700">
+              <div className="py-2 md:py-4">
+                <nav className="md:block">
+                  <div className="flex md:flex-col overflow-x-auto md:overflow-x-visible gap-1 md:gap-0 px-2 md:px-0">
+                    {tabs.map(tab => (
+                      <button
+                        key={tab.id}
+                        onClick={() => setActiveTab(tab.id)}
+                        className={`flex-shrink-0 md:w-full flex items-center gap-2 md:gap-3 px-3 md:px-6 py-2 md:py-3 transition-all duration-200 relative rounded-lg md:rounded-none ${
+                          activeTab === tab.id
+                            ? 'bg-purple-50 text-purple-700 font-medium md:before:absolute md:before:left-0 md:before:top-0 md:before:h-full md:before:w-1 md:before:bg-purple-600'
+                            : 'text-gray-400 hover:bg-gray-700 hover:text-white'
+                        }`}
+                      >
+                        <span className="flex-shrink-0 text-sm md:text-base">{tab.icon}</span>
+                        <span className="text-xs md:text-sm whitespace-nowrap">{tab.label}</span>
+                      </button>
+                    ))}
+                  </div>
                 </nav>
 
                 {/* Stats */}
-                <div className="border-t border-gray-700 mt-4 pt-4 px-6">
+                <div className="hidden md:block border-t border-gray-700 mt-4 pt-4 px-6">
                   <div className="text-gray-400 text-xs font-semibold uppercase mb-3 tracking-wider">本日の実績</div>
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
@@ -622,14 +626,14 @@ const MEODetailSection: React.FC<MEODetailSectionProps> = ({
             <div className="flex-1 bg-gray-900 border border-gray-800 overflow-auto">
               {/* Tab Content */}
               {activeTab === 'settings' && (
-                <div className="p-6">
-                  <div className="mb-6">
-                    <h4 className="text-2xl font-bold text-white mb-4">
+                <div className="p-3 md:p-6">
+                  <div className="mb-4 md:mb-6">
+                    <h4 className="text-lg md:text-2xl font-bold text-white mb-3 md:mb-4">
                       {industryData.storeName} - 店舗設定
                     </h4>
 
                     {/* Store Information */}
-                    <div className="grid grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                       <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 shadow-sm">
                         <h5 className="font-bold text-white mb-4">基本情報</h5>
                         <div className="space-y-4">
@@ -728,7 +732,7 @@ const MEODetailSection: React.FC<MEODetailSectionProps> = ({
                     </div>
 
                     {/* AI Settings */}
-                    <div className="grid grid-cols-2 gap-6 mt-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6">
                       <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 shadow-sm">
                         <h5 className="font-bold text-white mb-4">AI自動返信設定</h5>
                         <div className="space-y-4">
@@ -875,13 +879,13 @@ const MEODetailSection: React.FC<MEODetailSectionProps> = ({
               )}
 
               {activeTab === 'reviews' && (
-                <div className="p-8">
-                  <div className="mb-8">
-                    <h4 className="text-2xl font-bold text-white">口コミ管理</h4>
+                <div className="p-3 md:p-8">
+                  <div className="mb-4 md:mb-8">
+                    <h4 className="text-lg md:text-2xl font-bold text-white">口コミ管理</h4>
                     <p className="text-sm text-gray-400 mt-1">AIが自動で口コミに返信します</p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     {/* Reviews List */}
                     <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 shadow-sm">
                       <h5 className="font-semibold text-white mb-4">未返信の口コミ</h5>
@@ -998,7 +1002,7 @@ const MEODetailSection: React.FC<MEODetailSectionProps> = ({
                     </button>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     {/* 投稿作成 */}
                     <div className="bg-gray-900 border border-gray-800 rounded-xl p-4 shadow-sm">
                       <h5 className="font-bold text-white mb-4">新規投稿作成</h5>
@@ -1078,9 +1082,9 @@ const MEODetailSection: React.FC<MEODetailSectionProps> = ({
               )}
 
               {activeTab === 'instagram' && (
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-6">
-                    <h4 className="text-2xl font-bold text-white">Instagram自動投稿</h4>
+                <div className="p-3 md:p-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 md:mb-6 gap-2">
+                    <h4 className="text-lg md:text-2xl font-bold text-white">Instagram自動投稿</h4>
                     <button
                       onClick={generateInstagramImage}
                       className="px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-all duration-200"
@@ -1089,7 +1093,7 @@ const MEODetailSection: React.FC<MEODetailSectionProps> = ({
                     </button>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     {/* 画像生成 */}
                     <div className="bg-gray-900 border border-gray-800 rounded-xl p-4 shadow-sm">
                       <h5 className="font-bold text-white mb-4">AI画像生成</h5>
@@ -1186,9 +1190,9 @@ const MEODetailSection: React.FC<MEODetailSectionProps> = ({
               )}
 
               {activeTab === 'blog' && (
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-6">
-                    <h4 className="text-2xl font-bold text-white">ブログ記事管理</h4>
+                <div className="p-3 md:p-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 md:mb-6 gap-2">
+                    <h4 className="text-lg md:text-2xl font-bold text-white">ブログ記事管理</h4>
                     <button
                       onClick={generateBlogPost}
                       className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all duration-200"
@@ -1401,10 +1405,10 @@ const MEODetailSection: React.FC<MEODetailSectionProps> = ({
               )}
 
               {activeTab === 'analytics' && (
-                <div className="p-6">
-                  <h4 className="text-2xl font-bold text-white mb-6">分析ダッシュボード</h4>
+                <div className="p-3 md:p-6">
+                  <h4 className="text-lg md:text-2xl font-bold text-white mb-4 md:mb-6">分析ダッシュボード</h4>
 
-                  <div className="grid grid-cols-5 gap-4 mb-6">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4 mb-4 md:mb-6">
                     <div className="bg-gray-900 border border-gray-800 rounded-xl p-4 shadow-sm">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-gray-400 text-sm">Map表示</span>
@@ -1447,7 +1451,7 @@ const MEODetailSection: React.FC<MEODetailSectionProps> = ({
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 shadow-sm">
                       <h5 className="font-bold text-white mb-4">エンゲージメント推移</h5>
                       <div className="h-64 bg-gradient-to-br from-gray-800 to-gray-700 rounded-lg flex items-center justify-center">

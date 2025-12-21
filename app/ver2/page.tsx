@@ -10,6 +10,7 @@ import FAQSection from "@/components/FAQSection"
 import ProcessFlow from "@/components/ProcessFlow"
 import ContactSection from "@/components/ContactSection"
 import Footer from "@/components/Footer"
+import BackgroundGlow from "@/components/BackgroundGlow"
 
 export default function Ver2() {
   const ver2PricingData = {
@@ -24,6 +25,7 @@ export default function Ver2() {
 
   return (
     <>
+      <BackgroundGlow />
       <Header />
       <Hero pricingData={ver2PricingData} />
       <DesignerCards />
