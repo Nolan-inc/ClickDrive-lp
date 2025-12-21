@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import AIFeaturesTabSection from "@/components/AIFeaturesTabSection";
 import MEODetailSection from "@/components/MEODetailSection";
 import DesignerCards from "@/components/DesignerCards";
-import PricingSection from "@/components/PricingSection"
 import ComparisonSection from "@/components/ComparisonSection"
 import WebsitePlanSection from "@/components/WebsitePlanSection"
 import StackedCardsSection from "@/components/StackedCardsSection"
@@ -185,9 +184,6 @@ export default async function OEMPartnerPage({ params }: Props) {
         <MEODetailSection
           themeColor={partnerData.theme_color}
           primaryColor={partnerData.primary_color}
-        />
-        <PricingSection
-          themeColor={partnerData.theme_color}
         />
         <FAQSection
           themeColor={partnerData.theme_color}
