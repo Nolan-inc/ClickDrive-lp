@@ -7,14 +7,17 @@ interface ProcessFlowProps {
   primaryColor?: string;
   secondaryColor?: string | null;
   accentColor?: string | null;
+  lineUrl?: string | null;
 }
 
 const ProcessFlow = ({
   themeColor = "#8b5cf6",
   primaryColor = "#7c3aed",
   secondaryColor = null,
-  accentColor = null
+  accentColor = null,
+  lineUrl = null
 }: ProcessFlowProps) => {
+  const finalLineUrl = lineUrl || 'https://lin.ee/llRUGcG';
   const steps = [
     {
       step: 'お問い合わせ受付',
@@ -110,7 +113,7 @@ const ProcessFlow = ({
         {/* CTA */}
         <div className="text-center mt-16">
           <a 
-            href="https://lin.ee/llRUGcG" 
+            href={finalLineUrl} 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-white px-10 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg inline-flex items-center gap-3"

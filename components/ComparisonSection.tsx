@@ -35,17 +35,33 @@ export default function ComparisonSection({
   const initialFee = pricingData ? formatPrice(pricingData.initial_setup_fee, pricingData.currency) : '0円';
   const monthlyFee = pricingData ? formatPrice(pricingData.monthly_fee, pricingData.currency) : '5,800円';
 
+  // Calculate competitor prices dynamically
+  const baseInitialFee = pricingData?.initial_setup_fee || 0;
+  const baseMonthlyFee = pricingData?.monthly_fee || 5800;
+  const currency = pricingData?.currency || 'JPY';
+
+  // A社: 初期費用+10万円、月額+1万円
+  const companyAInitial = formatPrice(baseInitialFee + 100000, currency);
+  const companyAMonthly = formatPrice(baseMonthlyFee + 10000, currency);
+
+  // B社: 初期費用+20万円、月額+1万円
+  const companyBInitial = formatPrice(baseInitialFee + 200000, currency);
+  const companyBMonthly = formatPrice(baseMonthlyFee + 10000, currency);
+
+  // C社: 初期費用0円、月額同じ
+  const companyCInitial = '0円';
+  const companyCMonthly = monthlyFee;
+
   const comparisonData = [
-    { item: '初期費用', quickweb: initialFee + '（期間限定）', a: '15万円〜', b: '30万円', c: '0円' },
-    { item: '月額費用', quickweb: monthlyFee + '（税込）', a: '10,000円〜', b: '月額0円', c: '月額5,800円' },
+    { item: '初期費用', quickweb: initialFee + '（期間限定）', a: companyAInitial, b: companyBInitial, c: companyCInitial },
+    { item: '月額費用', quickweb: monthlyFee + '（税込）', a: companyAMonthly, b: '月額' + companyBMonthly, c: '月額' + companyCMonthly },
     { item: 'AI機能', quickweb: '全機能搭載', a: 'なし', b: 'なし', c: 'なし' },
     { item: '制作期間', quickweb: '最短1週間', a: '約3週間〜', b: '1ヶ月以上', c: '2〜3週間' },
     { item: 'MEO対策', quickweb: '標準搭載', a: '別料金', b: '対応なし', c: '別料金' },
     { item: 'SNS連携', quickweb: '自動投稿', a: '手動のみ', b: '対応なし', c: '一部対応' },
     { item: 'SEO対策', quickweb: 'AI自動最適化', a: '別料金', b: '一部対応', c: '別料金' },
-    { item: 'サポート', quickweb: '24時間AI対応', a: '平日のみ', b: 'メールのみ', c: '電話のみ' },
     { item: '更新作業', quickweb: 'AI自動化', a: '手動（有料）', b: '手動（有料）', c: '手動（有料）' },
-    { item: '契約期間', quickweb: '最低1年', a: '6ヶ月〜1年', b: '年間契約必須', c: '1年契約' }
+    { item: '契約期間', quickweb: '最低1年', a: '6ヶ月〜1年', b: '年間契約必須', c: '3年契約' }
   ];
 
   return (
@@ -124,36 +140,6 @@ export default function ComparisonSection({
                 })}
               </tbody>
             </table>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="text-center">
-          <div className="bg-transparent rounded-3xl p-12 text-gray-900">
-            <h3 className="text-2xl md:text-3xl font-bold mb-6">
-              今なら初期費用0円キャンペーン実施中！
-            </h3>
-            <p className="text-lg mb-8 text-gray-700">
-              AIマーケティングで、あなたのビジネスを次のステージへ
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="https://lin.ee/llRUGcG"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg"
-              >
-                <span>💬</span>
-                LINEで無料相談
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 bg-purple-700 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-purple-800 transition-all duration-300 shadow-lg"
-              >
-                <span>📧</span>
-                資料請求
-              </a>
-            </div>
           </div>
         </div>
       </div>

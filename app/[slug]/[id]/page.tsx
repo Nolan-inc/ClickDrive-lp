@@ -152,6 +152,7 @@ export default async function OEMPartnerPage({ params }: Props) {
         primaryColor={partnerData.primary_color}
         secondaryColor={partnerData.secondary_color}
         accentColor={partnerData.accent_color}
+        brandName={slug}
         pricingData={partnerData.pricing}
       />
       <PortfolioWrapper
@@ -171,6 +172,8 @@ export default async function OEMPartnerPage({ params }: Props) {
         themeColor={partnerData.theme_color}
         primaryColor={partnerData.primary_color}
         pricingData={partnerData.pricing}
+        isPartnerPage={true}
+        lineUrl={partnerData.line_url}
       />
 
       {/* Black background sections */}
@@ -185,18 +188,12 @@ export default async function OEMPartnerPage({ params }: Props) {
           themeColor={partnerData.theme_color}
           primaryColor={partnerData.primary_color}
         />
-        <FAQSection
-          themeColor={partnerData.theme_color}
-          primaryColor={partnerData.primary_color}
-          secondaryColor={partnerData.secondary_color}
-          accentColor={partnerData.accent_color}
-          pricingData={partnerData.pricing}
-        />
         <ProcessFlow
           themeColor={partnerData.theme_color}
           primaryColor={partnerData.primary_color}
           secondaryColor={partnerData.secondary_color}
           accentColor={partnerData.accent_color}
+          lineUrl={partnerData.line_url}
         />
         <ContactSection
           themeColor={partnerData.theme_color}

@@ -14,14 +14,21 @@ interface WebsitePlanSectionProps {
     yearly_discount_rate: number;
     features: string[];
   } | null;
+  isPartnerPage?: boolean;
+  lineUrl?: string | null;
 }
 
 export default function WebsitePlanSection({
   themeColor = "#8b5cf6",
   primaryColor = "#7c3aed",
-  pricingData = null
+  pricingData = null,
+  isPartnerPage = false,
+  lineUrl = null
 }: WebsitePlanSectionProps) {
   const [showOptions, setShowOptions] = useState(false);
+
+  // LINE URL - use partner URL if available, otherwise default
+  const finalLineUrl = lineUrl || 'https://lin.ee/llRUGcG';
 
   // Format pricing for display
   const formatPrice = (amount: number, currency: string = 'JPY') => {
@@ -171,95 +178,279 @@ export default function WebsitePlanSection({
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ backgroundColor: `${themeColor}20`, color: themeColor }}>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm md:text-base font-medium mb-4" style={{ backgroundColor: `${themeColor}20`, color: themeColor }}>
+            <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
             </svg>
             WEBSITE PLAN
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             ホームページ制作プラン
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto">
             Webサイトだけが必要な方に最適。AIの力で、プロ品質のホームページを驚きの価格で
           </p>
         </div>
 
-        {/* Main Price Card */}
-        <div className="max-w-4xl mx-auto mb-20">
-          <div className="relative">
-            {/* Glow Effect */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur opacity-25"></div>
+        {/* Three Plans Grid */}
+        <div className="max-w-7xl mx-auto mb-20">
+          <div className={`grid gap-6 lg:gap-8 ${isPartnerPage ? 'md:grid-cols-1 max-w-2xl mx-auto' : 'md:grid-cols-3'}`}>
 
-            <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden">
+            {/* ミニマムプラン */}
+            {!isPartnerPage && (
+            <div className="relative bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+              <div className="p-6 md:p-8">
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-3">
+                  ミニマムプラン
+                </h3>
+                <p className="text-sm md:text-base text-gray-600 mb-6">
+                  商談時に作成したHPをそのまま使用
+                </p>
+
+                <div className="mb-6">
+                  <div className="text-sm md:text-base text-gray-500 mb-1">制作費用</div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-5xl md:text-6xl font-bold text-gray-900">0</span>
+                    <span className="text-2xl md:text-3xl text-gray-600">円</span>
+                  </div>
+                </div>
+
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>ページ数 1ページ</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>商談時のHPをそのまま納品</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>スマホ対応（レスポンシブ）</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>SEO内部対策</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>アニメーションつき</span>
+                  </li>
+                </ul>
+
+                <div className="p-4 bg-yellow-50 rounded-xl mb-6">
+                  <p className="text-sm md:text-base text-gray-700 text-center">
+                    ⚠️ 別途サーバー代等<br/>月額2,000円かかります
+                  </p>
+                </div>
+
+                <a
+                  href={finalLineUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center text-gray-900 px-6 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg border-2 border-gray-300 hover:border-gray-400 transition-all duration-300"
+                >
+                  お問い合わせ
+                </a>
+              </div>
+            </div>
+            )}
+
+            {/* プレミアムプラン */}
+            <div className={`relative bg-white rounded-3xl shadow-2xl overflow-hidden ${!isPartnerPage ? 'transform md:scale-105' : ''}`}>
               {/* Popular Badge */}
+              {!isPartnerPage && (
               <div className="absolute top-6 right-6 z-10">
-                <span className="inline-flex items-center px-4 py-2 text-sm font-bold text-white rounded-full shadow-lg" style={{ backgroundColor: themeColor }}>
-                  ⭐ 人気No.1
+                <span className="inline-flex items-center px-3 py-1 text-xs md:text-sm font-bold text-white rounded-full shadow-lg" style={{ backgroundColor: themeColor }}>
+                  人気
+                </span>
+              </div>
+              )}
+
+              {/* Glow Effect */}
+              {!isPartnerPage && (
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur opacity-25"></div>
+              )}
+
+              <div className="relative bg-white rounded-3xl p-6 md:p-8">
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-3">
+                  プレミアムプラン
+                </h3>
+                <p className="text-sm md:text-base text-gray-600 mb-6">
+                  月5回までの修正、デザイン提案可能
+                </p>
+
+                <div className="space-y-3 mb-6">
+                  <div>
+                    <div className="text-sm md:text-base text-gray-500 mb-1">月額</div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-5xl md:text-6xl font-bold text-gray-900">{monthlyFee}</span>
+                      <span className="text-2xl md:text-3xl text-gray-600">{currency}</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-sm md:text-base text-gray-500 mb-1">初期費用</div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-4xl md:text-5xl font-bold" style={{ color: themeColor }}>{initialFee}</span>
+                      <span className="text-xl md:text-2xl text-gray-600">{currency}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>ページ数 5〜10ページ</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>サーバー費用込み</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>月5回までの修正対応</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>デザイン提案可能</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>アニメーションつき</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>スマホ対応（レスポンシブ）</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>SEO内部対策</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>ブログ機能</span>
+                  </li>
+                </ul>
+
+                <a
+                  href={finalLineUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center text-white px-6 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg hover:opacity-90 transition-all duration-300 shadow-lg"
+                  style={{ backgroundColor: themeColor }}
+                >
+                  お問い合わせ
+                </a>
+              </div>
+            </div>
+
+            {/* プロプラン */}
+            {!isPartnerPage && (
+            <div className="relative bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+              {/* PRO Badge */}
+              <div className="absolute top-6 right-6 z-10">
+                <span className="inline-flex items-center px-3 py-1 text-xs md:text-sm font-bold text-white rounded-full shadow-lg bg-gradient-to-r from-yellow-400 to-orange-500">
+                  ⭐ PRO
                 </span>
               </div>
 
-              <div className="p-8 md:p-12">
-                <div className="grid md:grid-cols-2 gap-8 items-center">
-                  {/* Left: Pricing */}
+              <div className="p-6 md:p-8">
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-3">
+                  プロプラン
+                </h3>
+                <p className="text-sm md:text-base text-gray-600 mb-6">
+                  高品質なデザインHP制作
+                </p>
+
+                <div className="space-y-3 mb-6">
                   <div>
-                    <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                      ホームページ制作プラン
-                    </h3>
-                    <p className="text-gray-600 mb-6">
-                      最大12ページまで対応可能な本格的なWebサイト
-                    </p>
-
-                    <div className="space-y-4 mb-6">
-                      <div>
-                        <div className="text-sm text-gray-500 mb-1">初期費用</div>
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-4xl font-bold" style={{ color: themeColor }}>{initialFee}{currency}</span>
-                          {initialFee === '0' && <span className="text-lg text-red-500 font-semibold">期間限定！</span>}
-                        </div>
-                      </div>
-
-                      <div>
-                        <div className="text-sm text-gray-500 mb-1">月額費用</div>
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-5xl font-bold text-gray-900">{monthlyFee}</span>
-                          <span className="text-2xl text-gray-600">{currency}</span>
-                          <span className="text-sm text-gray-500">（税込）</span>
-                        </div>
-                      </div>
+                    <div className="text-sm md:text-base text-gray-500 mb-1">月額</div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-5xl md:text-6xl font-bold text-gray-900">5,800</span>
+                      <span className="text-2xl md:text-3xl text-gray-600">円</span>
                     </div>
-
-                    <a
-                      href="https://lin.ee/llRUGcG"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full text-center text-white px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-all duration-300 shadow-lg"
-                      style={{ backgroundColor: themeColor }}
-                    >
-                      今すぐ申し込む
-                    </a>
                   </div>
-
-                  {/* Right: Included Pages */}
-                  <div className="bg-gray-50 rounded-2xl p-6">
-                    <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                      <span>📄</span>
-                      含まれるページ
-                    </h4>
-                    <ul className="space-y-2">
-                      {includedPages.map((page, index) => (
-                        <li key={index} className="flex items-start gap-2 text-gray-700">
-                          <svg className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          <span className={index === includedPages.length - 1 ? 'font-semibold' : ''}>{page}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div>
+                    <div className="text-sm md:text-base text-gray-500 mb-1">初期費用</div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-4xl md:text-5xl font-bold" style={{ color: themeColor }}>100,000</span>
+                      <span className="text-xl md:text-2xl text-gray-600">円</span>
+                    </div>
                   </div>
                 </div>
+
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>ページ数 5〜15ページ</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>基本的なプレミアムプランの内容</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>高品質デザイン制作</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>ハイクオリティアニメーション付き</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 mt-0.5 flex-shrink-0" style={{ color: themeColor }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>お問い合わせ機能</span>
+                  </li>
+                </ul>
+
+                <a
+                  href={finalLineUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center text-gray-900 px-6 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg border-2 hover:bg-gray-50 transition-all duration-300"
+                  style={{ borderColor: themeColor }}
+                >
+                  お問い合わせ
+                </a>
               </div>
             </div>
+            )}
+
           </div>
         </div>
 
@@ -378,7 +569,7 @@ export default function WebsitePlanSection({
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="https://lin.ee/llRUGcG"
+              href={finalLineUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-lg text-white transition-all duration-300 shadow-lg hover:shadow-xl"
