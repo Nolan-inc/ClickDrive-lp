@@ -168,7 +168,7 @@ export default function WebsitePlanSection({
   ];
 
   return (
-    <section className="relative pt-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <section className="relative pt-24 bg-transparent overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 -left-20 w-96 h-96 rounded-full opacity-5" style={{ background: `radial-gradient(circle, ${themeColor} 0%, transparent 70%)` }}></div>

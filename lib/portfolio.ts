@@ -41,10 +41,34 @@ export async function getActiveWebsites(): Promise<Website[]> {
       return [];
     }
 
-    // domainが存在し、空文字列でないものをフィルタリング
-    const filteredData = (data || []).filter((item: { domain?: string | null }) =>
-      item.domain && item.domain !== ''
-    );
+    // domainが存在し、空文字列でなく、除外キーワードを含まないものをフィルタリング
+    const filteredData = (data || []).filter((item: { domain?: string | null; name?: string; description?: string }) => {
+      // domainチェック
+      if (!item.domain || item.domain === '') return false;
+
+      // 除外キーワードリスト
+      const excludeKeywords = [
+        '自社デザイン',
+        'メインサイト',
+        'vaxal',
+        'ai one',
+        'aione',
+        'フリスタ',
+        'frista'
+      ];
+
+      const name = (item.name as string || '').toLowerCase();
+      const description = (item.description as string || '').toLowerCase();
+
+      // いずれかのキーワードが含まれていたら除外
+      for (const keyword of excludeKeywords) {
+        if (name.includes(keyword) || description.includes(keyword)) {
+          return false;
+        }
+      }
+
+      return true;
+    });
 
     console.log('Fetched websites from database:', filteredData.length, 'records (filtered from', data?.length || 0, 'total)');
 

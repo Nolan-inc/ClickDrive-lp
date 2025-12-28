@@ -184,10 +184,6 @@ export default async function OEMPartnerPage({ params }: Props) {
           secondaryColor={partnerData.secondary_color}
           accentColor={partnerData.accent_color}
         />
-        <MEODetailSection
-          themeColor={partnerData.theme_color}
-          primaryColor={partnerData.primary_color}
-        />
         <ProcessFlow
           themeColor={partnerData.theme_color}
           primaryColor={partnerData.primary_color}
@@ -208,6 +204,8 @@ export default async function OEMPartnerPage({ params }: Props) {
           secondaryColor={partnerData.secondary_color}
           accentColor={partnerData.accent_color}
           lineUrl={partnerData.line_url}
+          brandName={slug}
+          isPartnerPage={true}
         />
       </div>
     </>

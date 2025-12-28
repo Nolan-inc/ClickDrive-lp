@@ -6,6 +6,8 @@ interface FooterProps {
   secondaryColor?: string | null;
   accentColor?: string | null;
   lineUrl?: string | null;
+  brandName?: string;
+  isPartnerPage?: boolean;
 }
 
 export default function Footer({
@@ -13,7 +15,9 @@ export default function Footer({
   primaryColor = "#7c3aed",
   secondaryColor = null,
   accentColor = null,
-  lineUrl = null
+  lineUrl = null,
+  brandName = "ClickDrive",
+  isPartnerPage = false
 }: FooterProps) {
   return (
     <footer className="relative bg-black pt-24 pb-12 overflow-hidden">
@@ -23,10 +27,10 @@ export default function Footer({
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: `${themeColor}1a` }}></div>
       </div>
 
-      {/* Background ClickDrive text */}
+      {/* Background brand text */}
       <div className="absolute inset-0 flex items-center justify-center">
         <span className="text-[20rem] md:text-[30rem] font-bold text-gray-800/30 uppercase select-none">
-          ClickDrive
+          {brandName}
         </span>
       </div>
 
@@ -49,12 +53,13 @@ export default function Footer({
             </svg>
           </a>
         </div>
-        
+
         {/* Footer Links Grid */}
+        {!isPartnerPage && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {/* Company Info */}
           <div>
-            <h3 className="font-bold text-xl mb-4 text-white">ClickDrive</h3>
+            <h3 className="font-bold text-xl mb-4 text-white">{brandName}</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
               HP/webサイト<br />
               制作会社
@@ -80,12 +85,13 @@ export default function Footer({
             </ul>
           </div>
         </div>
+        )}
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8">
           <div className="text-center">
             <p className="text-gray-500 text-sm">
-              © 2024 ClickDrive Inc. All rights reserved.
+              © 2025 {brandName} Inc. All rights reserved.
             </p>
           </div>
         </div>
